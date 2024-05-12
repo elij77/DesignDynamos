@@ -21,9 +21,11 @@ public class Player : MonoBehaviour, IDamage
 
     [SerializeField] int shootDamage;
 
-    [SerializeField] int shootRate;
+    [SerializeField] float shootRate;
 
     [SerializeField] int shootDist;
+
+    [SerializeField] Transform shootPos;
 
     Vector3 moveDir;
 
@@ -94,4 +96,13 @@ public class Player : MonoBehaviour, IDamage
 
     }
 
+    IEnumerator shoot()
+    {
+        isShooting = true;
+
+        yield return new WaitForSeconds(shootRate);
+
+        isShooting = false;
+
+    }
 }
