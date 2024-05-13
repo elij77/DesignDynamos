@@ -27,6 +27,8 @@ public class playerController : MonoBehaviour, IDamage
 
     [SerializeField] Transform shootPos;
 
+    [SerializeField] GameObject bullet;
+
     Vector3 moveDir;
 
     Vector3 playerVel;
@@ -64,6 +66,11 @@ public class playerController : MonoBehaviour, IDamage
         playerControls.Move(moveDir * speed * Time.deltaTime);
 
         sprint();
+
+        if (Input.GetButton("Fire1") && !isShooting)
+        {
+            StartCoroutine(shoot());
+        }
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
@@ -105,6 +112,8 @@ public class playerController : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
+
+        Instantiate(bullet, shootPos.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
 
