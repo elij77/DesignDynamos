@@ -1364,9 +1364,9 @@ RectTransform:
   - {fileID: 6835794536372482752}
   m_Father: {fileID: 210166426011262156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 445}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -63}
   m_SizeDelta: {x: 526, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6834613860945580928
@@ -2143,7 +2143,7 @@ MonoBehaviour:
   menuLose: {fileID: 2801695185422537834}
   enemyCountText: {fileID: 8387087670121905882}
   playerFlashDamage: {fileID: 2942250568042631138}
-  playerHPBar: {fileID: 8921540416072953044}
+  playerHPBar: {fileID: 2495328473648273696}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   isPaused: 0
@@ -2179,9 +2179,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3923322395210874398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -15}
   m_SizeDelta: {x: 526, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3790852605198585390
