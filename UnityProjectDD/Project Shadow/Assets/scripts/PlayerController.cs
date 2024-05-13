@@ -29,6 +29,12 @@ public class playerController : MonoBehaviour, IDamage
 
     [SerializeField] GameObject bullet;
 
+    [SerializeField] GameObject bullet2;
+
+    [SerializeField] float bulletSpeed;
+
+    [SerializeField] Camera playerCamera;
+
     Vector3 moveDir;
 
     Vector3 playerVel;
@@ -43,6 +49,11 @@ public class playerController : MonoBehaviour, IDamage
     void Start()
     {
         HPOrig = HP;
+
+        if (playerCamera == null)
+        {
+            playerCamera = Camera.main;
+        }
     }
 
     // Update is called once per frame
@@ -113,7 +124,18 @@ public class playerController : MonoBehaviour, IDamage
     {
         isShooting = true;
 
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
+
+        Vector3 direction = playerCamera.transform.forward;
+
+        bullet2.transform.rotation = Quaternion.LookRotation(direction);
+
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.AddForce(direction * bulletSpeed, ForceMode.VelocityChange);
+        }
 
         yield return new WaitForSeconds(shootRate);
 
