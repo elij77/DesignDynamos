@@ -163,13 +163,17 @@ MonoBehaviour:
   HP: 15
   speed: 10
   sprintMod: 2
-  jumpMax: 5
+  jumpMax: 2
   jumpSpeed: 12
   grav: 25
   shootDamage: 1
   shootRate: 0.5
   shootDist: 25
   shootPos: {fileID: 5535908484194165286}
+  bullet: {fileID: 1923788856364422875, guid: f8390fec6b1ed324cbb6824735fa29c4, type: 3}
+  bullet2: {fileID: 0}
+  bulletSpeed: 5
+  playerCamera: {fileID: 0}
 --- !u!143 &545635596772998981
 CharacterController:
   m_ObjectHideFlags: 0
