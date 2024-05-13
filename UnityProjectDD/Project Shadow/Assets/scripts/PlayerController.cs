@@ -94,6 +94,12 @@ public class playerController : MonoBehaviour, IDamage
     {
         HP -= amount;
 
+        StartCoroutine(flashScreenDamage());
+
+        if (HP <= 0)
+        {
+            gameManager.instance.loseMenu();
+        }
     }
 
     IEnumerator shoot()
@@ -104,5 +110,12 @@ public class playerController : MonoBehaviour, IDamage
 
         isShooting = false;
 
+    }
+
+    IEnumerator flashScreenDamage()
+    {
+        gameManager.instance.playerFlashDamage.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        gameManager.instance.playerFlashDamage.SetActive(false);
     }
 }
