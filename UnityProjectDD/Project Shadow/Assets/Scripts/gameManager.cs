@@ -13,7 +13,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject enemyCountText;
+    [SerializeField] TMP_Text enemyCountText;
 
 
     public GameObject playerFlashDamage;
@@ -36,26 +36,55 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("Cancel"))
+        {
+            if (menuActive == null)
+            {
+                statePause();
+                menuActive = menuPause;
+                menuActive.SetActive(isPaused);
+            } else if (menuActive == menuPause)
+            {
+                stateUnPause();
+            }
+        }
     }
 
     public void statePause()
     {
-
+        isPaused = !isPaused;
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void stateUnPause()
     {
-
+        isPaused = !isPaused;
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        menuActive.SetActive(isPaused);
+        menuActive = null;
     }
 
-    public void updateGameGoal()
+    public void updateGameGoal(int amount)
     {
+        enemyCount += amount;
+        enemyCountText.text = enemyCount.ToString("F0");
 
+        if(enemyCount <= 0)
+        {
+            statePause();
+            menuActive = menuWin;
+            menuActive.SetActive(isPaused);
+        }
     }
 
     public void loseMenu()
     {
-        
+        statePause();
+        menuActive = menuLose;
+        menuActive.SetActive(isPaused);
     }
 }
