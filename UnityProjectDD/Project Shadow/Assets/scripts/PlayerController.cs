@@ -132,13 +132,6 @@ public class playerController : MonoBehaviour, IDamage
 
         bullet2.transform.rotation = Quaternion.LookRotation(direction);
 
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-
-        if (rb != null)
-        {
-            rb.AddForce(direction * bulletSpeed, ForceMode.VelocityChange);
-        }
-
         yield return new WaitForSeconds(shootRate);
 
         isShooting = false;
