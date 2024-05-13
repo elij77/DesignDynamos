@@ -167,7 +167,7 @@ MonoBehaviour:
   jumpSpeed: 12
   grav: 25
   shootDamage: 1
-  shootRate: 0.5
+  shootRate: 0.25
   shootDist: 35
   shootPos: {fileID: 5535908484194165286}
   bullet: {fileID: 3145796297152894341, guid: f8390fec6b1ed324cbb6824735fa29c4, type: 3}
