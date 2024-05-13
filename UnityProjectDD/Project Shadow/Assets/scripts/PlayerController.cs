@@ -62,6 +62,7 @@ public class playerController : MonoBehaviour, IDamage
     void Update()
     {
         movement();
+        updatePlayerUI();
     }
 
     void movement()
@@ -113,7 +114,7 @@ public class playerController : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
-
+        updatePlayerUI();
         StartCoroutine(flashScreenDamage());
 
         if (HP <= 0)
@@ -122,6 +123,10 @@ public class playerController : MonoBehaviour, IDamage
         }
     }
 
+    void updatePlayerUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+    }
     IEnumerator shoot()
     {
         isShooting = true;
