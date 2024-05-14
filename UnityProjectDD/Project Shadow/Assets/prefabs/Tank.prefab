@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 752309416753581260}
   - component: {fileID: -9175673238866833789}
   m_Layer: 0
-  m_Name: Turrent
+  m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.8674488, y: 1.000001, z: 29.910696}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5728941470768826891}
@@ -85,8 +85,8 @@ MonoBehaviour:
   model: {fileID: 5468612187941325383}
   shootPos: {fileID: 5728941470768826891}
   bullet: {fileID: 3145796297152894341, guid: f8390fec6b1ed324cbb6824735fa29c4, type: 3}
-  HP: 3
-  shootRate: 0.75
+  HP: 15
+  shootRate: 0.5
 --- !u!195 &9019538143523286145
 NavMeshAgent:
   m_ObjectHideFlags: 0
