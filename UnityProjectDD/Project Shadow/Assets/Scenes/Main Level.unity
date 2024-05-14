@@ -694,11 +694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 146304495532913623, guid: 1ee977908057037409067845a3b6135d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.07
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 146304495532913623, guid: 1ee977908057037409067845a3b6135d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -340.996
+      value: -358.89
       objectReference: {fileID: 0}
     - target: {fileID: 146304495532913623, guid: 1ee977908057037409067845a3b6135d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -731,6 +731,14 @@ PrefabInstance:
     - target: {fileID: 6148380497145799087, guid: 1ee977908057037409067845a3b6135d, type: 3}
       propertyPath: m_Name
       value: Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148380497145799087, guid: 1ee977908057037409067845a3b6135d, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799017427881418678, guid: 1ee977908057037409067845a3b6135d, type: 3}
+      propertyPath: m_Radius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
