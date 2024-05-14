@@ -25,6 +25,8 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     int enemyCount;
 
+    private bool bossSpawned = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,14 +38,15 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == null)
             {
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(isPaused);
-            } else if (menuActive == menuPause)
+            }
+            else if (menuActive == menuPause)
             {
                 stateUnPause();
             }
@@ -73,7 +76,11 @@ public class gameManager : MonoBehaviour
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
 
-        if(enemyCount <= 0)
+        if (enemyCount <= 0 && !bossSpawned)  // Instantiates the boss
+        {
+            bossSpawned = true;
+        }
+        else if (enemyCount <= 0 && bossSpawned) // If boss was deployed, wins the game.
         {
             statePause();
             menuActive = menuWin;
@@ -86,5 +93,10 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
+    }
+
+    public int GetEnemyCount()
+    {
+        return enemyCount;
     }
 }
