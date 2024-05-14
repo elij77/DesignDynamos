@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 965751743744977619}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.2956676}
+  m_LocalPosition: {x: 0, y: -0.311, z: 1.2956676}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,9 +84,9 @@ MonoBehaviour:
   agent: {fileID: 9019538143523286145}
   model: {fileID: 5468612187941325383}
   shootPos: {fileID: 5728941470768826891}
-  bullet: {fileID: 3145796297152894341, guid: f8390fec6b1ed324cbb6824735fa29c4, type: 3}
+  bullet: {fileID: 3145796297152894341, guid: 5419d8249f166b540abcb5d474780a2d, type: 3}
   HP: 20
-  shootRate: 0.5
+  shootRate: 0.25
 --- !u!195 &9019538143523286145
 NavMeshAgent:
   m_ObjectHideFlags: 0
