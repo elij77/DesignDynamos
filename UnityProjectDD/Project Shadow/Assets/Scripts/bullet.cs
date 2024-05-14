@@ -18,8 +18,11 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, destroyTime);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.isTrigger)
+            return;
+
         IDamage dmg = other.gameObject.GetComponent<IDamage>();
 
         if (dmg != null)
