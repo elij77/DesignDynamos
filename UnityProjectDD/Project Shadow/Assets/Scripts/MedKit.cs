@@ -36,7 +36,7 @@ public class MedKit : MonoBehaviour
             //}
             //else
             //{
-                dmg.takeDamage(health * -1);
+                dmg.takeDamage(health * -8);
             //}
             Destroy(gameObject);
 
