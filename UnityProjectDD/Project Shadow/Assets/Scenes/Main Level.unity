@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5499874837437158886, guid: 14ed88b6a1efa814e8d6da415710935d, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 986092183}
     - target: {fileID: 5678563765781198753, guid: 14ed88b6a1efa814e8d6da415710935d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 52.5
@@ -693,6 +697,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ee977908057037409067845a3b6135d, type: 3}
+--- !u!20 &986092183 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2625157099160186500, guid: d8fb4f6313a522a47abfb2b33c6a162f, type: 3}
+  m_PrefabInstance: {fileID: 474667466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1028462920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -705,6 +714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 5499874837437158886, guid: 14ed88b6a1efa814e8d6da415710935d, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 986092183}
     - target: {fileID: 5678563765781198753, guid: 14ed88b6a1efa814e8d6da415710935d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.199253
