@@ -25,19 +25,11 @@ public class MedKit : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            IDamage dmg = other.gameObject.GetComponent<IDamage>();
+            IHeal heal = other.gameObject.GetComponent<IHeal>();
             // Increase the players health
-            playerScript = other.gameObject.GetComponent<playerController>();
 
-            //todo modify player object to not allow health to increase over orighp.
-            //if (playerScript.HP + health > playerScript.HPOrig)
-            //{
-            //    dmg.takeDamage(playerScript.HPOrig - playerScript.HP * -1);
-            //}
-            //else
-            //{
-                dmg.takeDamage(health * -8);
-            //}
+            heal.Heal(health);
+           
             Destroy(gameObject);
 
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IHeal
 {
 
     [SerializeField] CharacterController playerControls;
@@ -122,6 +122,23 @@ public class playerController : MonoBehaviour, IDamage
             gameManager.instance.loseMenu();
         }
     }
+    public void Heal (int amount)
+    {        
+        if (HP + amount > HPOrig)
+        {
+            HP = HPOrig;
+        }
+        else
+        {
+        HP = HP + amount;
+        }
+
+        updatePlayerUI();
+        StartCoroutine(flashScreenDamage());
+
+       
+    }
+
 
     void updatePlayerUI()
     {
