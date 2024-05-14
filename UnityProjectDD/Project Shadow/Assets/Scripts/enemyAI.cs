@@ -10,10 +10,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
+    [SerializeField] AIHealth health;
+
 
     [SerializeField] int HP;
+    [SerializeField] int maxHP;
     [SerializeField] float shootRate;
-
+    
     bool isShooting;
     bool playerInRange;
 
@@ -22,6 +25,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Start()
     {
         gameManager.instance.updateGameGoal(1);
+
+        health = GetComponentInChildren<AIHealth>();
+
+        health.updateHealthBar(HP, maxHP);
     }
 
     // Update is called once per frame
@@ -71,6 +78,9 @@ public class EnemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+
+        health.updateHealthBar(HP, maxHP);
+
         agent.SetDestination(gameManager.instance.player.transform.position);
         StartCoroutine(flashred());
 

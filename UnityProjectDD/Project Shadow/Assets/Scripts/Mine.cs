@@ -6,15 +6,14 @@ public class Mine : MonoBehaviour
 {
 
     [SerializeField] int damage;
-    public GameObject player;
-    public playerController playerScript; // no need for this
+    
     int hp;
     
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("boom");
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
             IDamage dmg = other.gameObject.GetComponent<IDamage>();
             // decreases the players health
