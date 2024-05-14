@@ -12,11 +12,10 @@ public class Mine : MonoBehaviour
         Debug.Log("boom");
         {
             IDamage dmg = other.transform.GetComponent<IDamage>();
+              
+            if (dmg != null )
+            dmg.takeDamage(damage);
 
-            if (dmg != null)
-            {
-                dmg.takeDamage(damage);
-            }
             Destroy(gameObject);
 
         }
