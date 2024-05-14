@@ -76,11 +76,18 @@ public class gameManager : MonoBehaviour
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
 
-        if (enemyCount <= 0 && !bossSpawned)  // Instantiates the boss
-        {
-            bossSpawned = true;
-        }
-        else if (enemyCount <= 0 && bossSpawned) // If boss was deployed, wins the game.
+        //if (enemyCount <= 0 && !bossSpawned)  // Instantiates the boss
+        //{
+        //    bossSpawned = true;
+        //}
+        //else if (enemyCount <= 0 && bossSpawned) // If boss was deployed, wins the game.
+        //{
+        //    statePause();
+        //    menuActive = menuWin;
+        //    menuActive.SetActive(isPaused);
+        //}
+
+        if (enemyCount == 0)
         {
             statePause();
             menuActive = menuWin;

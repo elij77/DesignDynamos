@@ -7,7 +7,7 @@ public class MedKit : MonoBehaviour
 
     [SerializeField] int health;
     public GameObject player;
-    public playerController playerScript;
+    public playerController playerScript;  // no need for this 
     int hp;
     // Start is called before the first frame update
     void Start()
