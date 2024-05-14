@@ -55,7 +55,7 @@ public class playerController : MonoBehaviour, IDamage
             playerCamera = Camera.main;
         }
 
-        UpdateUI();
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -150,8 +150,5 @@ public class playerController : MonoBehaviour, IDamage
         gameManager.instance.playerFlashDamage.SetActive(false);
     }
 
-    void UpdateUI()
-    {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
-    }
+    
 }
