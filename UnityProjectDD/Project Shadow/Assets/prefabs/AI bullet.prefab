@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6229383243132569408}
-  - component: {fileID: -4964808294721961166}
+  - component: {fileID: 8686252048629406950}
   - component: {fileID: 6007186531864237950}
   - component: {fileID: 7403656984916718661}
   - component: {fileID: 985845552172967714}
   m_Layer: 0
-  m_Name: tank bullet
+  m_Name: AI bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4964808294721961166
+--- !u!114 &8686252048629406950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 985845552172967714}
-  damage: 5
+  damage: 1
   speed: 25
   destroyTime: 2
 --- !u!135 &6007186531864237950
