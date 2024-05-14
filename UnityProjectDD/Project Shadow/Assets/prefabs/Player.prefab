@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControls: {fileID: 545635596772998981}
-  HP: 15
+  HP: 30
   speed: 10
   sprintMod: 2
   jumpMax: 2
