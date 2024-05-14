@@ -85,7 +85,7 @@ MonoBehaviour:
   model: {fileID: 5468612187941325383}
   shootPos: {fileID: 5728941470768826891}
   bullet: {fileID: 3145796297152894341, guid: f8390fec6b1ed324cbb6824735fa29c4, type: 3}
-  HP: 15
+  HP: 20
   shootRate: 0.5
 --- !u!195 &9019538143523286145
 NavMeshAgent:
