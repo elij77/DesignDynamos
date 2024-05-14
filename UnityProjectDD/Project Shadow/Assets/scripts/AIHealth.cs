@@ -18,5 +18,7 @@ public class AIHealth : MonoBehaviour
     void Update()
     {
         transform.rotation = cam.transform.rotation;
+
+
     }
 }
