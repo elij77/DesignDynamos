@@ -1185,6 +1185,120 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 0.000001609388, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &2082127903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1083.5305
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 526.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5518703
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961864479801612088, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_Name
+      value: Med Kit (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+--- !u!1001 &7705673901296687035
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1077.0532
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 527.62634
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.0397906
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911463019406889129, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961864479801612088, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+      propertyPath: m_Name
+      value: Med Kit
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1196,3 +1310,5 @@ SceneRoots:
   - {fileID: 118243490}
   - {fileID: 1260306232}
   - {fileID: 2058192674}
+  - {fileID: 7705673901296687035}
+  - {fileID: 2082127903}
