@@ -10,7 +10,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
-    [SerializeField] AIHealth health;
+    
+    AIHealth health;
 
 
     [SerializeField] int HP;
