@@ -165,8 +165,8 @@ MonoBehaviour:
   speed: 10
   sprintMod: 2
   jumpMax: 2
-  jumpSpeed: 12
-  grav: 25
+  jumpSpeed: 10
+  grav: 30
   shootDamage: 1
   shootRate: 0.25
   shootDist: 35
