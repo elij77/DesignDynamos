@@ -55,14 +55,16 @@ public class playerController : MonoBehaviour, IDamage, IHeal
             playerCamera = Camera.main;
         }
 
-        updatePlayerUI();
+        spawnPlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement();
-        updatePlayerUI();
+        if (!gameManager.instance.isPaused)
+        {
+            movement();
+        }
     }
 
     void movement()
@@ -144,6 +146,18 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
+
+    public void spawnPlayer()
+    {
+        HP = HPOrig;
+        updatePlayerUI();
+
+        playerControls.enabled = false;
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        playerControls.enabled = true;
+        
+    }
+
     IEnumerator shoot()
     {
         isShooting = true;

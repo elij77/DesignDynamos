@@ -15,7 +15,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text enemyCountText;
 
-
+    public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
     public Image playerHPBar;
 
@@ -33,6 +33,7 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+        playerSpawnPos = GameObject.FindWithTag("playerSpawnPos");
     }
 
     // Update is called once per frame
