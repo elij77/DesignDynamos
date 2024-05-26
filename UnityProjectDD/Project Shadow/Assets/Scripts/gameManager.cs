@@ -18,6 +18,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
     public Image playerHPBar;
+    public GameObject checkpointPopup;
 
     public GameObject player;
     public playerController playerScript;
