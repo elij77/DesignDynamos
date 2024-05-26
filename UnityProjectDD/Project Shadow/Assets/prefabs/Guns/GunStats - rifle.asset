@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d92f39d741bd7042af2c505eb2f7a7e, type: 3}
-  m_Name: GunStats - rifle
+  m_Name: GunStats - Rifle
   m_EditorClassIdentifier: 
   gModel: {fileID: 8739372317766880757, guid: 08e6127eed9b18f459ab7ab4db07c3a5, type: 3}
   shootDamage: 2
-  shootRate: 0.75
+  shootRate: 0.25
   shootDist: 150
-  ammoCurr: 30
+  ammoCurr: 0
   ammoMax: 30
   hitEffect: {fileID: 0}
   shootSound: {fileID: 0}
