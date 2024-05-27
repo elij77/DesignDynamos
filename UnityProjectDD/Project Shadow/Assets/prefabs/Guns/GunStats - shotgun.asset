@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d92f39d741bd7042af2c505eb2f7a7e, type: 3}
-  m_Name: GunStats - rifle
+  m_Name: GunStats - shotgun
   m_EditorClassIdentifier: 
-  gModel: {fileID: 8739372317766880757, guid: 08e6127eed9b18f459ab7ab4db07c3a5, type: 3}
-  shootDamage: 1
-  shootRate: 0.25
-  shootDist: 150
-  ammoCurr: 30
-  ammoMax: 30
+  gModel: {fileID: 574519106601046599, guid: 0a7b92b00cfad054f8156f15f4ef6016, type: 3}
+  shootDamage: 3
+  shootRate: 1
+  shootDist: 25
+  ammoCurr: 0
+  ammoMax: 5
   hitEffect: {fileID: 0}
-  shootSound: {fileID: 8300000, guid: c6cb01ea9bf49204ca6c2a9704e0d4f9, type: 3}
-  shootVolume: 1
+  shootSound: {fileID: 0}
+  shootVolume: 0
   icon: {fileID: 0}
