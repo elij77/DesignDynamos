@@ -217,7 +217,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         ammoMax = gun.ammoMax;
         clip = gun.clip;
         ammoCurr = gun.ammoCurr;
-        reloading = gun.reloading;
         
 
     }
