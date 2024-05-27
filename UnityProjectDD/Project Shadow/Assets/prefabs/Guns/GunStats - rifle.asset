@@ -18,6 +18,8 @@ MonoBehaviour:
   shootDist: 150
   ammoCurr: 30
   ammoMax: 30
+  clip: 15
+  startup: 90
   hitEffect: {fileID: 0}
   shootSound: {fileID: 8300000, guid: c6cb01ea9bf49204ca6c2a9704e0d4f9, type: 3}
   shootVolume: 1

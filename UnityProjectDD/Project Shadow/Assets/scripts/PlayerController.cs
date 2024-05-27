@@ -29,6 +29,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     [SerializeField] int ammoCurr;
     [SerializeField] int ammoMax;
     [SerializeField] int clip;
+    [SerializeField] int startup;
 
     [SerializeField] Transform shootPos;
 
@@ -217,7 +218,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         ammoMax = gun.ammoMax;
         clip = gun.clip;
         ammoCurr = gun.ammoCurr;
-        
+        startup = gun.startup;
 
     }
 

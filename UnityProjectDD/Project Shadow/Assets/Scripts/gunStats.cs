@@ -15,6 +15,7 @@ public class gunStats : ScriptableObject
     public int ammoCurr;
     public int ammoMax;
     public int clip;
+    public int startup;
 
     public ParticleSystem hitEffect;
     public AudioClip shootSound;

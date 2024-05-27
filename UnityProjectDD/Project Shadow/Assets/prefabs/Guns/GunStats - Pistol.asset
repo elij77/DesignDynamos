@@ -16,10 +16,10 @@ MonoBehaviour:
   shootDamage: 1
   shootRate: 0.5
   shootDist: 25
-  ammoCurr: 0
-  ammoMax: 25
+  ammoCurr: 10
+  ammoMax: 50
   clip: 10
-  reloading: 1
+  startup: 30
   hitEffect: {fileID: 0}
   shootSound: {fileID: 0}
   shootVolume: 0
