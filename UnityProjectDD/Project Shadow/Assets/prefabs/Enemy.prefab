@@ -133,6 +133,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5678563765781198753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1018923095678311275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 129715984291558502}
+  m_Layer: 0
+  m_Name: Head Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &129715984291558502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018923095678311275}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.369627}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5678563765781198753}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1168040146584276339
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +237,7 @@ Transform:
   m_Children:
   - {fileID: 5728941470768826891}
   - {fileID: 8904332105366684633}
+  - {fileID: 129715984291558502}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8191624336114517104
@@ -220,10 +252,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0b842d583547c4b91070647ae0e29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   agent: {fileID: 9019538143523286145}
   model: {fileID: 5468612187941325383}
   shootPos: {fileID: 5728941470768826891}
+  headPos: {fileID: 129715984291558502}
   bullet: {fileID: 3145796297152894341, guid: 6eb60b5a6fb906a48996e2fb31a64248, type: 3}
+  viewAngle: 90
+  faceTargetSpeed: 0
+  animSpeedTrans: 0
+  roamDist: 10
+  roamTimer: 2
   HP: 10
   maxHP: 10
   shootRate: 0.75

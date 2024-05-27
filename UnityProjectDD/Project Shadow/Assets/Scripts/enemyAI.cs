@@ -6,11 +6,19 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
+    [SerializeField] Animator anim;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
+    [SerializeField] Transform headPos;
     [SerializeField] GameObject bullet;
-    
+
+    [SerializeField] int viewAngle;
+    [SerializeField] int faceTargetSpeed;
+    [SerializeField] int animSpeedTrans;
+    [SerializeField] int roamDist;
+    [SerializeField] int roamTimer;
+
     AIHealth health;
 
 
@@ -20,6 +28,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     
     bool isShooting;
     bool playerInRange;
+    bool destChosen;
+
+    Vector3 playerDir;
+    Vector3 startingPos;
+
+    float angleToPlayer;
+    float stoppingDistOrig;
 
 
     // Start is called before the first frame update
@@ -30,19 +45,26 @@ public class EnemyAI : MonoBehaviour, IDamage
         health = GetComponentInChildren<AIHealth>();
 
         health.updateHealthBar(HP, maxHP);
+
+        startingPos = transform.position;
+        stoppingDistOrig = agent.stoppingDistance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange)
-        {
-           agent.SetDestination(gameManager.instance.player.transform.position);
+        float animSpeed = agent.velocity.normalized.magnitude;
 
-            if (!isShooting)
-            {
-                StartCoroutine(shoot());
-            }
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+
+        if (playerInRange && !canSeePlayer())
+        {
+            //agent.SetDestination(gameManager.instance.player.transform.position);
+            StartCoroutine(roam());
+        }
+        else if (!isShooting)
+        {
+            StartCoroutine(shoot());
         }
     }
 
@@ -62,6 +84,26 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
     }
 
+    IEnumerator roam()
+    {
+        if (!destChosen && agent.remainingDistance < 0.05f)
+        {
+
+            destChosen = true;
+            agent.stoppingDistance = 0;
+            yield return new WaitForSeconds(roamTimer);
+
+            Vector3 ranPos = Random.insideUnitSphere * roamDist;
+            ranPos += startingPos;
+
+            NavMeshHit hit;
+            NavMesh.SamplePosition(ranPos, out hit, roamDist, 1);
+            agent.SetDestination(hit.position);
+
+            destChosen = false;
+        }
+    }
+
     IEnumerator shoot()
     {
         isShooting = true;
@@ -74,6 +116,11 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    public void createBullet()
+    {
+        Instantiate(bullet, shootPos.position, transform.rotation);
     }
 
     public void takeDamage(int amount)
@@ -91,6 +138,48 @@ public class EnemyAI : MonoBehaviour, IDamage
             Destroy(gameObject);
         }
     }
+
+
+    bool canSeePlayer()
+    {
+        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
+        Debug.Log(angleToPlayer);
+        Debug.DrawRay(headPos.position, playerDir);
+
+        RaycastHit hit;
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        {
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
+            {
+                agent.stoppingDistance = stoppingDistOrig;
+                agent.SetDestination(gameManager.instance.player.transform.position);
+
+                if (!isShooting)
+                {
+                    StartCoroutine(shoot());
+                }
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
+                return true;
+            }
+        }
+        agent.stoppingDistance = 0;
+        return false;
+    }
+
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+    }
+
+
+
+
 
     IEnumerator flashred()
     {
