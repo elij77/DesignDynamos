@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage, IHeal
@@ -24,6 +25,10 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     [SerializeField] float shootRate;
 
     [SerializeField] int shootDist;
+
+    [SerializeField] int ammoCurr;
+    [SerializeField] int ammoMax;
+    [SerializeField] int clip;
 
     [SerializeField] Transform shootPos;
 
@@ -89,7 +94,10 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         playerControls.Move(moveDir * speed * Time.deltaTime);
 
         sprint();
-
+        if (Input.GetButtonDown("Reload") && gunList.Count > 0)
+        {
+            reload(gunList[selectedGun].clip);
+        }
         if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[selectedGun].ammoCurr > 0 && !isShooting)
         {
             StartCoroutine(shoot());
@@ -167,20 +175,19 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
     IEnumerator shoot()
     {
-        isShooting = true;
+            isShooting = true;
 
-        gunList[selectedGun].ammoCurr--;
+            gunList[selectedGun].ammoCurr--;
 
-        bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
+            bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
 
-        Vector3 direction = playerCamera.transform.forward;
+            Vector3 direction = playerCamera.transform.forward;
 
-        bullet2.transform.rotation = Quaternion.LookRotation(direction);
+            bullet2.transform.rotation = Quaternion.LookRotation(direction);
 
-        yield return new WaitForSeconds(shootRate);
+            yield return new WaitForSeconds(shootRate);
 
-        isShooting = false;
-
+            isShooting = false;
     }
 
     IEnumerator flashScreenDamage()
@@ -205,6 +212,13 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gModel.GetComponent<MeshFilter>().sharedMesh;
 
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+
+        ammoMax = gun.ammoMax;
+        clip = gun.clip;
+        ammoCurr = gun.ammoCurr;
+        reloading = gun.reloading;
+        
 
     }
 
@@ -236,6 +250,21 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGun].gModel.GetComponent<MeshRenderer>().sharedMaterial;
 
 
+    }
+
+   public void reload(int amount)
+    {
+        amount = gunList[selectedGun].clip - gunList[selectedGun].ammoCurr;
+        if (gunList[selectedGun].ammoMax >= amount)
+        {
+            gunList[selectedGun].ammoCurr += amount;
+            gunList[selectedGun].ammoMax -= amount;
+        }
+        else if (gunList[selectedGun].ammoMax < amount)
+        {
+            gunList[selectedGun].ammoCurr += gunList[selectedGun].ammoMax;
+            gunList[selectedGun].ammoMax = 0;
+        }
     }
     //done
 }
