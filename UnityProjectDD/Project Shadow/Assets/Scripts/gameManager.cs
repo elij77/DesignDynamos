@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 
 public class gameManager : MonoBehaviour
@@ -14,8 +15,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text enemyCountText;
-    [SerializeField] TMP_Text ammoCurrText;
-    [SerializeField] TMP_Text ammoResText;
+    [SerializeField] TMP_Text ammoText;
 
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
@@ -98,7 +98,6 @@ public class gameManager : MonoBehaviour
             menuActive.SetActive(isPaused);
         }
     }
-
     public void loseMenu()
     {
         statePause();

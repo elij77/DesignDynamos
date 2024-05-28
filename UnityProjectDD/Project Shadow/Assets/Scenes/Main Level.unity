@@ -1843,6 +1843,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1307852629874230527, guid: 74688423b1f60a547a8ad17c9d23410f, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1463178115}
+    - target: {fileID: 1307852629874230527, guid: 74688423b1f60a547a8ad17c9d23410f, type: 3}
       propertyPath: playerSpawnPos
       value: 
       objectReference: {fileID: 319178554}

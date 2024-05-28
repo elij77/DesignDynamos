@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class playerController : MonoBehaviour, IDamage, IHeal
 {
@@ -78,6 +79,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
             movement();
             swapGun();
         }
+
     }
 
     void movement()
@@ -156,8 +158,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
        
     }
-
-
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
@@ -173,22 +173,21 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         playerControls.enabled = true;
         
     }
-
     IEnumerator shoot()
     {
-            isShooting = true;
+        isShooting = true;
 
-            gunList[selectedGun].ammoCurr--;
+        gunList[selectedGun].ammoCurr--;
 
-            bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
+        bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
 
-            Vector3 direction = playerCamera.transform.forward;
+        Vector3 direction = playerCamera.transform.forward;
 
-            bullet2.transform.rotation = Quaternion.LookRotation(direction);
+        bullet2.transform.rotation = Quaternion.LookRotation(direction);
 
-            yield return new WaitForSeconds(shootRate);
+        yield return new WaitForSeconds(shootRate);
 
-            isShooting = false;
+        isShooting = false;
     }
 
     IEnumerator flashScreenDamage()
