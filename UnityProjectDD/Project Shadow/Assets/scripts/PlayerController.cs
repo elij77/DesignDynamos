@@ -161,7 +161,11 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].clip);
     }
+
+    
+   
 
     public void spawnPlayer()
     {
@@ -178,7 +182,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         isShooting = true;
 
         gunList[selectedGun].ammoCurr--;
-
+        
         bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
 
         Vector3 direction = playerCamera.transform.forward;
@@ -186,7 +190,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         bullet2.transform.rotation = Quaternion.LookRotation(direction);
 
         yield return new WaitForSeconds(shootRate);
-
+        updatePlayerUI();
         isShooting = false;
     }
 
@@ -218,7 +222,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         clip = gun.clip;
         ammoCurr = gun.ammoCurr;
         startup = gun.startup;
-
+        updatePlayerUI();
     }
 
     void swapGun()
@@ -248,7 +252,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGun].gModel.GetComponent<MeshRenderer>().sharedMaterial;
 
-
+        updatePlayerUI();
     }
 
    public void reload(int amount)
@@ -258,12 +262,14 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         {
             gunList[selectedGun].ammoCurr += amount;
             gunList[selectedGun].ammoMax -= amount;
+
         }
         else if (gunList[selectedGun].ammoMax < amount)
         {
             gunList[selectedGun].ammoCurr += gunList[selectedGun].ammoMax;
             gunList[selectedGun].ammoMax = 0;
         }
+        updatePlayerUI();
     }
     //done
 }
