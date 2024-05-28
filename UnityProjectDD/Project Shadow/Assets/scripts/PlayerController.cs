@@ -182,7 +182,12 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         isShooting = true;
 
         gunList[selectedGun].ammoCurr--;
-        
+
+        gameManager.instance.PlaySound(gunList[selectedGun].shootSound);
+
+
+        updatePlayerUI();
+
         bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
 
         Vector3 direction = playerCamera.transform.forward;
@@ -190,7 +195,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         bullet2.transform.rotation = Quaternion.LookRotation(direction);
 
         yield return new WaitForSeconds(shootRate);
-        updatePlayerUI();
+        
         isShooting = false;
     }
 
