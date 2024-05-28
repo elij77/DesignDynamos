@@ -16,6 +16,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text ammoText;
+    [SerializeField] TMP_Text ammoCurrText;
 
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
@@ -73,6 +74,12 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(isPaused);
         menuActive = null;
+    }
+
+    public void updateAmmo(int curAmount, int clip)
+    {
+        ammoCurrText.text = curAmount.ToString();
+        ammoText.text = clip.ToString();
     }
 
     public void updateGameGoal(int amount)
