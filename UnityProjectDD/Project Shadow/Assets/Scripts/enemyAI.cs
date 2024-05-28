@@ -40,14 +40,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.instance.updateGameGoal(1);
-
-        health = GetComponentInChildren<AIHealth>();
-
-        health.updateHealthBar(HP, maxHP);
-
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
+
+
+        health = GetComponentInChildren<AIHealth>();
+        health.updateHealthBar(HP, maxHP);
     }
 
     // Update is called once per frame
@@ -107,13 +105,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
-
-        Vector3 playerLocation = (gameManager.instance.player.transform.position - shootPos.position).normalized;
-
-        shootPos.rotation = Quaternion.LookRotation(playerLocation);
-
-        Instantiate(bullet, shootPos.position, shootPos.rotation);
-
+        anim.SetTrigger("Shoot");
+        
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
@@ -176,8 +169,6 @@ public class EnemyAI : MonoBehaviour, IDamage
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
-
-
 
 
 
