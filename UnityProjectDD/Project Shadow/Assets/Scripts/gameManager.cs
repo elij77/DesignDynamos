@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text ammoText;
     [SerializeField] TMP_Text ammoCurrText;
+    [SerializeField] GameObject audioSourceObject;
 
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
@@ -116,4 +117,28 @@ public class gameManager : MonoBehaviour
     {
         return enemyCount;
     }
+
+    public void PlaySound(AudioClip sound)
+    {
+        AudioSource audioSource;
+        audioSource = audioSourceObject.GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            if (sound != null)
+            {
+                audioSource.clip = sound;
+                audioSource.Play();
+            }
+            else
+            {
+                Debug.Log("Clip not found");
+            }
+        }
+        else
+        {
+            Debug.Log("no audio source");
+        }
+    }
+
+
 }
