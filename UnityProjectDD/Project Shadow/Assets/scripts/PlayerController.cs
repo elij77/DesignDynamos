@@ -161,7 +161,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
-        gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].clip);
+        gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].ammoMax);
     }
 
     
