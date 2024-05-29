@@ -20,7 +20,7 @@ MonoBehaviour:
   ammoMax: 20
   clip: 5
   startup: 20
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 8586068533520402164, guid: ea8c5b0a593900d4aad06b16b2a6bf69, type: 3}
   shootSound: {fileID: 8300000, guid: 159aa6b3153429349b06479ba4bcb8fc, type: 3}
   shootVolume: 0.345
   icon: {fileID: 0}
