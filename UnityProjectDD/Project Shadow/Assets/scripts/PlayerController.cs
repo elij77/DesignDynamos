@@ -188,11 +188,25 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
         updatePlayerUI();
 
-        bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
+        //bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
 
-        Vector3 direction = playerCamera.transform.forward;
+        //Vector3 direction = playerCamera.transform.forward;
 
-        bullet2.transform.rotation = Quaternion.LookRotation(direction);
+        //bullet2.transform.rotation = Quaternion.LookRotation(direction);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist))
+        {
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+            if (hit.transform != transform && dmg != null)
+            {
+                dmg.takeDamage(shootDamage);
+            }
+
+            Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
+        }
 
         yield return new WaitForSeconds(shootRate);
         
