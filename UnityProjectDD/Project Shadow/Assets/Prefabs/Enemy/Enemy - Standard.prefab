@@ -3213,8 +3213,8 @@ MonoBehaviour:
   viewAngle: 90
   faceTargetSpeed: 3
   animSpeedTrans: 5
-  roamDist: 10
-  roamTimer: 2
+  roamDist: 15
+  roamTimer: 3
   HP: 10
   maxHP: 10
   shootRate: 0.75
@@ -3280,7 +3280,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
