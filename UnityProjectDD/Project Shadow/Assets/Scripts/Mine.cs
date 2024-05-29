@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mine : MonoBehaviour
 {
     [SerializeField] int damage;
-    
+    [SerializeField] AudioClip explosion;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,7 +15,7 @@ public class Mine : MonoBehaviour
               
             if (dmg != null )
             dmg.takeDamage(damage);
-
+            gameManager.instance.PlaySound(explosion, 1.0f);
             Destroy(gameObject);
 
         }
