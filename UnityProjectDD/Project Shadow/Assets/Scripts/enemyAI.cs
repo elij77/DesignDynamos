@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
         else if (!playerInRange)
         {
-            StartCoroutine(shoot());
+            StartCoroutine(roam());
         }
     }
 
@@ -136,8 +136,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
-        Debug.Log(angleToPlayer);
-        Debug.DrawRay(headPos.position, playerDir);
+        //Debug.Log(angleToPlayer);
+        //Debug.DrawRay(headPos.position, playerDir);
 
         RaycastHit hit;
         if (Physics.Raycast(headPos.position, playerDir, out hit))
