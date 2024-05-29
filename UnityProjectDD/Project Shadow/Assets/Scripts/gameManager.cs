@@ -118,7 +118,7 @@ public class gameManager : MonoBehaviour
         return enemyCount;
     }
 
-    public void PlaySound(AudioClip sound)
+    public void PlaySound(AudioClip sound, float volume)
     {
         AudioSource audioSource;
         audioSource = audioSourceObject.GetComponent<AudioSource>();
@@ -126,8 +126,9 @@ public class gameManager : MonoBehaviour
         {
             if (sound != null)
             {
-                audioSource.clip = sound;
-                audioSource.Play();
+                
+                
+                audioSource.PlayOneShot(sound, volume );
             }
             else
             {

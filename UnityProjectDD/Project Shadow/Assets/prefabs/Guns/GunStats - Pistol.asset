@@ -16,11 +16,11 @@ MonoBehaviour:
   shootDamage: 1
   shootRate: 0.5
   shootDist: 25
-  ammoCurr: 10
+  ammoCurr: 5
   ammoMax: 30
   clip: 10
   startup: 30
   hitEffect: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 70c97e425596b8142b7b9163256c0868, type: 3}
-  shootVolume: 0
+  shootVolume: 0.393
   icon: {fileID: 0}

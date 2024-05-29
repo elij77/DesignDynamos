@@ -183,7 +183,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
         gunList[selectedGun].ammoCurr--;
 
-        gameManager.instance.PlaySound(gunList[selectedGun].shootSound);
+        gameManager.instance.PlaySound(gunList[selectedGun].shootSound, gunList[selectedGun].shootVolume);
 
 
         updatePlayerUI();
