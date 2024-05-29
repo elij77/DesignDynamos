@@ -86,7 +86,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         if (!destChosen && agent.remainingDistance < 0.05f)
         {
-
             destChosen = true;
             agent.stoppingDistance = 0;
             yield return new WaitForSeconds(roamTimer);
