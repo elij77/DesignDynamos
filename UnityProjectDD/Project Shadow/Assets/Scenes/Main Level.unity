@@ -1070,10 +1070,6 @@ PrefabInstance:
       value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 3530506339718959466, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 468116528}
-    - target: {fileID: 3530506339718959466, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
       propertyPath: playerSpawnPos
       value: 
       objectReference: {fileID: 319178554}
