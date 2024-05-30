@@ -612,7 +612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3879678319195571718, guid: fc9efc0c9e4f8a249988334e7c753226, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3879678319195571718, guid: fc9efc0c9e4f8a249988334e7c753226, type: 3}
       propertyPath: m_LocalPosition.z
@@ -646,6 +646,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6173771242096953209, guid: fc9efc0c9e4f8a249988334e7c753226, type: 3}
+      propertyPath: canvasGroupUI
+      value: 
+      objectReference: {fileID: 1777987639}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2605,6 +2609,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5512127673835748061, guid: 216990d2a19e4094cb63382cd1116cf1, type: 3}
   m_PrefabInstance: {fileID: 877781240}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &912661631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2371679537719676531, guid: fc9efc0c9e4f8a249988334e7c753226, type: 3}
+  m_PrefabInstance: {fileID: 167783618}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &923039478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3106,6 +3115,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 67.000015
       objectReference: {fileID: 0}
+    - target: {fileID: 7357412757894636179, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
+      propertyPath: m_Radius
+      value: 6.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7795316018287446450, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.80000025
@@ -3154,6 +3167,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8003124741898209290, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
+      propertyPath: numToSpawn
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003124741898209290, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
+      propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 2949046559285068420, guid: e75a31acec1fdfb4685ead6e90c60a4a, type: 3}
     - target: {fileID: 8104893405361558351, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
       propertyPath: m_Name
       value: Lvl 2 spawn
@@ -5343,6 +5364,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5512127673835748061, guid: 216990d2a19e4094cb63382cd1116cf1, type: 3}
   m_PrefabInstance: {fileID: 1682470141}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1777987639 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 3817885956111492148, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+  m_PrefabInstance: {fileID: 4381685116651681949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1799199418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7488,6 +7514,10 @@ PrefabInstance:
       propertyPath: playerSpawnPos
       value: 
       objectReference: {fileID: 319178554}
+    - target: {fileID: 3530506339718959466, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: checkpointPopup
+      value: 
+      objectReference: {fileID: 912661631}
     - target: {fileID: 3530506339718959466, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
       propertyPath: audioSourceObject
       value: 
