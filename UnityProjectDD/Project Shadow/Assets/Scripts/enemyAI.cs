@@ -176,6 +176,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = Color.blue;
+        model.material.color = Color.white;
     }
 }
