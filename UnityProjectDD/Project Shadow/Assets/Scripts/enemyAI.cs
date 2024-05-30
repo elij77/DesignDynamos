@@ -140,8 +140,6 @@ public class EnemyAI : MonoBehaviour, IDamage
             agent.velocity = stop;
             agent.acceleration = 0;
             anim.SetTrigger("Death");
-            gameManager.instance.updateGameGoal(-1);
-            
         }
     }
 
