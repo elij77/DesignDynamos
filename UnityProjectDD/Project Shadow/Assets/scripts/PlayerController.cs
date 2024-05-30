@@ -34,10 +34,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
     [SerializeField] Transform shootPos;
 
-    [SerializeField] GameObject bullet;
-
-    [SerializeField] GameObject bullet2;
-
     [SerializeField] float bulletSpeed;
 
     [SerializeField] Camera playerCamera;
