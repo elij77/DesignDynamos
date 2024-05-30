@@ -2502,7 +2502,6 @@ GameObject:
   - component: {fileID: 7142523433873193525}
   - component: {fileID: 4855537842602176283}
   - component: {fileID: 3817885956111492148}
-  - component: {fileID: 9150385430851395162}
   m_Layer: 5
   m_Name: Checkpoint Popup
   m_TagString: Untagged
@@ -2580,22 +2579,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &9150385430851395162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5964004686214860018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd67378e8936f44695955792d402915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroupUI: {fileID: 0}
-  fadeDur: 1
-  fadeIn: 0
-  fadeOut: 0
 --- !u!1 &5988326050613386643
 GameObject:
   m_ObjectHideFlags: 0
