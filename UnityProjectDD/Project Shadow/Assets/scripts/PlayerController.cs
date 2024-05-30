@@ -324,16 +324,19 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Ammo" && gunList.Capacity > 0)
+        for (int j = 0; j < gunList.Count; j++)
         {
-            for (int i = 0; i < gunList.Count; i++)
+            if (other.gameObject.tag == "Ammo" && gunList.Capacity > 0 && gunList[j].ammoMax < gunList[j].startup)
             {
-                gunList[i].ammoMax = gunList[i].startup;
+                for (int i = 0; i < gunList.Count; i++)
+                {
+                    gunList[i].ammoMax = gunList[i].startup;
+                }
+                Destroy(other.gameObject);
             }
-            Destroy(other.gameObject);
-        }
 
-        updatePlayerUI();
+            updatePlayerUI();
+        }
     }
     //done
 }
