@@ -30,8 +30,6 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     int enemyCount;
 
-    private bool bossSpawned = false;
-
     // Start is called before the first frame update
     void Awake()
     {
