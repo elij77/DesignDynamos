@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GunStats - sniper
   m_EditorClassIdentifier: 
   gModel: {fileID: 3501915884879906732, guid: a053d41e9d1652f4688f622297706d4d, type: 3}
-  shootDamage: 5
+  shootDamage: 6
   shootRate: 1.5
   shootDist: 500
-  ammoCurr: 1
+  ammoCurr: 7
   ammoMax: 28
   clip: 7
   startup: 28
