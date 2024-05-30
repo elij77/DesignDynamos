@@ -27,6 +27,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
     [SerializeField] int shootDist;
 
+    [SerializeField] GameObject muzzleFlash;
+
     [SerializeField] int ammoCurr;
     [SerializeField] int ammoMax;
     [SerializeField] int clip;
@@ -44,13 +46,15 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] audJump;
-    [Range(0, 1)][SerializeField] float audJumpVol;
     [SerializeField] AudioClip[] audhit;
-    [Range(0, 1)][SerializeField] float audhitVol;
     [SerializeField] AudioClip audReload;
-    [Range(0, 1)][SerializeField] float audReloadVol;
     [SerializeField] AudioClip[] audFootSteps;
+    [SerializeField] AudioClip audNoAmmo;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    [Range(0, 1)][SerializeField] float audhitVol;
+    [Range(0, 1)][SerializeField] float audReloadVol;
     [Range(0, 1)][SerializeField] float audFootVol;
+    
 
 
     Vector3 moveDir;
@@ -197,6 +201,12 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
         gunList[selectedGun].ammoCurr--;
 
+        if (gunList[selectedGun].ammoCurr == 0)
+        {
+            aud.PlayOneShot(audNoAmmo, audReloadVol);
+        }
+
+        StartCoroutine(flashMuzzle());
 
         updatePlayerUI();
 
@@ -232,6 +242,14 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         gameManager.instance.playerFlashDamage.SetActive(false);
     }
 
+    IEnumerator flashMuzzle()
+    {
+        muzzleFlash.SetActive(true);
+
+        yield return new WaitForSeconds(0.03f);
+
+        muzzleFlash.SetActive(false);
+    }
     public void getGunStats(gunStats gun)
     {
         gunList.Add(gun);
