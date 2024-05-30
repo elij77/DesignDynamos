@@ -45,6 +45,12 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] audJump;
     [Range(0, 1)][SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audhit;
+    [Range(0, 1)][SerializeField] float audhitVol;
+    [SerializeField] AudioClip audReload;
+    [Range(0, 1)][SerializeField] float audReloadVol;
+    [SerializeField] AudioClip[] audFootSteps;
+    [Range(0, 1)][SerializeField] float audFootVol;
 
 
     Vector3 moveDir;
@@ -120,6 +126,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         playerVel.y -= grav * Time.deltaTime;
 
         playerControls.Move(playerVel * Time.deltaTime);
+        aud.PlayOneShot(audFootSteps[Random.Range(0, audFootSteps.Length)], audFootVol);
     }
 
     void sprint()
@@ -138,7 +145,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         HP -= amount;
         updatePlayerUI();
         StartCoroutine(flashScreenDamage());
-
+        aud.PlayOneShot(audhit[Random.Range(0, audhit.Length)], audhitVol);
         if (HP <= 0)
         {
             gameManager.instance.loseMenu();
@@ -293,6 +300,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
             gunList[selectedGun].ammoCurr += gunList[selectedGun].ammoMax;
             gunList[selectedGun].ammoMax = 0;
         }
+        aud.PlayOneShot(audReload, audReloadVol);
         updatePlayerUI();
     }
 
