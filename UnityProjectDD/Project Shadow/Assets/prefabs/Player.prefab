@@ -205,7 +205,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  audNoAmmo: {fileID: 0}
+  audNoAmmo: {fileID: 8300000, guid: 8080eafcd9f4799419380f373ad8a36c, type: 3}
   audJumpVol: 0.4
   audhitVol: 0.6
   audReloadVol: 0.8

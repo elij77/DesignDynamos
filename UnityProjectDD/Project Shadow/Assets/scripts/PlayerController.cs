@@ -167,7 +167,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         }
 
         updatePlayerUI();
-        StartCoroutine(flashScreenDamage());
+        
 
        
     }
