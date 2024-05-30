@@ -11820,7 +11820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8104893405361558351, guid: 3534396e24311cc4f85dff36cea2a006, type: 3}
       propertyPath: m_Name
-      value: RSSSpawner
+      value: Health2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14065,7 +14065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357412757894636179, guid: 3534396e24311cc4f85dff36cea2a006, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7795316018287446450, guid: 3534396e24311cc4f85dff36cea2a006, type: 3}
       propertyPath: m_LocalPosition.y
