@@ -2524,9 +2524,9 @@ RectTransform:
   - {fileID: 4582824984453283593}
   m_Father: {fileID: 8327188544172139619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 823.25, y: -496.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -136.75, y: -256.5746}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7142523433873193525
@@ -3065,6 +3065,7 @@ MonoBehaviour:
   enemyCountText: {fileID: 3089799473346484031}
   ammoText: {fileID: 4524413435768038281}
   ammoCurrText: {fileID: 4277143887277497357}
+  audioSourceObject: {fileID: 0}
   playerSpawnPos: {fileID: 0}
   playerFlashDamage: {fileID: 597347077121951157}
   playerHPBar: {fileID: 6190270762440087692}
@@ -3794,9 +3795,9 @@ RectTransform:
   - {fileID: 2284139339513891759}
   m_Father: {fileID: 8327188544172139619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 676.3879, y: -395.98663}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -283.61212, y: 106.01337}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2096915634677890093
@@ -4062,9 +4063,9 @@ RectTransform:
   - {fileID: 3536130514575022307}
   m_Father: {fileID: 8327188544172139619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -809, y: 398.8406}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 151, y: -103.15939}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6081729699646274783

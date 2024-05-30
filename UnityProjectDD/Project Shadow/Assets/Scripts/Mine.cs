@@ -15,7 +15,7 @@ public class Mine : MonoBehaviour
               
             if (dmg != null )
             dmg.takeDamage(damage);
-            gameManager.instance.PlaySound(explosion, 1.0f);
+            
             Destroy(gameObject);
 
         }

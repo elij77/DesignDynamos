@@ -3140,10 +3140,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6045006168149530581}
   - component: {fileID: 7135828308485518118}
+  - component: {fileID: 7618823677158636476}
   - component: {fileID: 7172748322441014403}
   - component: {fileID: 8162933321162154007}
   - component: {fileID: 8316422647273676943}
-  - component: {fileID: 7618823677158636476}
   m_Layer: 0
   m_Name: Enemy - Standard
   m_TagString: Untagged
@@ -3213,11 +3213,32 @@ MonoBehaviour:
   viewAngle: 90
   faceTargetSpeed: 3
   animSpeedTrans: 5
-  roamDist: 10
-  roamTimer: 2
+  roamDist: 15
+  roamTimer: 3
   HP: 10
   maxHP: 10
   shootRate: 0.75
+--- !u!95 &7618823677158636476
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7399424140895244412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 317bd1d2b778cf0448b311d615661b6e, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8fce22a34ec395141b6d74afb2d20bbd, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!195 &7172748322441014403
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3280,31 +3301,10 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &7618823677158636476
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7399424140895244412}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 317bd1d2b778cf0448b311d615661b6e, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8fce22a34ec395141b6d74afb2d20bbd, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7449169324983688392
 GameObject:
   m_ObjectHideFlags: 0

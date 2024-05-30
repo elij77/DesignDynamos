@@ -7,6 +7,7 @@ TagManager:
   - portal
   - Enemy
   - playerSpawnPos
+  - Ammo
   layers:
   - Default
   - TransparentFX

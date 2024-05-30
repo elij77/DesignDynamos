@@ -34,10 +34,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
     [SerializeField] Transform shootPos;
 
-    [SerializeField] GameObject bullet;
-
-    [SerializeField] GameObject bullet2;
-
     [SerializeField] float bulletSpeed;
 
     [SerializeField] Camera playerCamera;
@@ -45,6 +41,11 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
 
     [SerializeField] GameObject gunModel;
+    
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+
 
     Vector3 moveDir;
 
@@ -108,6 +109,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
+            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
 
             jumpCount++;
 
@@ -161,7 +163,10 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
-        gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].ammoMax);
+        if (gunList.Capacity > 0)
+        {
+            gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].ammoMax);
+        }
     }
 
     
@@ -181,9 +186,9 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     {
         isShooting = true;
 
-        gunList[selectedGun].ammoCurr--;
+        aud.PlayOneShot(gunList[selectedGun].shootSound, gunList[selectedGun].shootVolume);
 
-        gameManager.instance.PlaySound(gunList[selectedGun].shootSound, gunList[selectedGun].shootVolume);
+        gunList[selectedGun].ammoCurr--;
 
 
         updatePlayerUI();
@@ -288,6 +293,20 @@ public class playerController : MonoBehaviour, IDamage, IHeal
             gunList[selectedGun].ammoCurr += gunList[selectedGun].ammoMax;
             gunList[selectedGun].ammoMax = 0;
         }
+        updatePlayerUI();
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Ammo" && gunList.Capacity > 0)
+        {
+            for (int i = 0; i < gunList.Count; i++)
+            {
+                gunList[i].ammoMax = gunList[i].startup;
+            }
+            Destroy(other.gameObject);
+        }
+
         updatePlayerUI();
     }
     //done
