@@ -99,11 +99,18 @@ public class gameManager : MonoBehaviour
 
         if (enemyCount == 0)
         {
-            statePause();
-            menuActive = menuWin;
-            menuActive.SetActive(isPaused);
+            StartCoroutine(win());
         }
     }
+
+    IEnumerator win()
+    {
+        yield return new WaitForSeconds(2);
+        statePause();
+        menuActive = menuWin;
+        menuActive.SetActive(isPaused);
+    }
+
     public void loseMenu()
     {
         statePause();
