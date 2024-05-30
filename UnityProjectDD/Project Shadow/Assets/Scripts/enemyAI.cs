@@ -151,6 +151,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     public void death()
     {
         Destroy(gameObject);
+        gameManager.instance.updateGameGoal(-1);
     }
 
     bool canSeePlayer()
