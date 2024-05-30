@@ -1167,7 +1167,7 @@ MonoBehaviour:
   model: {fileID: 4177013250281627458}
   shootPos: {fileID: 2990010988446164946}
   headPos: {fileID: 1173259878433431992}
-  bullet: {fileID: 3145796297152894341, guid: 6eb60b5a6fb906a48996e2fb31a64248, type: 3}
+  bullet: {fileID: 3145796297152894341, guid: 5419d8249f166b540abcb5d474780a2d, type: 3}
   viewAngle: 90
   faceTargetSpeed: 2
   animSpeedTrans: 4

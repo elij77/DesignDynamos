@@ -12,8 +12,12 @@ public class AIbullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.forward * speed;
+        Vector3 playerLocation = (gameManager.instance.player.transform.position - transform.position).normalized;
+        rb.velocity = playerLocation * speed;
         Destroy(gameObject, destroyTime);
+
+        
+
     }
 
 
