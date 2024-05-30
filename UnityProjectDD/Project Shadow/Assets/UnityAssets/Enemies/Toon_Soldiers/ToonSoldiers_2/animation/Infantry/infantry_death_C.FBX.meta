@@ -180,7 +180,7 @@ ModelImporter:
       name: infantry_death_C
       takeName: Take 001
       internalID: 0
-      firstFrame: 0
+      firstFrame: 21
       lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
@@ -202,6 +202,13 @@ ModelImporter:
       curves: []
       events:
       - time: 0.91227806
+        functionName: death
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8384437
         functionName: death
         data: 
         objectReferenceParameter: {instanceID: 0}

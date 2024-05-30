@@ -3217,7 +3217,7 @@ MonoBehaviour:
   roamTimer: 3
   HP: 10
   maxHP: 10
-  shootRate: 0.75
+  shootRate: 1
 --- !u!95 &7618823677158636476
 Animator:
   serializedVersion: 5
