@@ -126,7 +126,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         playerVel.y -= grav * Time.deltaTime;
 
         playerControls.Move(playerVel * Time.deltaTime);
-        aud.PlayOneShot(audFootSteps[Random.Range(0, audFootSteps.Length)], audFootVol);
+        
     }
 
     void sprint()
