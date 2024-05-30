@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GunStats - shotgun
   m_EditorClassIdentifier: 
   gModel: {fileID: 574519106601046599, guid: 0a7b92b00cfad054f8156f15f4ef6016, type: 3}
-  shootDamage: 3
+  shootDamage: 5
   shootRate: 1
   shootDist: 25
-  ammoCurr: 4
+  ammoCurr: 3
   ammoMax: 20
   clip: 5
   startup: 20
