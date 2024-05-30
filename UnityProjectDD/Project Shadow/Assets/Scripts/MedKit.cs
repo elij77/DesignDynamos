@@ -13,7 +13,7 @@ public class MedKit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && gameManager.instance.playerHPBar.fillAmount != 1)
         {
             IHeal heal = other.gameObject.GetComponent<IHeal>();
             // Increase the players health
