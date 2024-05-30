@@ -3390,7 +3390,11 @@ GameObject:
   - component: {fileID: 2635497391862763605}
   - component: {fileID: 7942518960000351414}
   m_Layer: 0
+<<<<<<<< HEAD:UnityProjectDD/Project Shadow/Assets/prefabs/Enemy/Enemy - Sniper.prefab
+  m_Name: Enemy - Sniper
+========
   m_Name: Enemy - Gunner
+>>>>>>>> 15b9e352e58874b6ca6d6dd63cc44ec582629966:UnityProjectDD/Project Shadow/Assets/Prefabs/Enemy/Enemy - Gunner.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3548,7 +3552,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 25
+  m_Radius: 55
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9080198290883921106
 GameObject:
