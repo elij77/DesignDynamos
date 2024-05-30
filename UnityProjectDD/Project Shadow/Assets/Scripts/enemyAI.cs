@@ -130,11 +130,29 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            Vector3 stop = Vector3.zero;
+            isShooting = false;
+            agent.velocity = stop;
+            agent.acceleration = 0;
             gameManager.instance.updateGameGoal(-1);
-            Destroy(gameObject);
+            anim.SetTrigger("Death");
         }
     }
 
+    //IEnumerator death()
+    //{
+    //    isShooting = false;
+    //    gameManager.instance.updateGameGoal(-1);
+    //    anim.SetTrigger("Death");
+
+    //    yield return new WaitForSeconds(5);
+    //    Destroy(gameObject);
+    //}
+
+    public void death()
+    {
+        Destroy(gameObject);
+    }
 
     bool canSeePlayer()
     {
