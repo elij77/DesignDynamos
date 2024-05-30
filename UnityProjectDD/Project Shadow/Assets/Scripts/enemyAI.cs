@@ -25,6 +25,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] int maxHP;
     [SerializeField] float shootRate;
+
+    
     
     bool isShooting;
     bool playerInRange;

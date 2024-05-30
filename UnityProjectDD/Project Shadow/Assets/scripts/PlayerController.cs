@@ -41,6 +41,11 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
 
     [SerializeField] GameObject gunModel;
+    
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+
 
     Vector3 moveDir;
 
@@ -104,6 +109,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
+            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
 
             jumpCount++;
 
@@ -180,9 +186,9 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     {
         isShooting = true;
 
-        gunList[selectedGun].ammoCurr--;
+        aud.PlayOneShot(gunList[selectedGun].shootSound, gunList[selectedGun].shootVolume);
 
-        gameManager.instance.PlaySound(gunList[selectedGun].shootSound, gunList[selectedGun].shootVolume);
+        gunList[selectedGun].ammoCurr--;
 
 
         updatePlayerUI();

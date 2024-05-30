@@ -118,28 +118,28 @@ public class gameManager : MonoBehaviour
         return enemyCount;
     }
 
-    public void PlaySound(AudioClip sound, float volume)
-    {
-        AudioSource audioSource;
-        audioSource = audioSourceObject.GetComponent<AudioSource>();
-        if (audioSource != null)
-        {
-            if (sound != null)
-            {
+    //public void PlaySound(AudioClip sound, float volume)
+    //{
+    //    AudioSource audioSource;
+    //    audioSource = audioSourceObject.GetComponent<AudioSource>();
+    //    if (audioSource != null)
+    //    {
+    //        if (sound != null)
+    //        {
                 
                 
-                audioSource.PlayOneShot(sound, volume );
-            }
-            else
-            {
-                Debug.Log("Clip not found");
-            }
-        }
-        else
-        {
-            Debug.Log("no audio source");
-        }
-    }
+    //            audioSource.PlayOneShot(sound, volume );
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Clip not found");
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("no audio source");
+    //    }
+    //}
 
 
 }
