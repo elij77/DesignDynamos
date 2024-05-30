@@ -86,17 +86,7 @@ public class gameManager : MonoBehaviour
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
 
-        //if (enemyCount <= 0 && !bossSpawned)  // Instantiates the boss
-        //{
-        //    bossSpawned = true;
-        //}
-        //else if (enemyCount <= 0 && bossSpawned) // If boss was deployed, wins the game.
-        //{
-        //    statePause();
-        //    menuActive = menuWin;
-        //    menuActive.SetActive(isPaused);
-        //}
-
+        
         if (enemyCount == 0)
         {
             StartCoroutine(win());
@@ -123,28 +113,7 @@ public class gameManager : MonoBehaviour
         return enemyCount;
     }
 
-    //public void PlaySound(AudioClip sound, float volume)
-    //{
-    //    AudioSource audioSource;
-    //    audioSource = audioSourceObject.GetComponent<AudioSource>();
-    //    if (audioSource != null)
-    //    {
-    //        if (sound != null)
-    //        {
-                
-                
-    //            audioSource.PlayOneShot(sound, volume );
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Clip not found");
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("no audio source");
-    //    }
-    //}
+    
 
 
 }
