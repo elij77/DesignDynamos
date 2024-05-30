@@ -293,5 +293,19 @@ public class playerController : MonoBehaviour, IDamage, IHeal
         }
         updatePlayerUI();
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Ammo" && gunList.Capacity > 0)
+        {
+            for (int i = 0; i < gunList.Count; i++)
+            {
+                gunList[i].ammoMax = gunList[i].startup;
+            }
+            Destroy(other.gameObject);
+        }
+
+        updatePlayerUI();
+    }
     //done
 }
