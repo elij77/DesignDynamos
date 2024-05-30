@@ -307,7 +307,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy - Turret
+  m_Name: Enemy - Gunner
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed

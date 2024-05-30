@@ -3390,7 +3390,7 @@ GameObject:
   - component: {fileID: 2635497391862763605}
   - component: {fileID: 7942518960000351414}
   m_Layer: 0
-  m_Name: Enemy - Turret
+  m_Name: Enemy - Gunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
