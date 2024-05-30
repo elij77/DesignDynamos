@@ -117,6 +117,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
+        anim.SetTrigger("TakeDamage");
         HP -= amount;
 
         health.updateHealthBar(HP, maxHP);
