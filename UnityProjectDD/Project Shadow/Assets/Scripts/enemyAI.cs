@@ -136,7 +136,6 @@ public class EnemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             Vector3 stop = Vector3.zero;
-            isShooting = false;
             agent.velocity = stop;
             agent.acceleration = 0;
             anim.SetTrigger("Death");
@@ -174,7 +173,7 @@ public class EnemyAI : MonoBehaviour, IDamage
                 agent.stoppingDistance = stoppingDistOrig;
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
-                if (!isShooting)
+                if (!isShooting && HP > 0)
                 {
                     StartCoroutine(shoot());
                 }
