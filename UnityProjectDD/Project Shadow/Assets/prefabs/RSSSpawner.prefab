@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 959451886239916626}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.706691, z: -0, w: 0.70752233}
-  m_LocalPosition: {x: -4.2400017, y: 0.12, z: 0.7000122}
+  m_LocalPosition: {x: 3.2000008, y: 0.12, z: 11.799988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49,7 +49,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -79,7 +79,7 @@ Transform:
   m_GameObject: {fileID: 3980842655686157825}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7036892, z: -0, w: 0.7105079}
-  m_LocalPosition: {x: 4.38, y: 0.18, z: 0.71}
+  m_LocalPosition: {x: 2.999999, y: 0.18, z: 8.600015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -102,7 +102,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 6043958293377145644}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00010382499}
-  m_LocalPosition: {x: 0.58, y: 0.14, z: -5.08}
+  m_LocalPosition: {x: 3.0999985, y: 0.14, z: 6.3999805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -155,7 +155,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -185,7 +185,7 @@ Transform:
   m_GameObject: {fileID: 7329995661556522834}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09000015, y: 0.04, z: 6.9100037}
+  m_LocalPosition: {x: 3.2000008, y: 0.04, z: 10.399994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,7 +208,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -221,10 +221,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7813166910734138633}
-  - component: {fileID: 8003124741898209290}
+  - component: {fileID: -1408678978532824590}
   - component: {fileID: 7357412757894636179}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: RSSSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -249,7 +249,7 @@ Transform:
   - {fileID: 6789423314548892796}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8003124741898209290
+--- !u!114 &-1408678978532824590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,12 +258,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8104893405361558351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c885d73d43904243bdaa6c3946c49d6, type: 3}
+  m_Script: {fileID: 11500000, guid: c09d38cdc3dc1434c9ecdf126f819af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 0}
-  numToSpawn: 5
-  spawnTimer: 3
+  objectToSpawn: {fileID: 8095517271450641551, guid: 45b00054322fd4645b9eab3f27c1b7e7, type: 3}
+  numToSpawn: 2
+  spawnTimer: 1
   spawnPos:
   - {fileID: 7795316018287446450}
   - {fileID: 3042076909469121010}
