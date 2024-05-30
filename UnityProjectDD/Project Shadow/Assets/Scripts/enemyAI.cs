@@ -108,7 +108,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         isShooting = true;
         anim.SetTrigger("Shoot");
-        
+        Vector3 playerLocation = (gameManager.instance.player.transform.position - shootPos.position).normalized;
+
+        shootPos.rotation = Quaternion.LookRotation(playerLocation);
+
+        //Instantiate(bullet, shootPos.position, shootPos.rotation);
+
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
@@ -135,6 +140,8 @@ public class EnemyAI : MonoBehaviour, IDamage
             agent.velocity = stop;
             agent.acceleration = 0;
             anim.SetTrigger("Death");
+            gameManager.instance.updateGameGoal(-1);
+            
         }
     }
 

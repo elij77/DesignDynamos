@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1528075170365088798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.028, y: 0.62, z: 0.655}
+  m_LocalPosition: {x: -0.028, y: 0.62, z: 0.193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -187,7 +187,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b420192a180488f4c9ed2cf6059e5f97, type: 3}
   - {fileID: 8300000, guid: ebe183027d77afc47b859ef8daf3db88, type: 3}
   - {fileID: 8300000, guid: 139f530dacb12fc46bdd69e70dc49bd6, type: 3}
-  audJumpVol: 0.4
   audhit:
   - {fileID: 8300000, guid: 3be3a64a40f023042a834793b78f3e53, type: 3}
   - {fileID: 8300000, guid: ec2b2ecf38b49b0448855c8e0cb8fced, type: 3}
@@ -195,9 +194,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c312597b2bd999840a852845e8c5eb10, type: 3}
   - {fileID: 8300000, guid: b4d5f37a72d460a4c94a7ea990d04aec, type: 3}
   - {fileID: 8300000, guid: fbfd655effa80f9458d26616bc90b91a, type: 3}
-  audhitVol: 0.6
   audReload: {fileID: 8300000, guid: b542f60d0471de24097b7683843b90dc, type: 3}
-  audReloadVol: 0.8
   audFootSteps:
   - {fileID: 0}
   - {fileID: 0}
@@ -208,6 +205,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  audNoAmmo: {fileID: 0}
+  audJumpVol: 0.4
+  audhitVol: 0.6
+  audReloadVol: 0.8
   audFootVol: 0.3
 --- !u!143 &545635596772998981
 CharacterController:
