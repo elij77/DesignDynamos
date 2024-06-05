@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerControls: {fileID: 545635596772998981}
   HP: 30
+  Armor: 5
   speed: 10
   sprintMod: 2
   jumpMax: 2

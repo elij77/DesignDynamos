@@ -4,12 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 
-public class playerController : MonoBehaviour, IDamage, IHeal
+public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
 {
 
     [SerializeField] CharacterController playerControls;
 
     [SerializeField] int HP;
+
+    [SerializeField] int Armor;
 
     [SerializeField] int speed;
 
@@ -65,6 +67,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
     int HPOrig;
 
+    int ArmorOrig;
+
     int selectedGun;
 
     bool isShooting;
@@ -72,8 +76,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal
     // Start is called before the first frame update
     void Start()
     {
+        ArmorOrig = Armor;
         HPOrig = HP;
-
         if (playerCamera == null)
         {
             playerCamera = Camera.main;
@@ -146,7 +150,14 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
     public void takeDamage(int amount)
     {
-        HP -= amount;
+        if (HP > 0 && Armor <= 0)
+        {
+            HP -= amount;
+        }
+        else if (Armor > 0)
+        {
+            Armor -= amount;
+        }
         updatePlayerUI();
         StartCoroutine(flashScreenDamage());
         aud.PlayOneShot(audhit[Random.Range(0, audhit.Length)], audhitVol);
@@ -171,9 +182,24 @@ public class playerController : MonoBehaviour, IDamage, IHeal
 
        
     }
+
+    public void RepairArmor(int amount)
+    {
+        if (Armor + amount > ArmorOrig)
+        {
+            Armor = ArmorOrig;
+        }
+        else
+        {
+            Armor += amount;
+        }
+
+        updatePlayerUI();
+    }
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.playerArmorBar.fillAmount = (float)Armor / ArmorOrig;
         if (gunList.Capacity > 0)
         {
             gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].ammoMax);
