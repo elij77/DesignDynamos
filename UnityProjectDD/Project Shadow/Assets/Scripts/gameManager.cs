@@ -22,6 +22,8 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
     public Image playerHPBar;
+    public Image playerStamBar;
+    public Image playerArmorBar;
     public GameObject checkpointPopup;
 
     public GameObject player;

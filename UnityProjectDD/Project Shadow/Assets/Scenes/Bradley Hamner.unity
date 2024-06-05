@@ -342,10 +342,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2205004361112100454, guid: d8fb4f6313a522a47abfb2b33c6a162f, type: 3}
-      propertyPath: stam
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 2450712461019474726, guid: d8fb4f6313a522a47abfb2b33c6a162f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -546,6 +542,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &608107824
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.525694
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 31.002586
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250614353111773447, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592442185677087381, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: armor
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990122179118766758, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
+      propertyPath: m_Name
+      value: armor placehold
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8ad834d2ba635cc429bb909584d2bac2, type: 3}
 --- !u!1001 &1001868742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -554,6 +611,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3437033990833630982, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
+      propertyPath: numToSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3437033990833630982, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
+      propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 7399424140895244412, guid: 5bbd895ea935b7341a14b752e3ba1fe2, type: 3}
     - target: {fileID: 7813166910734138633, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.840771
@@ -796,3 +861,4 @@ SceneRoots:
   - {fileID: 240666359}
   - {fileID: 202554468}
   - {fileID: 1001868742}
+  - {fileID: 608107824}
