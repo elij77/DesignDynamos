@@ -58,15 +58,69 @@ public class zombieEnemy : MonoBehaviour, IDamage
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        
+    }
+
     public void takeDamage(int amount)
     {
+        anim.SetTrigger("TakeDamage");
+        HP -= amount;
 
+        health.updateHealthBar(HP, maxHP);
+
+        agent.SetDestination(gameManager.instance.player.transform.position);
+        StartCoroutine(flashRed());
+
+        if (HP <= 0)
+        {
+            Vector3 stop = Vector3.zero;
+            agent.velocity = stop;
+            agent.acceleration = 0;
+            anim.SetTrigger("Death");
+        }
+    }
+
+    public void death()
+    {
+        Destroy(gameObject);
+        gameManager.instance.updateGameGoal(-1);
     }
 
     bool canSeePlayer()
     {
+        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
 
+        RaycastHit hit;
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        {
+            if (hit.collider.CompareTag("Player") && angleToPlayer < viewAngle)
+            {
+                agent.stoppingDistance = stoppingDistOrig;
+                agent.SetDestination(gameManager.instance.player.transform.position);
 
+                //if (!isAttacking && HP > 0)
+                //{
+
+                //}
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
+
+                return true;
+            }
+        }
+
+        agent.stoppingDistance = 0;
         return false;
     }
 
@@ -75,5 +129,18 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
 
         yield return new WaitForSeconds(roamTimer);
+    }
+
+    IEnumerator flashRed()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = Color.white;
+    }
+
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 }
