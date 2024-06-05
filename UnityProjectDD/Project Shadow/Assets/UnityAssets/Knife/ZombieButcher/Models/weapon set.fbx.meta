@@ -1,0 +1,138 @@
+fileFormatVersion: 2
+guid: cef29e8d8376185418c5d4f2d28e48cc
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Axe
+    100002: Big Axe
+    100004: Hammer
+    100006: Knife
+    100008: //RootNode
+    100010: "\u0421leaver"
+    400000: Axe
+    400002: Big Axe
+    400004: Hammer
+    400006: Knife
+    400008: //RootNode
+    400010: "\u0421leaver"
+    2100000: "\u0421leaver  weapon_"
+    2100002: Axe  weapon_
+    2100004: Knife   weapon_
+    2100006: Urod weapon 2
+    2300000: Axe
+    2300002: Big Axe
+    2300004: Hammer
+    2300006: Knife
+    2300008: "\u0421leaver"
+    3300000: Axe
+    3300002: Big Axe
+    3300004: Hammer
+    3300006: Knife
+    3300008: "\u0421leaver"
+    4300000: "\u0421leaver"
+    4300002: Axe
+    4300004: Knife
+    4300006: Big Axe
+    4300008: Hammer
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Axe  weapon_
+    second: {fileID: 2100000, guid: 248b0bcc5bd6468448472869630afa1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Knife   weapon_
+    second: {fileID: 2100000, guid: 4ecf19f0cf48d3945a69e6bbdab62819, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Urod weapon 2
+    second: {fileID: 2100000, guid: 0ff49e715efeeaf459bc139c2ee391c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u0421leaver  weapon_"
+    second: {fileID: 2100000, guid: 2da46b8a1a1605444b780fb4e6560fec, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
