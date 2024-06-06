@@ -202,5 +202,23 @@ public class EnemyAI : MonoBehaviour, IDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = Color.white;
+
+        //float duration = 0.5f;
+        //float elapsed = 0f;
+
+        //model.material.color = Color.red;
+
+        //while (elapsed < duration)
+        //{
+        //    elapsed += Time.deltaTime;
+
+        //    float fraction = elapsed / duration;
+
+        //    model.material.color = Color.Lerp(Color.red, Color.white, fraction);
+
+        //    yield return null;
+        //}
+
+        //model.material.color = Color.white;
     }
 }
