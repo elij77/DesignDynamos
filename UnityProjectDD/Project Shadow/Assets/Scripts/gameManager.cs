@@ -114,8 +114,4 @@ public class gameManager : MonoBehaviour
     {
         return enemyCount;
     }
-
-    
-
-
 }
