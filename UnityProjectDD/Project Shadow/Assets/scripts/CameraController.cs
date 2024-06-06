@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovements : MonoBehaviour
+public class cameraController : MonoBehaviour
 {
 
     [SerializeField] int sens;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
 
@@ -30,13 +31,28 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
 
+    public GameObject camera;
+    public cameraController cameraScript;
+
     public bool isPaused;
     int enemyCount;
 
     // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            //DontDestroyOnLoad(this); // makes gameManager consistent between scenes; commented out because it only works on root objects/components of root objects - need to adjust to make this work
+        } 
+        else if (instance != this)
+        {
+            Destroy(this);
+        }
+
+        camera = GameObject.FindWithTag("MainCamera");
+        cameraScript = camera.GetComponent<cameraController>();
+
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("playerSpawnPos");
