@@ -22,14 +22,18 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     [SerializeField] int HP;
     [SerializeField] int maxHP;
+    [SerializeField] float attackRate;
 
-    bool playerInRange;
+    bool isAttacking;
+    bool targetInRange;
     bool destChosen;
 
-    float angleToPlayer;
+    float angleToTarget;
     float stoppingDistOrig;
 
-    Vector3 playerDir;
+    int numOfTargets;
+
+    Vector3 targetDir;
     Vector3 startingPos;
 
     // Start is called before the first frame update
@@ -48,11 +52,11 @@ public class zombieEnemy : MonoBehaviour, IDamage
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
 
-        if (playerInRange && !canSeePlayer())
+        if (targetInRange && !canSeeTarget())
         {
             StartCoroutine(roam());
         }
-        else if (!playerInRange)
+        else if (!targetInRange)
         {
             StartCoroutine(roam());
         }
@@ -60,12 +64,25 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     public void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player") || other.CompareTag("Raider"))
+        {
+            numOfTargets++;
+            targetInRange = true;
+        }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        
+        if (other.CompareTag("Player") || other.CompareTag("Raider"))
+        {
+            numOfTargets--;
+
+            if(numOfTargets == 0)
+            {
+                targetInRange = false;
+                agent.stoppingDistance = 0;
+            }
+        }
     }
 
     public void takeDamage(int amount)
@@ -93,15 +110,15 @@ public class zombieEnemy : MonoBehaviour, IDamage
         gameManager.instance.updateGameGoal(-1);
     }
 
-    bool canSeePlayer()
+    bool canSeeTarget()
     {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
-        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
+        targetDir = gameManager.instance.player.transform.position - headPos.position;
+        angleToTarget = Vector3.Angle(new Vector3(targetDir.x, targetDir.y + 1, targetDir.z), transform.forward);
 
         RaycastHit hit;
-        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        if (Physics.Raycast(headPos.position, targetDir, out hit))
         {
-            if (hit.collider.CompareTag("Player") && angleToPlayer < viewAngle)
+            if (hit.collider.CompareTag("Player") && angleToTarget < viewAngle)
             {
                 agent.stoppingDistance = stoppingDistOrig;
                 agent.SetDestination(gameManager.instance.player.transform.position);
@@ -140,7 +157,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     void faceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
+        Quaternion rot = Quaternion.LookRotation(new Vector3(targetDir.x, 0, targetDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 }
