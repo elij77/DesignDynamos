@@ -118,7 +118,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
         RaycastHit hit;
         if (Physics.Raycast(headPos.position, targetDir, out hit))
         {
-            if (hit.collider.CompareTag("Player") && angleToTarget < viewAngle)
+            if ((hit.collider.CompareTag("Player") || hit.collider.CompareTag("Raider")) && angleToTarget < viewAngle)
             {
                 agent.stoppingDistance = stoppingDistOrig;
                 agent.SetDestination(gameManager.instance.player.transform.position);
@@ -143,9 +143,29 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     IEnumerator roam()
     {
+        if(!destChosen && agent.remainingDistance < 0.05f)
+        {
+            destChosen = true;
+            agent.stoppingDistance = 0;
+            yield return new WaitForSeconds(roamTimer);
+
+            Vector3 randomPos = Random.insideUnitSphere * roamDist;
+            randomPos += startingPos;
+
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+            agent.SetDestination(hit.position);
+
+            destChosen = false;
+        }
+    }
+
+    IEnumerator attack()
+    {
+        isAttacking = true;
 
 
-        yield return new WaitForSeconds(roamTimer);
+        yield return new WaitForSeconds(attackRate);
     }
 
     IEnumerator flashRed()
@@ -159,5 +179,10 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(targetDir.x, 0, targetDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+    }
+
+    void selectTarget()
+    {
+
     }
 }
