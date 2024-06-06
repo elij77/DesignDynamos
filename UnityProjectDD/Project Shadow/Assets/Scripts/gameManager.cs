@@ -109,6 +109,7 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
+        
     }
 
     public void optionsMenu()
