@@ -32,4 +32,9 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.playerScript.spawnPlayer();
         gameManager.instance.stateUnPause();
     }
+
+    public void options()
+    {
+        gameManager.instance.optionsMenu();
+    }
 }
