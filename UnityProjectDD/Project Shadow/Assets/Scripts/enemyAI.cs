@@ -38,6 +38,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     float angleToPlayer;
     float stoppingDistOrig;
 
+    //placeholder for money
+    ulong place;
 
     // Start is called before the first frame update
     void Start()
@@ -127,9 +129,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         anim.SetTrigger("TakeDamage");
         HP -= amount;
-
+        if (HP >= 0)
+        {
+            place = (ulong)amount * 10;
+            gameManager.instance.updatePoints(place);
+        }
         health.updateHealthBar(HP, maxHP);
-
         agent.SetDestination(gameManager.instance.player.transform.position);
         StartCoroutine(flashred());
 
@@ -156,6 +161,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         Destroy(gameObject);
         gameManager.instance.updateGameGoal(-1);
+        place = 100;
+        gameManager.instance.updatePoints(place);
     }
 
     bool canSeePlayer()

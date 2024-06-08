@@ -128,7 +128,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
             jumpCount++;
 
             playerVel.y = jumpSpeed;
-
         }
 
         playerVel.y -= grav * Time.deltaTime;
@@ -213,7 +212,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     {
         HP = HPOrig;
         updatePlayerUI();
-
         playerControls.enabled = false;
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         playerControls.enabled = true;

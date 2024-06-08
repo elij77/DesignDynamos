@@ -19,11 +19,13 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text ammoText;
     [SerializeField] TMP_Text ammoCurrText;
+    [SerializeField] TMP_Text points;
     [SerializeField] GameObject audioSourceObject;
     [SerializeField] List<GameObject> spawntiles = new List<GameObject>();
     [SerializeField] int timeBetweenWaves;
     [SerializeField] int numberOfWaves;
     [SerializeField] int ObjectsPerWave;
+    [SerializeField] ulong money;
 
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
@@ -62,7 +64,7 @@ public class gameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("playerSpawnPos");
 
-        StartCoroutine(StartWave());
+       // StartCoroutine(StartWave());
 
     }
 
@@ -106,6 +108,13 @@ public class gameManager : MonoBehaviour
         ammoText.text = clip.ToString();
     }
 
+    public void updatePoints(ulong bankValue)
+    {
+
+        money += bankValue;
+        points.text = money.ToString();
+    }
+
     public void updateGameGoal(int amount)
     {
         enemyCount += amount;
@@ -116,6 +125,11 @@ public class gameManager : MonoBehaviour
         {
             StartCoroutine(win());
         }
+    }
+
+    public ulong GetPoints()
+    {
+        return money;
     }
 
     IEnumerator win()
@@ -152,37 +166,37 @@ public class gameManager : MonoBehaviour
         return enemyCount;
     }
 
-    public void RegisterSpawnTile(GameObject spawntile)
-    {
-        SpawnTile st = spawntile.GetComponent<SpawnTile>();
-        spawntiles.Add(spawntile);
+    //public void RegisterSpawnTile(GameObject spawntile)
+    //{
+    //    SpawnTile st = spawntile.GetComponent<SpawnTile>();
+    //    spawntiles.Add(spawntile);
 
 
-    }
+    //}
 
-    IEnumerator StartWave()
-    {
-        isStartWave = false;
-        int arrayPos;
-        SpawnTile st;
-        yield return new WaitForSeconds(4);
+    //IEnumerator StartWave()
+    //{
+    //    isStartWave = false;
+    //    int arrayPos;
+    //    SpawnTile st;
+    //    yield return new WaitForSeconds(4);
 
-        for (int i = 0; i < numberOfWaves; i++)
-        {
-            for (int j = 0; j < ObjectsPerWave; j++)
-            {
-                arrayPos = Random.Range(0, spawntiles.Count);
-                st = spawntiles[arrayPos].GetComponent<SpawnTile>();
-                st.spawn();
-            }
+    //    for (int i = 0; i < numberOfWaves; i++)
+    //    {
+    //        for (int j = 0; j < ObjectsPerWave; j++)
+    //        {
+    //            arrayPos = Random.Range(0, spawntiles.Count);
+    //            st = spawntiles[arrayPos].GetComponent<SpawnTile>();
+    //            st.spawn();
+    //        }
 
 
-            Debug.Log("start Wave " + i.ToString());
-            yield return new WaitForSeconds(timeBetweenWaves);
-        }
+    //        Debug.Log("start Wave " + i.ToString());
+    //        yield return new WaitForSeconds(timeBetweenWaves);
+    //    }
 
-        isStartWave = false;
-    }
+    //    isStartWave = false;
+    //}
 
 
 
