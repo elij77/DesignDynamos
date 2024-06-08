@@ -5028,9 +5028,9 @@ MonoBehaviour:
   ammoCurrText: {fileID: 4277143887277497357}
   audioSourceObject: {fileID: 0}
   spawntiles: []
-  timeBetweenWaves: 0
-  numberOfWaves: 0
-  ObjectsPerWave: 0
+  timeBetweenWaves: 20
+  numberOfWaves: 2
+  ObjectsPerWave: 2
   playerSpawnPos: {fileID: 0}
   playerFlashDamage: {fileID: 597347077121951157}
   playerHPBar: {fileID: 6190270762440087692}
