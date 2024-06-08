@@ -6733,6 +6733,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickup prompt
       objectReference: {fileID: 0}
+    - target: {fileID: 1707481812723810297, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3273506765648088495, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
