@@ -61,6 +61,9 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("playerSpawnPos");
+
+        StartCoroutine(StartWave());
+
     }
 
     // Update is called once per frame
