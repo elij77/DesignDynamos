@@ -33,11 +33,6 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnPause();
     }
 
-    public void options()
-    {
-        gameManager.instance.optionsMenu();
-    }
-
     public void noises()
     {
         gameManager.instance.soundMenu();
