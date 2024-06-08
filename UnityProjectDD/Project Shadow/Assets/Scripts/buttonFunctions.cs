@@ -44,6 +44,7 @@ public class buttonFunctions : MonoBehaviour
     }
     public void menuReturn()
     {
-        options();
+        gameManager.instance.stateUnPause();
+        gameManager.instance.pauseMenu();
     }
 }

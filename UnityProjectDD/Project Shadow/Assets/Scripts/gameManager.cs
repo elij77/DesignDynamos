@@ -66,9 +66,10 @@ public class gameManager : MonoBehaviour
         {
             if (menuActive == null)
             {
-                statePause();
-                menuActive = menuPause;
-                menuActive.SetActive(isPaused);
+                pauseMenu();
+                //statePause();
+                //menuActive = menuPause;
+                //menuActive.SetActive(isPaused);
             }
             else if (menuActive == menuPause)
             {
@@ -127,6 +128,13 @@ public class gameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
         
+    }
+
+    public void pauseMenu()
+    {
+        statePause();
+        menuActive = menuPause;
+        menuActive.SetActive(isPaused);
     }
 
     public void optionsMenu()
