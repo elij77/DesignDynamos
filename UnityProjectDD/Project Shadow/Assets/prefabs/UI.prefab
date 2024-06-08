@@ -6815,7 +6815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4835648324309231358, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_text
-      value: Press F to buy (000)
+      value: Press F to buy ($500)
       objectReference: {fileID: 0}
     - target: {fileID: 4835648324309231358, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_fontSize
