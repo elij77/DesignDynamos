@@ -37,4 +37,13 @@ public class buttonFunctions : MonoBehaviour
     {
         gameManager.instance.optionsMenu();
     }
+
+    public void noises()
+    {
+        gameManager.instance.soundMenu();
+    }
+    public void menuReturn()
+    {
+        options();
+    }
 }
