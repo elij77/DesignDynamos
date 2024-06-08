@@ -143,8 +143,6 @@ public class gameManager : MonoBehaviour
 
     public void soundMenu()
     {
-        stateUnPause();
-        statePause();
         menuActive = menuSound;
         menuActive.SetActive(isPaused);
     }

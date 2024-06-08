@@ -1217,7 +1217,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 705216109699306186}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: resume
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4665,7 +4665,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 705216109699306186}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: resume
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5027,6 +5027,10 @@ MonoBehaviour:
   ammoText: {fileID: 4524413435768038281}
   ammoCurrText: {fileID: 4277143887277497357}
   audioSourceObject: {fileID: 0}
+  spawntiles: []
+  timeBetweenWaves: 0
+  numberOfWaves: 0
+  ObjectsPerWave: 0
   playerSpawnPos: {fileID: 0}
   playerFlashDamage: {fileID: 597347077121951157}
   playerHPBar: {fileID: 6190270762440087692}
