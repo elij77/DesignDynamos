@@ -20,6 +20,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text ammoText;
     [SerializeField] TMP_Text ammoCurrText;
     [SerializeField] GameObject audioSourceObject;
+    [SerializeField] List<GameObject> spawntiles = new List<GameObject>();
+    [SerializeField] int timeBetweenWaves;
+    [SerializeField] int numberOfWaves;
+    [SerializeField] int ObjectsPerWave;
 
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
@@ -34,6 +38,7 @@ public class gameManager : MonoBehaviour
     public GameObject camera;
     public cameraController cameraScript;
 
+    bool isStartWave;
     public bool isPaused;
     int enemyCount;
 
@@ -143,4 +148,39 @@ public class gameManager : MonoBehaviour
     {
         return enemyCount;
     }
+
+    public void RegisterSpawnTile(GameObject spawntile)
+    {
+        SpawnTile st = spawntile.GetComponent<SpawnTile>();
+        spawntiles.Add(spawntile);
+
+
+    }
+
+    IEnumerator StartWave()
+    {
+        isStartWave = false;
+        int arrayPos;
+        SpawnTile st;
+        yield return new WaitForSeconds(4);
+
+        for (int i = 0; i < numberOfWaves; i++)
+        {
+            for (int j = 0; j < ObjectsPerWave; j++)
+            {
+                arrayPos = Random.Range(0, spawntiles.Count);
+                st = spawntiles[arrayPos].GetComponent<SpawnTile>();
+                st.spawn();
+            }
+
+
+            Debug.Log("start Wave " + i.ToString());
+            yield return new WaitForSeconds(timeBetweenWaves);
+        }
+
+        isStartWave = false;
+    }
+
+
+
 }
