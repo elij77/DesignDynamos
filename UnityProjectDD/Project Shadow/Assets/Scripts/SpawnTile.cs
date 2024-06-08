@@ -8,7 +8,7 @@ public class SpawnTile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //gameManager.instance.RegisterSpawnTile(gameObject);
+        gameManager.instance.RegisterSpawnTile(gameObject);
 
         Debug.Log("registertile");
     }

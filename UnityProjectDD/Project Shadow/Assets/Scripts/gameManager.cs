@@ -64,7 +64,7 @@ public class gameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("playerSpawnPos");
 
-       // StartCoroutine(StartWave());
+        StartCoroutine(StartWave());
 
     }
 
@@ -166,37 +166,46 @@ public class gameManager : MonoBehaviour
         return enemyCount;
     }
 
-    //public void RegisterSpawnTile(GameObject spawntile)
-    //{
-    //    SpawnTile st = spawntile.GetComponent<SpawnTile>();
-    //    spawntiles.Add(spawntile);
+    public void RegisterSpawnTile(GameObject spawntile)
+    {
+        SpawnTile st = spawntile.GetComponent<SpawnTile>();
+        spawntiles.Add(spawntile);
 
 
-    //}
+    }
 
-    //IEnumerator StartWave()
-    //{
-    //    isStartWave = false;
-    //    int arrayPos;
-    //    SpawnTile st;
-    //    yield return new WaitForSeconds(4);
+    IEnumerator StartWave()
+    {
+        isStartWave = false;
+        int arrayPos;
+        SpawnTile st;
+        yield return new WaitForSeconds(4);
 
-    //    for (int i = 0; i < numberOfWaves; i++)
-    //    {
-    //        for (int j = 0; j < ObjectsPerWave; j++)
-    //        {
-    //            arrayPos = Random.Range(0, spawntiles.Count);
-    //            st = spawntiles[arrayPos].GetComponent<SpawnTile>();
-    //            st.spawn();
-    //        }
+        if (numberOfWaves > 0 && ObjectsPerWave > 0 && spawntiles.Count > 0)
+        {
 
 
-    //        Debug.Log("start Wave " + i.ToString());
-    //        yield return new WaitForSeconds(timeBetweenWaves);
-    //    }
 
-    //    isStartWave = false;
-    //}
+            for (int i = 0; i < numberOfWaves; i++)
+            {
+                for (int j = 0; j < ObjectsPerWave; j++)
+                {
+                    arrayPos = Random.Range(0, spawntiles.Count);
+                    st = spawntiles[arrayPos].GetComponent<SpawnTile>();
+                    st.spawn();
+                }
+
+
+                Debug.Log("start Wave " + i.ToString());
+                yield return new WaitForSeconds(timeBetweenWaves);
+            }
+        }
+        else
+        {
+            Debug.Log("Nothing to spawn");
+        }
+        isStartWave = false;
+    }
 
 
 
