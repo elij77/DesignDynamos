@@ -13,11 +13,7 @@ public class SpawnTile : MonoBehaviour
         Debug.Log("registertile");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     public void spawn()
     {
