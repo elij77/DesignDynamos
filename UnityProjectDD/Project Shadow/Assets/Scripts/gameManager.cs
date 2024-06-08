@@ -15,7 +15,6 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject menuOptions;
     [SerializeField] GameObject menuSound;
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text ammoText;
@@ -67,9 +66,6 @@ public class gameManager : MonoBehaviour
             if (menuActive == null)
             {
                 pauseMenu();
-                //statePause();
-                //menuActive = menuPause;
-                //menuActive.SetActive(isPaused);
             }
             else if (menuActive == menuPause)
             {
@@ -134,14 +130,6 @@ public class gameManager : MonoBehaviour
     {
         statePause();
         menuActive = menuPause;
-        menuActive.SetActive(isPaused);
-    }
-
-    public void optionsMenu()
-    {
-        stateUnPause();
-        statePause();
-        menuActive = menuOptions;
         menuActive.SetActive(isPaused);
     }
 
