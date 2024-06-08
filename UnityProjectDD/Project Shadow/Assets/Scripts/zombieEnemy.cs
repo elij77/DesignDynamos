@@ -31,7 +31,8 @@ public class zombieEnemy : MonoBehaviour, IDamage
     float angleToTarget;
     float stoppingDistOrig;
 
-    int numOfTargets;
+    List<GameObject> potentialTargets = new List<GameObject>();
+    GameObject selectedTarget;
 
     Vector3 targetDir;
     Vector3 startingPos;
@@ -54,11 +55,17 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
         if (targetInRange && !canSeeTarget())
         {
-            StartCoroutine(roam());
+            if (!destChosen)
+            {
+                StartCoroutine(roam());
+            }
         }
         else if (!targetInRange)
         {
-            StartCoroutine(roam());
+            if (!destChosen)
+            {
+                StartCoroutine(roam());
+            }
         }
     }
 
@@ -66,8 +73,12 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player") || other.CompareTag("Raider"))
         {
-            numOfTargets++;
-            targetInRange = true;
+            if (!potentialTargets.Contains(other.gameObject))
+            {
+                potentialTargets.Add(other.gameObject);
+            }
+
+            targetInRange = potentialTargets.Count > 0;
         }
     }
 
@@ -75,11 +86,14 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player") || other.CompareTag("Raider"))
         {
-            numOfTargets--;
-
-            if(numOfTargets == 0)
+            if (potentialTargets.Contains(other.gameObject))
             {
-                targetInRange = false;
+                potentialTargets.Remove(other.gameObject);
+            }
+
+            targetInRange = potentialTargets.Count > 0;
+            if (potentialTargets.Count == 0)
+            {
                 agent.stoppingDistance = 0;
             }
         }
@@ -112,7 +126,15 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     bool canSeeTarget()
     {
-        targetDir = gameManager.instance.player.transform.position - headPos.position;
+        GameObject closestTarget = selectTarget();
+        if (closestTarget == null)
+        {
+            return false;
+        }
+
+        selectedTarget = closestTarget;
+
+        targetDir = selectedTarget.transform.position - headPos.position;
         angleToTarget = Vector3.Angle(new Vector3(targetDir.x, targetDir.y + 1, targetDir.z), transform.forward);
 
         RaycastHit hit;
@@ -121,7 +143,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
             if ((hit.collider.CompareTag("Player") || hit.collider.CompareTag("Raider")) && angleToTarget < viewAngle)
             {
                 agent.stoppingDistance = stoppingDistOrig;
-                agent.SetDestination(gameManager.instance.player.transform.position);
+                agent.SetDestination(selectedTarget.transform.position);
 
                 //if (!isAttacking && HP > 0)
                 //{
@@ -181,8 +203,21 @@ public class zombieEnemy : MonoBehaviour, IDamage
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
-    void selectTarget()
+    GameObject selectTarget()
     {
+        GameObject closestTarget = null;
+        float closestDistance = Mathf.Infinity;
 
+        foreach(GameObject target in potentialTargets)
+        {
+            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+            if (distanceToTarget < closestDistance)
+            {
+                closestDistance = distanceToTarget;
+                closestTarget = target;
+            }
+        }
+
+        return closestTarget;
     }
 }
