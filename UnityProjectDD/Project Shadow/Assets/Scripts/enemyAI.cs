@@ -131,7 +131,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         HP -= amount;
         if (HP >= 0)
         {
-            place = 5;
+            place = amount * 5;
             gameManager.instance.updatePoints(place);
         }
         health.updateHealthBar(HP, maxHP);
