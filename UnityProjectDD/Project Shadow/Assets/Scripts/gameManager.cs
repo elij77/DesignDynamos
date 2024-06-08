@@ -25,7 +25,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] int timeBetweenWaves;
     [SerializeField] int numberOfWaves;
     [SerializeField] int ObjectsPerWave;
-    [SerializeField] ulong money;
+    [SerializeField] long money;
 
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
@@ -108,7 +108,7 @@ public class gameManager : MonoBehaviour
         ammoText.text = clip.ToString();
     }
 
-    public void updatePoints(ulong bankValue)
+    public void updatePoints(long bankValue)
     {
 
         money += bankValue;
@@ -127,7 +127,7 @@ public class gameManager : MonoBehaviour
         }
     }
 
-    public ulong GetPoints()
+    public long GetPoints()
     {
         return money;
     }

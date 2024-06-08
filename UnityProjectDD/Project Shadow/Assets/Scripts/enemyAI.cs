@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
 
     //placeholder for money
-    ulong place;
+    long place;
 
     // Start is called before the first frame update
     void Start()
@@ -131,7 +131,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         HP -= amount;
         if (HP >= 0)
         {
-            place = (ulong)amount * 10;
+            place = 5;
             gameManager.instance.updatePoints(place);
         }
         health.updateHealthBar(HP, maxHP);
