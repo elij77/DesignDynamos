@@ -29,6 +29,10 @@ public class gameManager : MonoBehaviour
 
     public GameObject playerSpawnPos;
     public GameObject playerFlashDamage;
+    public GameObject playerFlashDamage1;
+    public GameObject playerFlashDamage2;
+    public GameObject playerFlashDamage3;
+    public GameObject playerFlashDamage4;
     public Image playerHPBar;
     public Image playerStamBar;
     public Image playerArmorBar;

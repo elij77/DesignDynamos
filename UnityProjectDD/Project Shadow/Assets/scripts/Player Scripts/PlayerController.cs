@@ -158,7 +158,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
             Armor -= amount;
         }
         updatePlayerUI();
-        StartCoroutine(flashScreenDamage());
+        StartCoroutine(flashScreenDamageBlue());
         aud.PlayOneShot(audhit[Random.Range(0, audhit.Length)], audhitVol);
         if (HP <= 0)
         {
@@ -175,11 +175,10 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         {
         HP = HP + amount;
         }
-
         updatePlayerUI();
-        
+        EraseBlood();
 
-       
+
     }
 
     public void RepairArmor(int amount)
@@ -203,6 +202,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         {
             gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].ammoMax);
         }
+        StartCoroutine(flashScreenDamage());
     }
 
     
@@ -259,13 +259,59 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         isShooting = false;
     }
 
-    IEnumerator flashScreenDamage()
+    IEnumerator flashScreenDamageBlue()
     {
-        gameManager.instance.playerFlashDamage.SetActive(true);
-        yield return new WaitForSeconds(.1f);
-        gameManager.instance.playerFlashDamage.SetActive(false);
+        if (Armor < ArmorOrig && HP == HPOrig)
+        {
+            gameManager.instance.playerFlashDamage.SetActive(true);
+            yield return new WaitForSeconds(.5f);
+            gameManager.instance.playerFlashDamage.SetActive(false);
+        }
     }
 
+    IEnumerator flashScreenDamage()
+    {
+        if (HP % 5 == 4 && Armor == 0)
+        {
+            gameManager.instance.playerFlashDamage1.SetActive(true);
+            yield return new WaitForSeconds(5f);
+            gameManager.instance.playerFlashDamage1.SetActive(false);
+        }
+        else if (HP % 5 == 3 && Armor == 0)
+        {
+            gameManager.instance.playerFlashDamage2.SetActive(true);
+            yield return new WaitForSeconds(5f);
+            gameManager.instance.playerFlashDamage2.SetActive(false);
+        }
+        else if (HP % 5 == 2 && Armor == 0 )
+        {
+            gameManager.instance.playerFlashDamage3.SetActive(true);
+            yield return new WaitForSeconds(5f);
+            gameManager.instance.playerFlashDamage3.SetActive(false);
+        }
+        else if (HP % 5 == 1 && Armor == 0)
+        {
+            gameManager.instance.playerFlashDamage4.SetActive(true);
+            if (HP % 5 > 1)
+            {
+                yield return new WaitForSeconds(3f);
+                gameManager.instance.playerFlashDamage4.SetActive(false);
+            }
+            else
+            {
+                yield return new WaitForSeconds(50f);
+                gameManager.instance.playerFlashDamage4.SetActive(false);
+            }
+        }
+    }
+
+    public void EraseBlood()
+    {
+        gameManager.instance.playerFlashDamage1.SetActive(false);
+        gameManager.instance.playerFlashDamage2.SetActive(false);
+        gameManager.instance.playerFlashDamage3.SetActive(false);
+        gameManager.instance.playerFlashDamage4.SetActive(false);
+    }
     IEnumerator flashMuzzle()
     {
         muzzleFlash.SetActive(true);
