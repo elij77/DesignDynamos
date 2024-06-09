@@ -52,6 +52,7 @@ public class gameManager : MonoBehaviour
     public GameObject checkpointPopup;
 
     public GameObject player;
+    public GameObject raider;
     public playerController playerScript;
 
     public GameObject camera;
@@ -78,6 +79,7 @@ public class gameManager : MonoBehaviour
         cameraScript = camera.GetComponent<cameraController>();
 
         player = GameObject.FindWithTag("Player");
+        raider = GameObject.FindWithTag("Raider");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("playerSpawnPos");
 

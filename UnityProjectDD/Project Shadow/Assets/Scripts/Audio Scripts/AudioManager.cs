@@ -38,6 +38,15 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void playSFX()
+    {
+        sound Sound = Array.Find(sfxSounds, x => x.soundName == name);
+
+        SFXSource.clip = Sound.clip;
+
+        SFXSource.Play();
+    }
+
     public void SetMusicVolume()
     {
         float volume = musicSlider.value;

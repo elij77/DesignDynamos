@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 
 public class zombieEnemy : MonoBehaviour, IDamage
@@ -11,6 +12,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] Transform headPos;
+    [SerializeField] Transform attackPos;
 
     [SerializeField] int viewAngle;
     [SerializeField] int faceTargetSpeed;
@@ -23,6 +25,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] int maxHP;
     [SerializeField] float attackRate;
+    [SerializeField] float attackDist;
 
     bool isAttacking;
     bool targetInRange;
@@ -43,8 +46,8 @@ public class zombieEnemy : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
 
-        health = GetComponentInChildren<AIHealth>();
-        health.updateHealthBar(HP, maxHP);
+        //health = GetComponentInChildren<AIHealth>();
+        //health.updateHealthBar(HP, maxHP);
     }
 
     // Update is called once per frame
@@ -52,9 +55,11 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         float animSpeed = agent.velocity.normalized.magnitude;
         //anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+        
 
         if (targetInRange && !canSeeTarget())
         {
+            //agent.SetDestination(gameManager.instance.raider.transform.position);
             if (!destChosen)
             {
                 StartCoroutine(roam());
@@ -67,7 +72,8 @@ public class zombieEnemy : MonoBehaviour, IDamage
                 StartCoroutine(roam());
             }
         }
-        else if (potentialTargets.Count > 0)
+
+        if (potentialTargets.Count > 0)
         {
             selectTarget();
         }
@@ -77,9 +83,11 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player") || other.CompareTag("Raider"))
         {
+            //GameObject possibleTarget = GameObject.Find(other.name);
             if (!potentialTargets.Contains(other.gameObject))
             {
                 potentialTargets.Add(other.gameObject);
+                Debug.Log("Added target: " + other.gameObject.name);
             }
 
             targetInRange = potentialTargets.Count > 0;
@@ -93,6 +101,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
             if (potentialTargets.Contains(other.gameObject))
             {
                 potentialTargets.Remove(other.gameObject);
+                Debug.Log("Removed target: " + other.gameObject.name);
             }
 
             targetInRange = potentialTargets.Count > 0;
@@ -102,6 +111,18 @@ public class zombieEnemy : MonoBehaviour, IDamage
             }
         }
     }
+
+    //public void OnTriggerStay(Collider other)
+    //{
+    //    if (other.CompareTag("Player") || other.CompareTag("Raider"))
+    //    {
+    //        if (!potentialTargets.Contains(other.gameObject))
+    //        {
+    //            potentialTargets.Add(other.gameObject);
+    //        }
+    //        targetInRange = potentialTargets.Count > 0;
+    //    }
+    //}
 
     public void takeDamage(int amount)
     {
@@ -140,7 +161,8 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
         targetDir = selectedTarget.transform.position - headPos.position;
         angleToTarget = Vector3.Angle(new Vector3(targetDir.x, targetDir.y + 1, targetDir.z), transform.forward);
-
+        Debug.Log("Angle to target: " + angleToTarget);
+        Debug.DrawRay(headPos.position, targetDir, Color.red);
         RaycastHit hit;
         if (Physics.Raycast(headPos.position, targetDir, out hit))
         {
@@ -149,14 +171,11 @@ public class zombieEnemy : MonoBehaviour, IDamage
                 agent.stoppingDistance = stoppingDistOrig;
                 agent.SetDestination(selectedTarget.transform.position);
 
-                //if (!isAttacking && HP > 0)
-                //{
-
-                //}
-
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (!isAttacking && HP > 0 && agent.remainingDistance <= agent.stoppingDistance)
                 {
                     faceTarget();
+                    
+                    // StartCoroutine(attack());
                 }
 
                 return true;
@@ -186,13 +205,19 @@ public class zombieEnemy : MonoBehaviour, IDamage
         }
     }
 
-    IEnumerator attack()
-    {
-        isAttacking = true;
+    //IEnumerator attack()
+    //{
+    //    isAttacking = true;
 
 
-        yield return new WaitForSeconds(attackRate);
-    }
+    //    yield return new WaitForSeconds(attackRate);
+    //}
+
+    //public void createSwingRay()
+    //{
+    //    RaycastHit hit;
+
+    //}
 
     IEnumerator flashRed()
     {
@@ -210,10 +235,23 @@ public class zombieEnemy : MonoBehaviour, IDamage
     GameObject selectTarget()
     {
         GameObject closestTarget = null;
+
         float closestDistance = Mathf.Infinity;
 
         foreach(GameObject target in potentialTargets)
         {
+            if (target == null)
+            {
+                Debug.LogWarning("Found a null target in potentialTargets list.");
+                continue;
+            }
+
+            // Ensure target.transform is not null
+            if (target.transform == null)
+            {
+                Debug.LogWarning($"Target {target.name} has a null transform.");
+                continue;
+            }
             float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
             if (distanceToTarget < closestDistance)
             {
@@ -222,10 +260,6 @@ public class zombieEnemy : MonoBehaviour, IDamage
             }
         }
 
-        if (closestTarget != null)
-        {
-            Debug.Log("Selected target: " + closestTarget.name);
-        }
 
         return closestTarget;
     }
