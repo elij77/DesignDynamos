@@ -3140,7 +3140,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6045006168149530581}
   - component: {fileID: 7135828308485518118}
-  - component: {fileID: -3829166010989246096}
   - component: {fileID: 7618823677158636476}
   - component: {fileID: 7172748322441014403}
   - component: {fileID: 8162933321162154007}
@@ -3219,20 +3218,6 @@ MonoBehaviour:
   HP: 10
   maxHP: 10
   shootRate: 1
---- !u!114 &-3829166010989246096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7399424140895244412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f73c829505d4b44cbab04ba9709295a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7399424140895244412}
-  spawnInterval: 5
 --- !u!95 &7618823677158636476
 Animator:
   serializedVersion: 5
