@@ -147,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 3437033990833630982, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
       propertyPath: objectToSpawn
       value: 
-      objectReference: {fileID: 2949046559285068420, guid: e75a31acec1fdfb4685ead6e90c60a4a, type: 3}
+      objectReference: {fileID: 7399424140895244412, guid: 5bbd895ea935b7341a14b752e3ba1fe2, type: 3}
     - target: {fileID: 7813166910734138633, guid: 959721cac33402e4d93f05cc0cd1d120, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.792383

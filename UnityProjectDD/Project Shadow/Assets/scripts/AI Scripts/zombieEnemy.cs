@@ -51,7 +51,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     void Update()
     {
         float animSpeed = agent.velocity.normalized.magnitude;
-        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+        //anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
 
         if (targetInRange && !canSeeTarget())
         {
@@ -66,6 +66,10 @@ public class zombieEnemy : MonoBehaviour, IDamage
             {
                 StartCoroutine(roam());
             }
+        }
+        else if (potentialTargets.Count > 0)
+        {
+            selectTarget();
         }
     }
 
@@ -216,6 +220,11 @@ public class zombieEnemy : MonoBehaviour, IDamage
                 closestDistance = distanceToTarget;
                 closestTarget = target;
             }
+        }
+
+        if (closestTarget != null)
+        {
+            Debug.Log("Selected target: " + closestTarget.name);
         }
 
         return closestTarget;
