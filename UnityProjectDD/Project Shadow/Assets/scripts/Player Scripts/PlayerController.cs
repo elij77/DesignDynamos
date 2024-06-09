@@ -156,12 +156,17 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         else if (Armor > 0)
         {
             Armor -= amount;
+            StartCoroutine(flashScreenDamageBlue());
         }
         updatePlayerUI();
-        StartCoroutine(flashScreenDamageBlue());
+        
         aud.PlayOneShot(audhit[Random.Range(0, audhit.Length)], audhitVol);
         if (HP <= 0)
         {
+            gameManager.instance.playerFlashDamage1.SetActive(false);
+            gameManager.instance.playerFlashDamage2.SetActive(false);
+            gameManager.instance.playerFlashDamage3.SetActive(false);
+            gameManager.instance.playerFlashDamage4.SetActive(false);
             gameManager.instance.loseMenu();
         }
     }
@@ -261,12 +266,9 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
 
     IEnumerator flashScreenDamageBlue()
     {
-        if (Armor < ArmorOrig && HP == HPOrig)
-        {
             gameManager.instance.playerFlashDamage.SetActive(true);
             yield return new WaitForSeconds(.5f);
             gameManager.instance.playerFlashDamage.SetActive(false);
-        }
     }
 
     IEnumerator flashScreenDamage()

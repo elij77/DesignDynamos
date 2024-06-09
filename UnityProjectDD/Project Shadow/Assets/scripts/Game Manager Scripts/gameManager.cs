@@ -16,6 +16,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuSound;
+    [SerializeField] GameObject menuOptions;
+    [SerializeField] GameObject menuHUD;
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text ammoText;
     [SerializeField] TMP_Text ammoCurrText;
@@ -27,7 +29,18 @@ public class gameManager : MonoBehaviour
     [SerializeField] int ObjectsPerWave;
     [SerializeField] long money;
 
+    [SerializeField] CanvasGroup flashCanvasGroupUI;
+    [SerializeField] CanvasGroup flashCanvasGroupUI1;
+    [SerializeField] CanvasGroup flashCanvasGroupUI2;
+    [SerializeField] CanvasGroup flashCanvasGroupUI3;
+    [SerializeField] CanvasGroup flashCanvasGroupUI4;
+    [SerializeField] CanvasGroup enemyCanvasGroupUI;
+    [SerializeField] CanvasGroup enemyCanvasGroupNumsUI;
+    [SerializeField] CanvasGroup miniMapUI;
+
     public GameObject playerSpawnPos;
+
+
     public GameObject playerFlashDamage;
     public GameObject playerFlashDamage1;
     public GameObject playerFlashDamage2;
@@ -163,6 +176,65 @@ public class gameManager : MonoBehaviour
     {
         menuActive = menuSound;
         menuActive.SetActive(isPaused);
+    }
+
+    public void optionsMenu()
+    {
+        statePause();
+        menuActive = menuOptions;
+        menuActive.SetActive(isPaused);
+    }
+
+    public void HUDMenu()
+    {
+        menuActive = menuHUD;
+        menuActive.SetActive(isPaused);
+    }
+
+    public void ScreenFlashToggle()
+    {
+        if (flashCanvasGroupUI.alpha > 0)
+        {
+            flashCanvasGroupUI.alpha = 0;
+            flashCanvasGroupUI1.alpha = 0;
+            flashCanvasGroupUI2.alpha = 0;
+            flashCanvasGroupUI3.alpha = 0;
+            flashCanvasGroupUI4.alpha = 0;
+        }
+        else
+        {
+            flashCanvasGroupUI.alpha = 1;
+            flashCanvasGroupUI1.alpha = 1;
+            flashCanvasGroupUI2.alpha = 1;
+            flashCanvasGroupUI3.alpha = 1;
+            flashCanvasGroupUI4.alpha = 1;
+        }
+    }
+
+    public void EnemyCountToggle()
+    {
+        if (enemyCanvasGroupUI.alpha > 0)
+        {
+            enemyCanvasGroupUI.alpha = 0;
+            enemyCanvasGroupNumsUI.alpha = 0;
+        }
+        else
+        {
+            enemyCanvasGroupUI.alpha = 1;
+            enemyCanvasGroupNumsUI.alpha = 1;
+        }
+    }
+
+    public void MiniToggle()
+    {
+        if (miniMapUI.alpha > 0)
+        {
+            miniMapUI.alpha = 0;
+        }
+        else
+        {
+            miniMapUI.alpha = 1;
+        }
     }
 
     public int GetEnemyCount()
