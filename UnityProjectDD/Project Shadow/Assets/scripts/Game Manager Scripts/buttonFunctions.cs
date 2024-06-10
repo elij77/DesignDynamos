@@ -1,11 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class buttonFunctions : MonoBehaviour
 {
+
+    public GameObject[] menuItems;
+
+    private int selectedItemIndex = 0;
+
+    public void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            selectedItemIndex--;
+
+            if (selectedItemIndex < 0)
+            {
+                selectedItemIndex = menuItems.Length - 1;
+            }
+        }
+
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            selectedItemIndex++;
+
+            if (selectedItemIndex >= menuItems.Length)
+            {
+                selectedItemIndex = 0;
+            }
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            menuItems[selectedItemIndex].GetComponent<Button>().onClick.Invoke();
+        }
+
+        for (int i = 0; i < menuItems.Length; i++)
+        {
+            if ( i == selectedItemIndex)
+            {
+                menuItems[i].GetComponent<Button>().Select();
+            }
+            else
+            {
+                menuItems[i].GetComponent<Button>().OnDeselect(null);
+            }
+        }
+    }
 
     // Start is called before the first frame update
     public void resume()
@@ -22,11 +69,11 @@ public class buttonFunctions : MonoBehaviour
 
     public void quitGame()
     {
-    #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-    #endif
+#endif
     }
 
     public void respawn()
@@ -34,7 +81,7 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.playerScript.spawnPlayer();
         gameManager.instance.stateUnPause();
     }
-    
+
     public void Options()
     {
         gameManager.instance.stateUnPause();
