@@ -47,8 +47,8 @@ public class gameManager : MonoBehaviour
     public GameObject playerFlashDamage3;
     public GameObject playerFlashDamage4;
     public Image playerHPBar;
-    public Image playerStamBar;
     public Image playerArmorBar;
+    public Image playerStamBar;
     public GameObject checkpointPopup;
 
     public GameObject player;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
 {
@@ -14,6 +15,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     [SerializeField] int Armor;
 
     [SerializeField] int speed;
+    [SerializeField] int walkSpeed;
+    [SerializeField] int runSpeed;
 
     [SerializeField] int sprintMod;
 
@@ -45,7 +48,12 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
 
     [SerializeField] GameObject gunModel;
-    
+
+    [SerializeField] float stam;
+    [SerializeField] float stamMax;
+    [SerializeField] float sprintAmount;
+    [SerializeField] float jumpAmount;
+
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] audJump;
     [SerializeField] AudioClip[] audhit;
@@ -62,6 +70,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     Vector3 moveDir;
 
     Vector3 playerVel;
+
+    private Coroutine regen;
 
     int jumpCount;
 
@@ -93,6 +103,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         {
             movement();
             swapGun();
+
         }
 
     }
@@ -110,8 +121,22 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
                   (Input.GetAxis("Vertical") * transform.forward);
 
         playerControls.Move(moveDir * speed * Time.deltaTime);
-
         sprint();
+            if (Input.GetButton("Sprint") && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+            {
+                stam -= sprintAmount * Time.deltaTime;
+                if (stam < 0)
+                {
+                    stam = 0;
+                }
+                updatePlayerUI();
+
+                if (regen != null)
+                {
+                    StopCoroutine(regen);
+                }
+                regen = StartCoroutine(Recharge());
+            }
         if (Input.GetButtonDown("Reload") && gunList.Count > 0)
         {
             reload(gunList[selectedGun].clip);
@@ -121,13 +146,26 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
             StartCoroutine(shoot());
         }
 
-        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
+        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax && stam > 20)
         {
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
 
             jumpCount++;
 
             playerVel.y = jumpSpeed;
+
+            stam -= jumpAmount;
+            if (stam < 0)
+            {
+                stam = 0;
+            }
+            updatePlayerUI();
+
+            if (regen != null)
+            {
+                StopCoroutine(regen);
+            }
+            regen = StartCoroutine(Recharge());
         }
 
         playerVel.y -= grav * Time.deltaTime;
@@ -138,12 +176,20 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
 
     void sprint()
     {
-        if (Input.GetButtonDown("Sprint"))
+        if (Input.GetButton("Sprint"))
         {
-            speed *= sprintMod;
-        }else if (Input.GetButtonUp("Sprint"))
+            if (Input.GetButtonDown("Sprint"))
+            {
+                    speed = runSpeed;
+            }
+            if (stam == 0)
+            {
+                speed = walkSpeed;
+            }
+        }
+        else if (Input.GetButtonUp("Sprint"))
         {
-            speed /= sprintMod;
+            speed = walkSpeed;
         }
     }
 
@@ -203,6 +249,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
         gameManager.instance.playerArmorBar.fillAmount = (float)Armor / ArmorOrig;
+        gameManager.instance.playerStamBar.fillAmount = stam / stamMax;
         if (gunList.Capacity > 0)
         {
             gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].ammoMax);
@@ -221,6 +268,23 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         playerControls.enabled = true;
         
+    }
+
+    IEnumerator Recharge()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (stam < stamMax)
+        {
+            stam += stamMax / 15;
+            if (stam > stamMax)
+            {
+                stam = stamMax;
+            }
+            updatePlayerUI();
+            yield return new WaitForSeconds(.1f);
+        }
+        regen = null;
     }
     IEnumerator shoot()
     {
