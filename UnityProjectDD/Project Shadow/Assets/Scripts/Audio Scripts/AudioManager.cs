@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    private static AudioManager instance;
+    public static AudioManager Instance;
 
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
@@ -17,13 +17,15 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider masterSlider;
 
     public sound[] musicSounds, sfxSounds;
+    public sound[] audJump;
+    public sound[] audhit;
     public AudioMixer masterMixer;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
 
             DontDestroyOnLoad(gameObject);
         }else
@@ -35,7 +37,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        playMusic("Main Menu");
+        
 
         if (PlayerPrefs.HasKey("musicVolume"))
         {
