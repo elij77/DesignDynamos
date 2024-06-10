@@ -24,9 +24,8 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     [SerializeField] int HP;
     [SerializeField] int maxHP;
+    [SerializeField] int expAmount;
     [SerializeField] float shootRate;
-
-    
     
     bool isShooting;
     bool playerInRange;
@@ -159,6 +158,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void death()
     {
+        ExperienceManager.instance.AddExperience(expAmount);
         Destroy(gameObject);
         gameManager.instance.updateGameGoal(-1);
         place = 100;

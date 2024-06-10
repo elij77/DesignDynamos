@@ -1602,6 +1602,7 @@ MonoBehaviour:
   roamTimer: 3
   HP: 10
   maxHP: 10
+  expAmount: 100
   attackRate: 1
   attackDist: 0
 --- !u!95 &7973828893154745450

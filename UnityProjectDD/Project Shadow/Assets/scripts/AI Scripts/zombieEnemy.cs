@@ -24,8 +24,11 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     [SerializeField] int HP;
     [SerializeField] int maxHP;
+    [SerializeField] int expAmount;
     [SerializeField] float attackRate;
     [SerializeField] float attackDist;
+
+    
 
     bool isAttacking;
     bool targetInRange;
