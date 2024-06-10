@@ -148,6 +148,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     public void death()
     {
+        ExperienceManager.instance.AddExperience(expAmount);
         Destroy(gameObject);
         gameManager.instance.updateGameGoal(-1);
     }

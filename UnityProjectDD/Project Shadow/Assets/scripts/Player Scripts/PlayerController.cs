@@ -108,7 +108,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
             swapGun();
 
         }
-
     }
 
     // Added
