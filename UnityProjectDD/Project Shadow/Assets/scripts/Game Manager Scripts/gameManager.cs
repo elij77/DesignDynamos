@@ -68,7 +68,7 @@ public class gameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // makes gameManager consistent between scenes; commented out because it only works on root objects/components of root objects - need to adjust to make this work
+            //DontDestroyOnLoad(gameObject); // makes gameManager consistent between scenes; commented out because it only works on root objects/components of root objects - need to adjust to make this work
         } 
         else if (instance != this)
         {
