@@ -2201,6 +2201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab74b35a3ab623458c2a8813b107513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  wait: 2
 --- !u!1 &703947769
 GameObject:
   m_ObjectHideFlags: 0
@@ -4622,6 +4624,10 @@ PrefabInstance:
     - target: {fileID: 3863250603457239372, guid: 4d2590840122fbe49b3764f146cbd254, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005586138978499893, guid: 4d2590840122fbe49b3764f146cbd254, type: 3}
+      propertyPath: m_Volume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

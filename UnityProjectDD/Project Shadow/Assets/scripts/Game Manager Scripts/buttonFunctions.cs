@@ -63,8 +63,16 @@ public class buttonFunctions : MonoBehaviour
     // Update is called once per frame
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(restartLevel());
         gameManager.instance.stateUnPause();
+    }
+
+    IEnumerator restartLevel()
+    {
+        yield return new WaitForSeconds(0.01f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+
     }
 
     public void quitGame()

@@ -111,15 +111,15 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     }
 
     // Added
-    private void OnEnable()
-    {
-        ExperienceManager.instance.onExperienceChange += HandleExperienceChange;
-    }
+    //private void OnEnable()
+    //{
+    //    ExperienceManager.instance.onExperienceChange += HandleExperienceChange;
+    //}
 
-    private void OnDisable()
-    {
-        ExperienceManager.instance.onExperienceChange -= HandleExperienceChange;
-    }
+    //private void OnDisable()
+    //{
+    //    ExperienceManager.instance.onExperienceChange -= HandleExperienceChange;
+    //}
 
     void movement()
     {
