@@ -159,7 +159,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
             StartCoroutine(shoot());
         }
 
-        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax && stam > jumpAmount)
+        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax && stam >= jumpAmount)
         {
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
 
