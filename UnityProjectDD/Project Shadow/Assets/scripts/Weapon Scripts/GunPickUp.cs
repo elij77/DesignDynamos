@@ -8,6 +8,7 @@ public class GunPickUp : MonoBehaviour
     [SerializeField] long price;
 
     public GameObject interactText;
+    public GameObject interactTextBroke;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class GunPickUp : MonoBehaviour
         gun.ammoMax = gun.startup;
 
         interactText.SetActive(false);
+        interactTextBroke.SetActive(false);
     }
     
     private void OnTriggerStay(Collider other)
@@ -27,10 +29,14 @@ public class GunPickUp : MonoBehaviour
             {
                 gameManager.instance.playerScript.getGunStats(gun);
                 Destroy(gameObject);
-                gameManager.instance.updatePoints(-moneylong);
+                gameManager.instance.updatePointsSub(price);
                 
 
                 interactText.SetActive(false);
+            }
+            else if (Input.GetButtonDown("Interact") && moneylong < price)
+            {
+                StartCoroutine(broke());
             }
         }
     }
@@ -38,5 +44,13 @@ public class GunPickUp : MonoBehaviour
     private void OnTriggerExit(Collider other) 
     {
         interactText.SetActive(false);
+        interactTextBroke?.SetActive(false);
+    }
+
+    IEnumerator broke()
+    {
+        interactTextBroke.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        interactTextBroke.SetActive(false);
     }
 }

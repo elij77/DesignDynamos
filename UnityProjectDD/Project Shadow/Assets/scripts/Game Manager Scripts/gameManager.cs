@@ -134,6 +134,12 @@ public class gameManager : MonoBehaviour
         points.text = money.ToString();
     }
 
+    public void updatePointsSub(long bankValue)
+    {
+        money -= bankValue;
+        points.text = money.ToString();
+    }
+
     public void updateGameGoal(int amount)
     {
         enemyCount += amount;

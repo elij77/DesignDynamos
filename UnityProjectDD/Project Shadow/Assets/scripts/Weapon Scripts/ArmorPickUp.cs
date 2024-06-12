@@ -16,6 +16,7 @@ public class ArmorPickUp : MonoBehaviour
     {
         interactText.SetActive(false);
         interactTextFull.SetActive(false);
+        interactTextBroke.SetActive(false);
     }
     public void OnTriggerStay(Collider other)
     {
@@ -27,8 +28,11 @@ public class ArmorPickUp : MonoBehaviour
             if (gameManager.instance.playerArmorBar.fillAmount != 1)
             {
                 interactText.SetActive(true);
-
-                if (Input.GetButtonDown("Interact") && moneylong >= price)
+                if (Input.GetButtonDown("Interact") && moneylong < price)
+                {
+                    StartCoroutine(broke());
+                }
+                else if (Input.GetButtonDown("Interact") && moneylong >= price)
                 {
                     IDefense shield = other.gameObject.GetComponent<IDefense>();
 
@@ -36,15 +40,10 @@ public class ArmorPickUp : MonoBehaviour
 
                     Destroy(gameObject);
 
-                    gameManager.instance.updatePoints(-moneylong);
+                    gameManager.instance.updatePointsSub(price);
 
 
                     interactText.SetActive(false);
-                }
-                else if (Input.GetButtonDown("Interact") && moneylong < price)
-                {
-                    StartCoroutine(broke());
-
                 }
             }
             else if (gameManager.instance.playerArmorBar.fillAmount == 1)
@@ -59,6 +58,7 @@ public class ArmorPickUp : MonoBehaviour
     {
         interactText.SetActive(false);
         interactTextFull.SetActive(false);
+        interactTextBroke.SetActive(false);
     }
 
     IEnumerator broke()
