@@ -3,12 +3,14 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public Animator animator;
 
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
@@ -33,6 +35,8 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
         
+        
+        
     }
 
     private void Start()
@@ -47,7 +51,16 @@ public class AudioManager : MonoBehaviour
         {
             SetMusicVolume();
         }
-        
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            playMusic("Main Menu");
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            playMusic("Level 1");
+        }
+
     }
 
     public void playMusic(string name)

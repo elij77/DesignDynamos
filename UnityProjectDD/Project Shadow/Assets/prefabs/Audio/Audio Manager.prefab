@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49d416737716e245b1b5708ed4cb1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 546013484013524810}
   musicSource: {fileID: 9005586138978499893}
   SFXSource: {fileID: 8975125105286368803}
   musicSlider: {fileID: 0}
@@ -228,6 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6416166891995223422}
   - component: {fileID: 9005586138978499893}
+  - component: {fileID: 546013484013524810}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -346,3 +348,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &546013484013524810
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718280616938318322}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 272b2a05d4451204089d5b2abb148fbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

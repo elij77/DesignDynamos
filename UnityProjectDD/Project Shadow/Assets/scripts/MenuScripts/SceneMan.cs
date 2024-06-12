@@ -5,9 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneMan : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static SceneMan Instance;
+
+    public Animator animator;
+    public float wait;
+    private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+
+            //DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     // Update is called once per frame
@@ -15,4 +29,18 @@ public class SceneMan : MonoBehaviour
     {
         
     }
+
+    public void loadLevel()
+    {
+        StartCoroutine(loadScene());
+    }
+    IEnumerator loadScene()
+    {
+        animator.SetTrigger("start");
+
+        yield return new WaitForSeconds(wait);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
 }
