@@ -59,6 +59,7 @@ public class gameManager : MonoBehaviour
     public cameraController cameraScript;
 
     bool isStartWave;
+    bool infiniteSpawnOn = true;
     public bool isPaused;
     int enemyCount;
 
@@ -302,6 +303,11 @@ public class gameManager : MonoBehaviour
         isStartWave = false;
     }
 
+    // getter to determine if infinite spawncontrollers are needed.
+    public bool InfiniteSpawnerOn()
+    {
+        return infiniteSpawnOn;
+    }
 
 
 }
