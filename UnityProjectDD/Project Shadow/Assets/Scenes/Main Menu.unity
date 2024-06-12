@@ -1210,8 +1210,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 685866517}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 685866518}
+        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: playGame
         m_Mode: 1
         m_Arguments:
@@ -4049,7 +4049,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 685866516}
-  - component: {fileID: 685866517}
   - component: {fileID: 685866518}
   m_Layer: 5
   m_Name: MainMenu
@@ -4084,21 +4083,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.002533}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &685866517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685866515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aab74b35a3ab623458c2a8813b107513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1180731316}
-  menuItems: []
-  wait: 2
 --- !u!114 &685866518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4111,8 +4095,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f999ca104c741c448882aa26305f842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuItems: []
   resDropDown: {fileID: 1559570291}
+  animator: {fileID: 1180731316}
+  menuItems: []
+  wait: 2
 --- !u!1 &703947769
 GameObject:
   m_ObjectHideFlags: 0

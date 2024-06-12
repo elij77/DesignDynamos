@@ -9,14 +9,17 @@ using TMPro;
 
 public class buttonFunctions : MonoBehaviour
 {
+    public TMP_Dropdown resDropDown;
+
+    public Animator animator;
 
     public GameObject[] menuItems;
 
-    private int selectedItemIndex = 0;
-
     Resolution[] resolutions;
 
-    public TMP_Dropdown resDropDown;
+    private int selectedItemIndex = 0;
+
+    public float wait;
 
     // Start is called before the first frame update
     public void Start()
@@ -104,6 +107,23 @@ public class buttonFunctions : MonoBehaviour
 
     }
 
+    public void playGame()
+    {
+        StartCoroutine(loadScene());
+        AudioManager.Instance.animator.SetTrigger("FadeIn");
+
+    }
+
+    IEnumerator loadScene()
+    {
+        animator.SetTrigger("start");
+
+        yield return new WaitForSeconds(wait);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
+
     public void quitGame()
     {
 #if UNITY_EDITOR
@@ -111,6 +131,11 @@ public class buttonFunctions : MonoBehaviour
 #else
             Application.Quit();
 #endif
+    }
+
+    public void quitmenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void respawn()
