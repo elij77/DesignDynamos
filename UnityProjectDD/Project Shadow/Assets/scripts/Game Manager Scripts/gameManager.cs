@@ -219,6 +219,17 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    public void ScreenFlashResetter()
+    {
+        if(flashCanvasGroupUI.alpha > 0 || flashCanvasGroupUI1.alpha > 0 || flashCanvasGroupUI2.alpha > 0 || flashCanvasGroupUI3.alpha > 0 || flashCanvasGroupUI4.alpha > 0)
+        {
+            flashCanvasGroupUI.alpha = 1;
+            flashCanvasGroupUI1.alpha = 1;
+            flashCanvasGroupUI2.alpha = 1;
+            flashCanvasGroupUI3.alpha = 1;
+            flashCanvasGroupUI4.alpha = 1;
+        }
+    }
     public void EnemyCountToggle()
     {
         if (enemyCanvasGroupUI.alpha > 0)

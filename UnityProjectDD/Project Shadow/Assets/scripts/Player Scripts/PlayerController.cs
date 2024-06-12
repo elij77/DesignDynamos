@@ -234,6 +234,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         if (HP > 0 && Armor <= 0)
         {
             HP -= amount;
+             StartCoroutine(flashScreenDamage());
         }
         else if (Armor > 0)
         {
@@ -264,6 +265,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         }
         updatePlayerUI();
         EraseBlood();
+        gameManager.instance.ScreenFlashResetter();
 
 
     }
@@ -290,7 +292,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         {
             gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].ammoMax);
         }
-        StartCoroutine(flashScreenDamage());
     }
 
     
