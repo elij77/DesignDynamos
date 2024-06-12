@@ -158,7 +158,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void death()
     {
-        ExperienceManager.instance.AddExperience(expAmount);
+        //ExperienceManager.instance.AddExperience(expAmount);
         Destroy(gameObject);
         gameManager.instance.updateGameGoal(-1);
         place = 100;
