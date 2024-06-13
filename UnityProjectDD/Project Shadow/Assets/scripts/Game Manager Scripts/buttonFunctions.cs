@@ -9,14 +9,17 @@ using TMPro;
 
 public class buttonFunctions : MonoBehaviour
 {
+    public TMP_Dropdown resDropDown;
+
+    public Animator animator;
 
     public GameObject[] menuItems;
 
-    private int selectedItemIndex = 0;
-
     Resolution[] resolutions;
 
-    public TMP_Dropdown resDropDown;
+    private int selectedItemIndex = 0;
+
+    public float wait;
 
     // Start is called before the first frame update
     public void Start()
@@ -45,42 +48,42 @@ public class buttonFunctions : MonoBehaviour
     public void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            selectedItemIndex--;
+        //if (Input.GetKeyDown(KeyCode.UpArrow))
+        //{
+        //    selectedItemIndex--;
 
-            if (selectedItemIndex < 0)
-            {
-                selectedItemIndex = menuItems.Length - 1;
-            }
-        }
+        //    if (selectedItemIndex < 0)
+        //    {
+        //        selectedItemIndex = menuItems.Length - 1;
+        //    }
+        //}
 
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            selectedItemIndex++;
+        //else if (Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    selectedItemIndex++;
 
-            if (selectedItemIndex >= menuItems.Length)
-            {
-                selectedItemIndex = 0;
-            }
-        }
+        //    if (selectedItemIndex >= menuItems.Length)
+        //    {
+        //        selectedItemIndex = 0;
+        //    }
+        //}
 
-        else if (Input.GetKeyDown(KeyCode.Return))
-        {
-            menuItems[selectedItemIndex].GetComponent<Button>().onClick.Invoke();
-        }
+        //else if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    menuItems[selectedItemIndex].GetComponent<Button>().onClick.Invoke();
+        //}
 
-        for (int i = 0; i < menuItems.Length; i++)
-        {
-            if (i == selectedItemIndex)
-            {
-                menuItems[i].GetComponent<Button>().Select();
-            }
-            else
-            {
-                menuItems[i].GetComponent<Button>().OnDeselect(null);
-            }
-        }
+        //for (int i = 0; i < menuItems.Length; i++)
+        //{
+        //    if (i == selectedItemIndex)
+        //    {
+        //        menuItems[i].GetComponent<Button>().Select();
+        //    }
+        //    else
+        //    {
+        //        menuItems[i].GetComponent<Button>().OnDeselect(null);
+        //    }
+        //}
     }
 
    
@@ -104,6 +107,23 @@ public class buttonFunctions : MonoBehaviour
 
     }
 
+    public void playGame()
+    {
+        StartCoroutine(loadScene());
+        AudioManager.Instance.animator.SetTrigger("FadeIn");
+
+    }
+
+    IEnumerator loadScene()
+    {
+        animator.SetTrigger("start");
+
+        yield return new WaitForSeconds(wait);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
+
     public void quitGame()
     {
 #if UNITY_EDITOR
@@ -111,6 +131,11 @@ public class buttonFunctions : MonoBehaviour
 #else
             Application.Quit();
 #endif
+    }
+
+    public void quitmenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void respawn()

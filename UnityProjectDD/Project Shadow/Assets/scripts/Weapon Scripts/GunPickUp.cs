@@ -9,6 +9,7 @@ public class GunPickUp : MonoBehaviour
 
     public GameObject interactText;
     public GameObject interactTextBroke;
+    List<gunStats> tempList;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,7 @@ public class GunPickUp : MonoBehaviour
     private void OnTriggerExit(Collider other) 
     {
         interactText.SetActive(false);
-        interactTextBroke?.SetActive(false);
+        interactTextBroke.SetActive(false);
     }
 
     IEnumerator broke()

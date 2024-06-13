@@ -55,7 +55,7 @@ public class gameManager : MonoBehaviour
     public GameObject raider;
     public playerController playerScript;
 
-    public GameObject camera;
+    public new GameObject camera;
     public cameraController cameraScript;
 
     bool isStartWave;

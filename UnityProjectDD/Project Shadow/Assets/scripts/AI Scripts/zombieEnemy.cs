@@ -90,7 +90,6 @@ public class zombieEnemy : MonoBehaviour, IDamage
             if (!potentialTargets.Contains(other.gameObject))
             {
                 potentialTargets.Add(other.gameObject);
-                Debug.Log("Added target: " + other.gameObject.name);
             }
 
             targetInRange = potentialTargets.Count > 0;
@@ -104,7 +103,6 @@ public class zombieEnemy : MonoBehaviour, IDamage
             if (potentialTargets.Contains(other.gameObject))
             {
                 potentialTargets.Remove(other.gameObject);
-                Debug.Log("Removed target: " + other.gameObject.name);
             }
 
             targetInRange = potentialTargets.Count > 0;
@@ -165,7 +163,6 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
         targetDir = selectedTarget.transform.position - headPos.position;
         angleToTarget = Vector3.Angle(new Vector3(targetDir.x, targetDir.y + 1, targetDir.z), transform.forward);
-        Debug.Log("Angle to target: " + angleToTarget);
         Debug.DrawRay(headPos.position, targetDir, Color.red);
         RaycastHit hit;
         if (Physics.Raycast(headPos.position, targetDir, out hit))
