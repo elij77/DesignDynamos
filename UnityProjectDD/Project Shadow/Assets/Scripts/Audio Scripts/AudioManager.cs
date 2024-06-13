@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     public Animator animator;
 
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField] public AudioSource SFXSource;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterSlider;
@@ -70,6 +70,33 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = Sound.clip;
 
         musicSource.Play();
+    }
+
+    public void playJump(string name)
+    {
+        sound Sound = Array.Find(audJump, x => x.soundName == name);
+
+        SFXSource.clip = Sound.clip;
+
+        SFXSource.Play();
+    }
+
+    public void playNoAmmo(string name)
+    {
+        sound Sound = Array.Find(sfxSounds, x => x.soundName == name);
+
+        SFXSource.clip = Sound.clip;
+
+        SFXSource.Play();
+    }
+
+    public void playHit(string name)
+    {
+        sound Sound = Array.Find(audhit, x => x.soundName == name);
+
+        SFXSource.clip = Sound.clip;
+
+        SFXSource.Play();
     }
 
     public void playSFX(string name)

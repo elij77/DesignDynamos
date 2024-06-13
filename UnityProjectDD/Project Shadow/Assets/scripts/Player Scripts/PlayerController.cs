@@ -20,6 +20,10 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     [SerializeField] int speed;
     [SerializeField] int walkSpeed;
     [SerializeField] int runSpeed;
+    [SerializeField] float stam;
+    [SerializeField] float stamMax;
+    [SerializeField] float sprintAmount;
+    [SerializeField] float jumpAmount;
 
     [SerializeField] int sprintMod;
 
@@ -51,24 +55,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
 
     [SerializeField] GameObject gunModel;
-
-    [SerializeField] float stam;
-    [SerializeField] float stamMax;
-    [SerializeField] float sprintAmount;
-    [SerializeField] float jumpAmount;
-
-    [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip[] audJump;
-    [SerializeField] AudioClip[] audhit;
-    [SerializeField] AudioClip audReload;
-    [SerializeField] AudioClip[] audFootSteps;
-    [SerializeField] AudioClip audNoAmmo;
-    [Range(0, 1)][SerializeField] float audJumpVol;
-    [Range(0, 1)][SerializeField] float audhitVol;
-    [Range(0, 1)][SerializeField] float audReloadVol;
-    [Range(0, 1)][SerializeField] float audFootVol;
-    
-
 
     Vector3 moveDir;
 
@@ -161,8 +147,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax && stam >= jumpAmount)
         {
-            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
-
+            
+            AudioManager.Instance.playJump("Jump1");
             jumpCount++;
 
             playerVel.y = jumpSpeed;
@@ -243,7 +229,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
         }
         updatePlayerUI();
         
-        aud.PlayOneShot(audhit[Random.Range(0, audhit.Length)], audhitVol);
+        AudioManager.Instance.playHit("Hit1");
         if (HP <= 0)
         {
             gameManager.instance.playerFlashDamage1.SetActive(false);
@@ -327,24 +313,18 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
     {
         isShooting = true;
 
-        aud.PlayOneShot(gunList[selectedGun].shootSound, gunList[selectedGun].shootVolume);
+        AudioManager.Instance.SFXSource.PlayOneShot(gunList[selectedGun].shootSound, gunList[selectedGun].shootVolume);
 
         gunList[selectedGun].ammoCurr--;
 
         if (gunList[selectedGun].ammoCurr == 0)
         {
-            aud.PlayOneShot(audNoAmmo, audReloadVol);
+            AudioManager.Instance.playNoAmmo("AmmoClick");
         }
 
         StartCoroutine(flashMuzzle());
 
         updatePlayerUI();
-
-        //bullet2 = Instantiate(bullet, shootPos.position, Quaternion.identity);
-
-        //Vector3 direction = playerCamera.transform.forward;
-
-        //bullet2.transform.rotation = Quaternion.LookRotation(direction);
 
         RaycastHit hit;
 
@@ -491,7 +471,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
             gunList[selectedGun].ammoCurr += gunList[selectedGun].ammoMax;
             gunList[selectedGun].ammoMax = 0;
         }
-        aud.PlayOneShot(audReload, audReloadVol);
+        AudioManager.Instance.playSFX("Reload");
         updatePlayerUI();
     }
 
