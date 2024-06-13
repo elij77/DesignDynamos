@@ -109,6 +109,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
 
     void movement()
     {
+        
         if (playerControls.isGrounded)
         {
             jumpCount = 0;
@@ -120,6 +121,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
                   (Input.GetAxis("Vertical") * transform.forward);
 
         playerControls.Move(moveDir * speed * Time.deltaTime);
+
+        
         sprint();
             if (Input.GetButton("Sprint") && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
             {
@@ -175,8 +178,10 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
 
     void sprint()
     {
+        
         if (Input.GetButton("Sprint"))
         {
+            
             if (Input.GetButtonDown("Sprint"))
             {
                     speed = runSpeed;

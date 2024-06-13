@@ -1654,6 +1654,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5168497769958647148, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: sfxSounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 96b0613bac56da14f8cbb32f2be82e04, type: 3}
+    - target: {fileID: 5168497769958647148, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: sfxSounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5761bed9bb9a61244aa8f5605e955bb5, type: 3}
+    - target: {fileID: 5168497769958647148, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: sfxSounds.Array.data[4].soundName
+      value: Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168497769958647148, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: sfxSounds.Array.data[5].soundName
+      value: Run
+      objectReference: {fileID: 0}
     - target: {fileID: 8327188544172139619, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
       propertyPath: m_Pivot.x
       value: 0
