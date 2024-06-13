@@ -56,6 +56,7 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
 
     public new GameObject camera;
+
     public cameraController cameraScript;
 
     bool isStartWave;
@@ -272,7 +273,7 @@ public class gameManager : MonoBehaviour
 
     IEnumerator StartWave()
     {
-        isStartWave = false;
+        isStartWave = true;
         int arrayPos;
         SpawnTile st;
         yield return new WaitForSeconds(4);
