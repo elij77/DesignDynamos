@@ -41,7 +41,7 @@ public class InfiniteSpawner : MonoBehaviour
         isSpawning = true;
         
         Instantiate(objectToSpawn, spawnPos.position, spawnPos.rotation);
-        gameManager.instance.updateGameGoal(1);
+        gameManager.instance.updateEnemyGoal(1);
         yield return new WaitForSeconds(spawnTimer);
         isSpawning = false;
 

@@ -11,7 +11,15 @@ using TMPro;
 
 public class buttonFunctions : MonoBehaviour
 {
-   
+
+    [SerializeField] GameObject pausy;
+    [SerializeField] GameObject losey;
+    [SerializeField] GameObject winny;
+    [SerializeField] GameObject oppy;
+    [SerializeField] GameObject noisey;
+    [SerializeField] GameObject huddy;
+
+
     public void resume()
     {
         gameManager.instance.stateUnPause();
@@ -49,15 +57,16 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.optionsMenu();
         EventSystem.current.SetSelectedGameObject(null);
 
-        
     }
 
     public void HUD()
     {
+        gameManager.instance.stateUnPause();
         gameManager.instance.HUDMenu();
     }
     public void noises()
     {
+        gameManager.instance.stateUnPause();
         gameManager.instance.soundMenu();
     }
     public void pauseReturn()

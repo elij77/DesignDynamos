@@ -160,7 +160,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         //ExperienceManager.instance.AddExperience(expAmount);
         Destroy(gameObject);
-        gameManager.instance.updateGameGoal(-1);
+        gameManager.instance.updateEnemyGoal(-1);
         place = 100;
         gameManager.instance.updatePoints(place);
     }

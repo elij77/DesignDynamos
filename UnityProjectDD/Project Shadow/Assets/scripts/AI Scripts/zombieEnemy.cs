@@ -148,7 +148,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         ExperienceManager.instance.AddExperience(expAmount);
         Destroy(gameObject);
-        gameManager.instance.updateGameGoal(-1);
+        gameManager.instance.updateEnemyGoal(-1);
     }
 
     bool canSeeTarget()

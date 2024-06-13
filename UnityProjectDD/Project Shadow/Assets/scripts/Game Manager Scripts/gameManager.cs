@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 
 public class gameManager : MonoBehaviour
@@ -142,16 +143,10 @@ public class gameManager : MonoBehaviour
         points.text = money.ToString();
     }
 
-    public void updateGameGoal(int amount)
+    public void updateEnemyGoal(int amount)
     {
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
-
-        
-        if (enemyCount == 0)
-        {
-            StartCoroutine(win());
-        }
     }
 
     public long GetPoints()
@@ -172,18 +167,20 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
-        
+
     }
 
     public void pauseMenu()
     {
         statePause();
         menuActive = menuPause;
+        //EventSystem.current.SetSelectedGameObject(menuPause);
         menuActive.SetActive(isPaused);
     }
 
     public void soundMenu()
     {
+        statePause();
         menuActive = menuSound;
         menuActive.SetActive(isPaused);
     }
@@ -197,6 +194,7 @@ public class gameManager : MonoBehaviour
 
     public void HUDMenu()
     {
+        statePause();
         menuActive = menuHUD;
         menuActive.SetActive(isPaused);
     }

@@ -131,9 +131,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2125362619622105665, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_text
+      value: All Waves Defended, You Win!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125362619622105665, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_margin.z
+      value: -611.6689
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418768314379212089, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -274.828
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600324867672651318, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -46.69039
+      objectReference: {fileID: 0}
     - target: {fileID: 3052832239226181747, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641519611921524422, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064799623645628203, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8327188544172139619, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
       propertyPath: m_Pivot.x
