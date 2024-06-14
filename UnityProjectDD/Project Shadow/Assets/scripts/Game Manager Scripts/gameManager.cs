@@ -104,10 +104,6 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
-        if (enemyCount == 0)
-        {
-            StartCoroutine(win());
-        }
     }
 
     public void statePause()
@@ -275,7 +271,7 @@ public class gameManager : MonoBehaviour
 
     IEnumerator StartWave()
     {
-        isStartWave = true;
+      //  bool isStartWave = true;
         int arrayPos;
         SpawnTile st;
         yield return new WaitForSeconds(4);
@@ -303,7 +299,7 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Nothing to spawn");
         }
-        isStartWave = false;
+       // isStartWave = false;
     }
 
     // getter to determine if infinite spawncontrollers are needed.
