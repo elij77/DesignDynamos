@@ -104,6 +104,10 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
+        if (enemyCount == 0)
+        {
+            StartCoroutine(win());
+        }
     }
 
     public void statePause()
