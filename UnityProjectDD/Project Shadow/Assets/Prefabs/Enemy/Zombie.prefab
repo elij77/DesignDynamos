@@ -1596,7 +1596,8 @@ MonoBehaviour:
   agent: {fileID: 7330402290562049376}
   model: {fileID: 7572328092602792839}
   headPos: {fileID: 291660553203495287}
-  attackPos: {fileID: 0}
+  attackPosRight: {fileID: 0}
+  attackPosLeft: {fileID: 0}
   viewAngle: 90
   faceTargetSpeed: 5
   animSpeedTrans: 5
@@ -1605,8 +1606,6 @@ MonoBehaviour:
   HP: 10
   maxHP: 10
   expAmount: 100
-  attackRate: 1
-  attackDist: 0
 --- !u!95 &7973828893154745450
 Animator:
   serializedVersion: 5

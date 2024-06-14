@@ -25,6 +25,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] int maxHP;
     [SerializeField] int expAmount;
+    [SerializeField] int attackDmg;
     [SerializeField] float attackRate;
     [SerializeField] float attackDist;
 
@@ -49,15 +50,15 @@ public class zombieEnemy : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
 
-        //health = GetComponentInChildren<AIHealth>();
-        //health.updateHealthBar(HP, maxHP);
+        health = GetComponentInChildren<AIHealth>();
+        health.updateHealthBar(HP, maxHP);
     }
 
     // Update is called once per frame
     void Update()
     {
         float animSpeed = agent.velocity.normalized.magnitude;
-        //anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         
 
         if (targetInRange && !canSeeTarget())
@@ -176,7 +177,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
                 {
                     faceTarget();
                     
-                    // StartCoroutine(attack());
+                    StartCoroutine(attack());
                 }
 
                 return true;
@@ -206,19 +207,30 @@ public class zombieEnemy : MonoBehaviour, IDamage
         }
     }
 
-    //IEnumerator attack()
-    //{
-    //    isAttacking = true;
+    IEnumerator attack()
+    {
+        isAttacking = true;
+        anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        isAttacking = false;
+    }
 
+    public void createSwingRay()
+    {
+        RaycastHit hit;
 
-    //    yield return new WaitForSeconds(attackRate);
-    //}
-
-    //public void createSwingRay()
-    //{
-    //    RaycastHit hit;
-
-    //}
+        if (Physics.Raycast(attackPos.position, attackPos.forward, out hit, attackDist))
+        {
+            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Raider"))
+            {
+                IDamage target = hit.collider.GetComponent<IDamage>();
+                if (target != null)
+                {
+                    target.takeDamage(attackDmg);
+                }
+            }
+        }
+    }
 
     IEnumerator flashRed()
     {
@@ -253,6 +265,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
                 Debug.LogWarning($"Target {target.name} has a null transform.");
                 continue;
             }
+
             float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
             if (distanceToTarget < closestDistance)
             {
