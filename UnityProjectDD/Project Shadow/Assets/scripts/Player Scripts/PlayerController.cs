@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
+public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChangeStat
 {
 
     [SerializeField] CharacterController playerControls;
@@ -496,5 +496,26 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense
             updatePlayerUI();
         }
     }
+
+    public void changeStat(string stat, int amount)
+    {
+        Debug.Log(stat);
+
+        if (stat == "runSpeed")
+        {
+            runSpeed = runSpeed + amount;
+        }
+        if (stat == "walkSpeed")
+        {
+            walkSpeed = walkSpeed + amount;
+        }
+        if (stat == "jumpSpeed")
+        {
+            jumpSpeed = jumpSpeed + amount;
+        }
+        speed = walkSpeed;
+
+    }
+
     //done
 }
