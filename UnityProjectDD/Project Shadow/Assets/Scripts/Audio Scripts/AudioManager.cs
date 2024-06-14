@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
     public sound[] musicSounds, sfxSounds;
     public sound[] audJump;
     public sound[] audhit;
+    public AudioClip footSteps; 
     public AudioMixer masterMixer;
 
     private void Awake()
