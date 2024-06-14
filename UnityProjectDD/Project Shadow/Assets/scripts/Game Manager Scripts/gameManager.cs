@@ -60,7 +60,7 @@ public class gameManager : MonoBehaviour
 
     public cameraController cameraScript;
 
-    bool isStartWave;
+    
     bool infiniteSpawnOn = true;
     public bool isPaused;
     int enemyCount;
