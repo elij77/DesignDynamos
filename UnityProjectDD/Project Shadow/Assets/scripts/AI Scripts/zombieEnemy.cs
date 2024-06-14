@@ -50,8 +50,8 @@ public class zombieEnemy : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
 
-        health = GetComponentInChildren<AIHealth>();
-        health.updateHealthBar(HP, maxHP);
+        //health = GetComponentInChildren<AIHealth>();
+        //health.updateHealthBar(HP, maxHP);
     }
 
     // Update is called once per frame
