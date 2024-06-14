@@ -3217,6 +3217,7 @@ MonoBehaviour:
   roamTimer: 3
   HP: 10
   maxHP: 10
+  expAmount: 300
   shootRate: 1
 --- !u!95 &7618823677158636476
 Animator:

@@ -24,7 +24,6 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     [SerializeField] int HP;
     [SerializeField] int maxHP;
-    [SerializeField] int expAmount;
     [SerializeField] int attackDmg;
     [SerializeField] float attackRate;
     [SerializeField] float attackDist;
@@ -147,7 +146,6 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     public void death()
     {
-        ExperienceManager.instance.AddExperience(expAmount);
         Destroy(gameObject);
         gameManager.instance.updateEnemyGoal(-1);
     }
