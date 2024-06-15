@@ -21,7 +21,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] int roamDist;
     [SerializeField] int roamTimer;
 
-    AIHealth health;
+    
 
     [SerializeField] int HP;
     [SerializeField] int maxHP;
@@ -48,8 +48,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
         stoppingDistOrig = agent.stoppingDistance;
         
 
-        health = GetComponentInChildren<AIHealth>();
-        health.updateHealthBar(HP, maxHP);
+        
     }
 
     // Update is called once per frame
@@ -98,7 +97,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
         anim.SetTrigger("TakeDamage");
         HP -= amount;
 
-        health.updateHealthBar(HP, maxHP);
+        
 
         agent.SetDestination(gameManager.instance.player.transform.position);
         StartCoroutine(flashRed());
