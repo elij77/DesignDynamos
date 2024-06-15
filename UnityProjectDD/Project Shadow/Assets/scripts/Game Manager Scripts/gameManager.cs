@@ -105,7 +105,7 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
-        
+        updateEnemyGoal(waveObjects.Count);
     }
 
     public void statePause()
