@@ -111,12 +111,12 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
-<<<<<<< Updated upstream
+//Updated upstream
         //if (currentWave == 5 && enemyCount == 0)
         //{
         //    StartCoroutine(win());
         //}
-=======
+
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -142,7 +142,7 @@ public class gameManager : MonoBehaviour
 
         waveText.text = "Wave: " + waveNumber;
         killText.text = "Kills: " + killCount;
->>>>>>> Stashed changes
+
     }
 
     public void statePause()
