@@ -55,7 +55,6 @@ public class gameManager : MonoBehaviour
    public GameObject winFirstSelected, loseFirstSelected, pauseFirstSelected;
 
     public GameObject player;
-    public GameObject raider;
     public playerController playerScript;
 
     public new GameObject camera;
@@ -89,7 +88,6 @@ public class gameManager : MonoBehaviour
         cameraScript = camera.GetComponent<cameraController>();
 
         player = GameObject.FindWithTag("Player");
-        raider = GameObject.FindWithTag("Raider");
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("playerSpawnPos");
 
