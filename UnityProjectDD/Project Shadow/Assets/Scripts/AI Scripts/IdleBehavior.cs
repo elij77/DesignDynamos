@@ -20,6 +20,8 @@ public class IdleBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.GetBool("IsAttacking")) return;
+
         if (isRandom == false)
         {
             idleTime += Time.deltaTime;

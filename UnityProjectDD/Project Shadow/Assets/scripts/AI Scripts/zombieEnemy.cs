@@ -12,10 +12,11 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] Transform headPos;
-    [SerializeField] Transform attackPos;
+    [SerializeField] Transform attackPosRight;
+    [SerializeField] Transform attackPosLeft;
 
     [SerializeField] int viewAngle;
-    [SerializeField] int faceTargetSpeed;
+    [SerializeField] int facePlayerSpeed;
     [SerializeField] int animSpeedTrans;
     [SerializeField] int roamDist;
     [SerializeField] int roamTimer;
@@ -28,19 +29,15 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] float attackRate;
     [SerializeField] float attackDist;
 
-    
-
     bool isAttacking;
-    bool targetInRange;
+    bool playerInRange;
     bool destChosen;
 
-    float angleToTarget;
+    float angleToPlayer;
     float stoppingDistOrig;
+    float lastAttackTime;
 
-    List<GameObject> potentialTargets = new List<GameObject>();
-    GameObject selectedTarget;
-
-    Vector3 targetDir;
+    Vector3 playerDir;
     Vector3 startingPos;
 
     // Start is called before the first frame update
@@ -48,6 +45,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
+        lastAttackTime = -attackRate;
 
         //health = GetComponentInChildren<AIHealth>();
         //health.updateHealthBar(HP, maxHP);
@@ -58,72 +56,54 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
-        
-
-        if (targetInRange && !canSeeTarget())
+        if (animSpeed > 0)
         {
+            anim.SetBool("IsMoving", true);
+        }
+        else if (animSpeed == 0)
+        {
+            anim.SetBool("IsMoving", false);
+        }
+
+        if (playerInRange && !canSeePlayer())
+        {
+            anim.SetBool("IsAttacking", false);
             //agent.SetDestination(gameManager.instance.raider.transform.position);
             if (!destChosen)
             {
                 StartCoroutine(roam());
             }
         }
-        else if (!targetInRange)
+        else if (!playerInRange)
         {
+            anim.SetBool("IsAttacking", false);
+            anim.SetBool("TargetInRange", false);
             if (!destChosen)
             {
                 StartCoroutine(roam());
             }
         }
-
-        if (potentialTargets.Count > 0)
-        {
-            selectTarget();
-        }
+        
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Raider"))
+        if (other.CompareTag("Player"))
         {
-            //GameObject possibleTarget = GameObject.Find(other.name);
-            if (!potentialTargets.Contains(other.gameObject))
-            {
-                potentialTargets.Add(other.gameObject);
-            }
-
-            targetInRange = potentialTargets.Count > 0;
+            playerInRange = true;
+            anim.SetBool("TargetInRange", true);
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Raider"))
+        if (other.CompareTag("Player"))
         {
-            if (potentialTargets.Contains(other.gameObject))
-            {
-                potentialTargets.Remove(other.gameObject);
-            }
-
-            targetInRange = potentialTargets.Count > 0;
-            if (potentialTargets.Count == 0)
-            {
-                agent.stoppingDistance = 0;
-            }
+            playerInRange = false;
+            agent.stoppingDistance = 0;
+            anim.SetBool("TargetInRange", false);
         }
     }
-
-    //public void OnTriggerStay(Collider other)
-    //{
-    //    if (other.CompareTag("Player") || other.CompareTag("Raider"))
-    //    {
-    //        if (!potentialTargets.Contains(other.gameObject))
-    //        {
-    //            potentialTargets.Add(other.gameObject);
-    //        }
-    //        targetInRange = potentialTargets.Count > 0;
-    //    }
-    //}
 
     public void takeDamage(int amount)
     {
@@ -150,32 +130,29 @@ public class zombieEnemy : MonoBehaviour, IDamage
         gameManager.instance.updateEnemyGoal(-1);
     }
 
-    bool canSeeTarget()
+    bool canSeePlayer()
     {
-        GameObject closestTarget = selectTarget();
-        if (closestTarget == null)
-        {
-            return false;
-        }
-
-        selectedTarget = closestTarget;
-
-        targetDir = selectedTarget.transform.position - headPos.position;
-        angleToTarget = Vector3.Angle(new Vector3(targetDir.x, targetDir.y + 1, targetDir.z), transform.forward);
-        Debug.DrawRay(headPos.position, targetDir, Color.red);
+        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
+        Debug.DrawRay(headPos.position, playerDir, Color.red);
         RaycastHit hit;
-        if (Physics.Raycast(headPos.position, targetDir, out hit))
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
-            if ((hit.collider.CompareTag("Player") || hit.collider.CompareTag("Raider")) && angleToTarget < viewAngle)
+            if (hit.collider.CompareTag("Player") && angleToPlayer < viewAngle)
             {
                 agent.stoppingDistance = stoppingDistOrig;
-                agent.SetDestination(selectedTarget.transform.position);
+                agent.SetDestination(gameManager.instance.player.transform.position);
 
                 if (!isAttacking && HP > 0 && agent.remainingDistance <= agent.stoppingDistance)
                 {
                     faceTarget();
-                    
-                    StartCoroutine(attack());
+
+                    if (Time.time >= lastAttackTime + attackRate)
+                    {
+                        anim.SetBool("IsAttacking", true);
+                        StartCoroutine(attack());
+                        lastAttackTime = Time.time;
+                    }
                 }
 
                 return true;
@@ -210,18 +187,29 @@ public class zombieEnemy : MonoBehaviour, IDamage
         isAttacking = true;
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-        isAttacking = false;
     }
 
     public void createSwingRay()
     {
-        RaycastHit hit;
+        RaycastHit hitRight;
+        RaycastHit hitLeft;
 
-        if (Physics.Raycast(attackPos.position, attackPos.forward, out hit, attackDist))
+        if (Physics.Raycast(attackPosRight.position, attackPosRight.forward, out hitRight, attackDist))
         {
-            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Raider"))
+            if (hitRight.collider.CompareTag("Player"))
             {
-                IDamage target = hit.collider.GetComponent<IDamage>();
+                IDamage target = hitRight.collider.GetComponent<IDamage>();
+                if (target != null)
+                {
+                    target.takeDamage(attackDmg);
+                }
+            }
+        }
+        else if (Physics.Raycast(attackPosLeft.position, attackPosLeft.forward, out hitLeft, attackDist))
+        {
+            if (hitLeft.collider.CompareTag("Player"))
+            {
+                IDamage target = hitLeft.collider.GetComponent<IDamage>();
                 if (target != null)
                 {
                     target.takeDamage(attackDmg);
@@ -239,40 +227,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     void faceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(targetDir.x, 0, targetDir.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
-    }
-
-    GameObject selectTarget()
-    {
-        GameObject closestTarget = null;
-
-        float closestDistance = Mathf.Infinity;
-
-        foreach(GameObject target in potentialTargets)
-        {
-            if (target == null)
-            {
-                Debug.LogWarning("Found a null target in potentialTargets list.");
-                continue;
-            }
-
-            // Ensure target.transform is not null
-            if (target.transform == null)
-            {
-                Debug.LogWarning($"Target {target.name} has a null transform.");
-                continue;
-            }
-
-            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-            if (distanceToTarget < closestDistance)
-            {
-                closestDistance = distanceToTarget;
-                closestTarget = target;
-            }
-        }
-
-
-        return closestTarget;
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * facePlayerSpeed);
     }
 }
