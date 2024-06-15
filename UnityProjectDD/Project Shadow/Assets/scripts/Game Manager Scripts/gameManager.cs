@@ -105,6 +105,10 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
+        //if (currentWave == 5 && enemyCount == 0)
+        //{
+        //    StartCoroutine(win());
+        //}
     }
 
     public void statePause()
