@@ -56,31 +56,39 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
-        
 
-        if (playerInRange && !canSeePlayer())
-        {           
-            if (!destChosen)
-            {
-                StartCoroutine(roam());
-            }
-        }
-        else if (!playerInRange)
-        {    
-            if (!destChosen)
-            {
-                StartCoroutine(roam());
-            }
-        }
-        
+        agent.SetDestination(gameManager.instance.player.transform.position);
+
+        //if (playerInRange && !canSeePlayer())
+        //{           
+        //    if (!destChosen)
+        //    {
+        //        StartCoroutine(roam());
+        //    }
+        //}
+        //else if (!playerInRange)
+        //{    
+        //    if (!destChosen)
+        //    {
+        //        StartCoroutine(roam());
+        //    }
+        //}
+
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        StartCoroutine(attack());
+        if (other.isTrigger)
+            return;
+
+        IDamage dmg = other.gameObject.GetComponent<IDamage>();
+
+        if (dmg != null)
         {
-            playerInRange = true;            
+            dmg.takeDamage(attackDmg);
         }
+        
     }
 
     public void OnTriggerExit(Collider other)
