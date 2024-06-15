@@ -8470,6 +8470,12 @@ MonoBehaviour:
   points: {fileID: 3282155670452151113}
   audioSourceObject: {fileID: 0}
   spawntiles: []
+  waveObjects:
+  - {fileID: 771027157879786207, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   timeBetweenWaves: 20
   numberOfWaves: 2
   ObjectsPerWave: 2

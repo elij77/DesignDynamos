@@ -24,7 +24,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text ammoCurrText;
     [SerializeField] TMP_Text points;
     [SerializeField] GameObject audioSourceObject;
-    [SerializeField] List<GameObject> spawntiles = new List<GameObject>();
+    [SerializeField] public List<GameObject> spawntiles = new List<GameObject>();
+    [SerializeField] List<GameObject> waveObjects = new List<GameObject>();
     [SerializeField] int timeBetweenWaves;
     [SerializeField] int numberOfWaves;
     [SerializeField] int ObjectsPerWave;
@@ -60,7 +61,7 @@ public class gameManager : MonoBehaviour
 
     public cameraController cameraScript;
 
-    
+    public int currentWave
     bool infiniteSpawnOn = true;
     public bool isPaused;
     int enemyCount;
@@ -271,24 +272,36 @@ public class gameManager : MonoBehaviour
 
     IEnumerator StartWave()
     {
-      //  bool isStartWave = true;
-        int arrayPos;
-        SpawnTile st;
+     
+        
+        
         yield return new WaitForSeconds(4);
 
-        if (numberOfWaves > 0 && ObjectsPerWave > 0 && spawntiles.Count > 0)
+        if (waveObjects.Count > 0 && spawntiles.Count > 0)
         {
-
-
-
-            for (int i = 0; i < numberOfWaves; i++)
+            Debug.Log(waveObjects.Count.ToString());
+            for (int i = 0; i < waveObjects.Count; i++)
             {
-                for (int j = 0; j < ObjectsPerWave; j++)
+                currentWave = i + 1;
+                IWave wave = waveObjects[i].GetComponent<IWave>();
+
+                if (wave != null)
                 {
-                    arrayPos = Random.Range(0, spawntiles.Count);
-                    st = spawntiles[arrayPos].GetComponent<SpawnTile>();
-                    st.spawn();
+                    Debug.Log("got the wave");
+                    wave.CreateWave();
                 }
+                else
+                {
+                    Debug.Log("couldn't get wave");
+                }
+                
+
+                //for (int j = 0; j < ObjectsPerWave; j++)
+                //{
+                //    arrayPos = Random.Range(0, spawntiles.Count);
+                //    st = spawntiles[arrayPos].GetComponent<SpawnTile>();
+                //    st.spawn();
+                //}
 
 
                 Debug.Log("start Wave " + i.ToString());
