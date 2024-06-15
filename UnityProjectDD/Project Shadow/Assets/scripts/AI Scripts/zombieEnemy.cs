@@ -129,7 +129,12 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         enemyTemp = gameManager.instance.GetEnemyCount() - 1;
         Destroy(gameObject);
+<<<<<<< Updated upstream
         gameManager.instance.updateEnemyGoal(enemyTemp);
+=======
+        gameManager.instance.updateEnemyGoal(-1);
+        ScoreManager.instance.AddKill();
+>>>>>>> Stashed changes
     }
 
     bool canSeePlayer()

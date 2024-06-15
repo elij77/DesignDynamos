@@ -40,6 +40,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] CanvasGroup miniMapUI;
 
     public GameObject playerSpawnPos;
+    public GameObject scoreScreen;
 
 
     public GameObject playerFlashDamage;
@@ -63,8 +64,13 @@ public class gameManager : MonoBehaviour
 
     public int currentWave =0;
     bool infiniteSpawnOn = true;
+
     public bool isPaused;
+
     int enemyCount;
+    int waveNumber = 0;
+    int killCount = 0;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -105,10 +111,38 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
+<<<<<<< Updated upstream
         //if (currentWave == 5 && enemyCount == 0)
         //{
         //    StartCoroutine(win());
         //}
+=======
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            scoreScreen.SetActive(!scoreScreen.activeSelf);
+            UpdateScoreScreen();
+        }
+    }
+
+    public void EnemyKilled()
+    {
+        killCount++;
+    }
+
+    public void NewWave()
+    {
+        waveNumber++;
+    }
+
+    void UpdateScoreScreen()
+    {
+        Text waveText = scoreScreen.transform.Find("Wave").GetComponent<Text>();
+        Text killText = scoreScreen.transform.Find("Kill").GetComponent<Text>();
+
+        waveText.text = "Wave: " + waveNumber;
+        killText.text = "Kills: " + killCount;
+>>>>>>> Stashed changes
     }
 
     public void statePause()
@@ -336,6 +370,5 @@ public class gameManager : MonoBehaviour
     {
         return infiniteSpawnOn;
     }
-
 
 }
