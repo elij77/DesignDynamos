@@ -26,7 +26,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] int maxHP;
     [SerializeField] int attackDmg;
-    [SerializeField] float attackRate;
+    
     [SerializeField] float attackDist;
 
     bool isAttacking;
@@ -46,7 +46,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
-        lastAttackTime = -attackRate;
+        
 
         //health = GetComponentInChildren<AIHealth>();
         //health.updateHealthBar(HP, maxHP);
@@ -57,18 +57,11 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
-        if (animSpeed > 0)
-        {
-            anim.SetBool("IsMoving", true);
-        }
-        else if (animSpeed == 0)
-        {
-            anim.SetBool("IsMoving", false);
-        }
+        
 
         if (playerInRange && !canSeePlayer())
         {
-            anim.SetBool("IsAttacking", false);
+           
             //agent.SetDestination(gameManager.instance.raider.transform.position);
             if (!destChosen)
             {
@@ -77,8 +70,8 @@ public class zombieEnemy : MonoBehaviour, IDamage
         }
         else if (!playerInRange)
         {
-            anim.SetBool("IsAttacking", false);
-            anim.SetBool("TargetInRange", false);
+            
+            
             if (!destChosen)
             {
                 StartCoroutine(roam());
@@ -92,7 +85,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            anim.SetBool("TargetInRange", true);
+            
         }
     }
 
@@ -102,13 +95,13 @@ public class zombieEnemy : MonoBehaviour, IDamage
         {
             playerInRange = false;
             agent.stoppingDistance = 0;
-            anim.SetBool("TargetInRange", false);
+            
         }
     }
 
     public void takeDamage(int amount)
     {
-        anim.SetTrigger("TakeDamage");
+        //anim.SetTrigger("TakeDamage");
         HP -= amount;
 
         health.updateHealthBar(HP, maxHP);
@@ -121,7 +114,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
             Vector3 stop = Vector3.zero;
             agent.velocity = stop;
             agent.acceleration = 0;
-            anim.SetTrigger("Death");
+            //anim.SetTrigger("Death");
         }
     }
 
@@ -153,13 +146,9 @@ public class zombieEnemy : MonoBehaviour, IDamage
                 if (!isAttacking && HP > 0 && agent.remainingDistance <= agent.stoppingDistance)
                 {
                     faceTarget();
-
-                    if (Time.time >= lastAttackTime + attackRate)
-                    {
-                        anim.SetBool("IsAttacking", true);
-                        StartCoroutine(attack());
-                        lastAttackTime = Time.time;
-                    }
+                    StartCoroutine(attack());
+                    lastAttackTime = Time.time;
+                    
                 }
 
                 return true;
