@@ -12,6 +12,8 @@ using TMPro;
 public class buttonFunctions : MonoBehaviour
 {
 
+    public GameObject optionsFirstSelected, HUDFirstSelected, soundFirstSelected, optionsClosedSelected, HUDClosedSelected, soundClosedSelected;
+
     public void resume()
     {
         gameManager.instance.stateUnPause();
@@ -48,6 +50,7 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnPause();
         gameManager.instance.optionsMenu();
         EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optionsFirstSelected);
 
     }
 
@@ -55,22 +58,37 @@ public class buttonFunctions : MonoBehaviour
     {
         gameManager.instance.stateUnPause();
         gameManager.instance.HUDMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(HUDFirstSelected);
     }
     public void noises()
     {
         gameManager.instance.stateUnPause();
         gameManager.instance.soundMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(soundFirstSelected);
     }
     public void pauseReturn()
     {
         gameManager.instance.stateUnPause();
         gameManager.instance.pauseMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optionsClosedSelected);
     }
 
-    public void optionsReturn()
+    public void optionsReturnFromHUD()
     {
         gameManager.instance.stateUnPause();
         gameManager.instance.optionsMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(HUDClosedSelected);
+    }
+    public void optionsReturnFromSound()
+    {
+        gameManager.instance.stateUnPause();
+        gameManager.instance.optionsMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(soundClosedSelected);
     }
 
     public void ScreenFlash()

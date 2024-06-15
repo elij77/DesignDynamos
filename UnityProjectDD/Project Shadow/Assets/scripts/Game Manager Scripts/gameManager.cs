@@ -51,6 +51,7 @@ public class gameManager : MonoBehaviour
     public Image playerArmorBar;
     public Image playerStamBar;
     public GameObject checkpointPopup;
+   public GameObject winFirstSelected, loseFirstSelected, pauseFirstSelected;
 
     public GameObject player;
     public GameObject raider;
@@ -116,6 +117,7 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        
     }
 
     public void stateUnPause()
@@ -164,6 +166,8 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuWin;
         menuActive.SetActive(isPaused);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(winFirstSelected);
     }
 
     public void loseMenu()
@@ -171,15 +175,17 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
-
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(loseFirstSelected);
     }
 
     public void pauseMenu()
     {
         statePause();
         menuActive = menuPause;
-        //EventSystem.current.SetSelectedGameObject(menuPause);
         menuActive.SetActive(isPaused);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(pauseFirstSelected);
     }
 
     public void soundMenu()
