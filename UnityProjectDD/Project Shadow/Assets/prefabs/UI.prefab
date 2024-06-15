@@ -3628,15 +3628,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.4}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 08d64f144a05ac946aaf8e6a3b49e7d6, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8516,12 +8516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f999ca104c741c448882aa26305f842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausy: {fileID: 0}
-  losey: {fileID: 0}
-  winny: {fileID: 0}
-  oppy: {fileID: 0}
-  noisey: {fileID: 0}
-  huddy: {fileID: 0}
 --- !u!114 &3530506339718959466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8550,7 +8544,7 @@ MonoBehaviour:
   timeBetweenWaves: 20
   numberOfWaves: 2
   ObjectsPerWave: 2
-  money: 1000
+  money: 500
   flashCanvasGroupUI: {fileID: 5559678522998752709}
   flashCanvasGroupUI1: {fileID: 699119026002151275}
   flashCanvasGroupUI2: {fileID: 1658252005039686910}
@@ -8861,15 +8855,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.4}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 08d64f144a05ac946aaf8e6a3b49e7d6, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

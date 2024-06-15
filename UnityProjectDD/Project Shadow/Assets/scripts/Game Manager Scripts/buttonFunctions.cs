@@ -12,14 +12,6 @@ using TMPro;
 public class buttonFunctions : MonoBehaviour
 {
 
-    [SerializeField] GameObject pausy;
-    [SerializeField] GameObject losey;
-    [SerializeField] GameObject winny;
-    [SerializeField] GameObject oppy;
-    [SerializeField] GameObject noisey;
-    [SerializeField] GameObject huddy;
-
-
     public void resume()
     {
         gameManager.instance.stateUnPause();
