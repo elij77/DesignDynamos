@@ -105,7 +105,6 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
-        updateEnemyGoal(waveObjects.Count);
     }
 
     public void statePause()
@@ -293,6 +292,7 @@ public class gameManager : MonoBehaviour
             Debug.Log(waveObjects.Count.ToString());
             for (int i = 0; i < waveObjects.Count; i++)
             {
+                updateEnemyGoal(waveObjects.Count);
                 currentWave = i + 1;
                 updateWaveCountText();
                 IWave wave = waveObjects[i].GetComponent<IWave>();

@@ -36,6 +36,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     float angleToPlayer;
     float stoppingDistOrig;
     float lastAttackTime;
+    int enemyTemp;
 
     Vector3 playerDir;
     Vector3 startingPos;
@@ -126,8 +127,9 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     public void death()
     {
+        enemyTemp -= 1;
         Destroy(gameObject);
-        gameManager.instance.updateEnemyGoal(-1);
+        gameManager.instance.updateEnemyGoal(enemyTemp);
     }
 
     bool canSeePlayer()
