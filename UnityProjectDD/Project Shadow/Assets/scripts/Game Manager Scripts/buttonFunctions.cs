@@ -11,6 +11,7 @@ using TMPro;
 
 public class buttonFunctions : MonoBehaviour
 {
+    public Animator animator;
 
     public GameObject optionsFirstSelected, HUDFirstSelected, soundFirstSelected, optionsClosedSelected, HUDClosedSelected, soundClosedSelected;
 
@@ -36,7 +37,17 @@ public class buttonFunctions : MonoBehaviour
 
     public void quitmenu()
     {
-        SceneManager.LoadScene(0);
+        AudioManager.Instance.animator.SetTrigger("FadeIn");
+        StartCoroutine(quitToMain());
+        gameManager.instance.stateUnPause();
+
+    }
+
+    IEnumerator quitToMain()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void respawn()

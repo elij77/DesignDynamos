@@ -43,6 +43,10 @@ public class MainMenu : MonoBehaviour
         resDropDown.AddOptions(resOptions);
         resDropDown.value = currentResIndex;
         resDropDown.RefreshShownValue();
+
+        animator.enabled = true;
+
+        AudioManager.Instance.playMusic("Main Menu");
     }
 
     // Update is called once per frame
