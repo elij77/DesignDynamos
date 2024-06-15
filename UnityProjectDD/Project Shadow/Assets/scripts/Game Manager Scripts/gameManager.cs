@@ -27,8 +27,6 @@ public class gameManager : MonoBehaviour
     [SerializeField] public List<GameObject> spawntiles = new List<GameObject>();
     [SerializeField] List<GameObject> waveObjects = new List<GameObject>();
     [SerializeField] int timeBetweenWaves;
-    [SerializeField] int numberOfWaves;
-    [SerializeField] int ObjectsPerWave;
     [SerializeField] long money;
 
     [SerializeField] CanvasGroup flashCanvasGroupUI;
@@ -62,7 +60,7 @@ public class gameManager : MonoBehaviour
 
     public cameraController cameraScript;
 
-    public int currentWave
+    public int currentWave =0;
     bool infiniteSpawnOn = true;
     public bool isPaused;
     int enemyCount;
