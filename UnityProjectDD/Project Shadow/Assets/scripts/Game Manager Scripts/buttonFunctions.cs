@@ -11,14 +11,9 @@ using TMPro;
 
 public class buttonFunctions : MonoBehaviour
 {
+    public Animator animator;
 
-    [SerializeField] GameObject pausy;
-    [SerializeField] GameObject losey;
-    [SerializeField] GameObject winny;
-    [SerializeField] GameObject oppy;
-    [SerializeField] GameObject noisey;
-    [SerializeField] GameObject huddy;
-
+    public GameObject optionsFirstSelected, HUDFirstSelected, soundFirstSelected, optionsClosedSelected, HUDClosedSelected, soundClosedSelected;
 
     public void resume()
     {
@@ -42,7 +37,17 @@ public class buttonFunctions : MonoBehaviour
 
     public void quitmenu()
     {
-        SceneManager.LoadScene(0);
+        AudioManager.Instance.animator.SetTrigger("FadeIn");
+        StartCoroutine(quitToMain());
+        gameManager.instance.stateUnPause();
+
+    }
+
+    IEnumerator quitToMain()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void respawn()
@@ -56,6 +61,7 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnPause();
         gameManager.instance.optionsMenu();
         EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optionsFirstSelected);
 
     }
 
@@ -63,22 +69,37 @@ public class buttonFunctions : MonoBehaviour
     {
         gameManager.instance.stateUnPause();
         gameManager.instance.HUDMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(HUDFirstSelected);
     }
     public void noises()
     {
         gameManager.instance.stateUnPause();
         gameManager.instance.soundMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(soundFirstSelected);
     }
     public void pauseReturn()
     {
         gameManager.instance.stateUnPause();
         gameManager.instance.pauseMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optionsClosedSelected);
     }
 
-    public void optionsReturn()
+    public void optionsReturnFromHUD()
     {
         gameManager.instance.stateUnPause();
         gameManager.instance.optionsMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(HUDClosedSelected);
+    }
+    public void optionsReturnFromSound()
+    {
+        gameManager.instance.stateUnPause();
+        gameManager.instance.optionsMenu();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(soundClosedSelected);
     }
 
     public void ScreenFlash()

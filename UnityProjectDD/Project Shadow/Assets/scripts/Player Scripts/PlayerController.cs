@@ -9,12 +9,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 {
 
     [SerializeField] CharacterController playerControls;
-
-    /// Added current hp and max hp for level ups.Also added Exp fields.
   
-    [SerializeField] int HP, currentHP, maxHP;
-    [SerializeField] int currentExp, maxExp, currentLevel; // Added
-
+    [SerializeField] int HP;
     [SerializeField] int Armor;
 
     [SerializeField] int speed;
@@ -95,17 +91,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
         }
     }
-
-    // Added
-    //private void OnEnable()
-    //{
-    //    ExperienceManager.instance.onExperienceChange += HandleExperienceChange;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    ExperienceManager.instance.onExperienceChange -= HandleExperienceChange;
-    //}
 
     void movement()
     {
@@ -197,28 +182,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
         }
     }
 
-    // Added
-    public void HandleExperienceChange (int newExperience)
-    {
-        currentExp += newExperience;
-        if (currentExp >= maxExp)
-        {
-            LevelUp();
-        }
-    }
-
-    // Added Level up
-    private void LevelUp()
-    {
-        maxExp += 10;
-        currentHP = maxHP;
-
-        currentLevel++;
-
-        currentExp = 0;
-
-        maxExp += 100;
-    }
 
     public void takeDamage(int amount)
     {
