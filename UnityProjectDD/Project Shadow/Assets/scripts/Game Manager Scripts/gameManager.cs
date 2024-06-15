@@ -117,11 +117,14 @@ public class gameManager : MonoBehaviour
         //    StartCoroutine(win());
         //}
 
-
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.Tab))
         {
-            scoreScreen.SetActive(!scoreScreen.activeSelf);
+            scoreScreen.SetActive(true);
             UpdateScoreScreen();
+        }
+        else
+        {
+            scoreScreen.SetActive(false);
         }
     }
 

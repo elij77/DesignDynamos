@@ -126,8 +126,6 @@ public class zombieEnemy : MonoBehaviour, IDamage
         gameManager.instance.updateEnemyGoal(enemyTemp);
 
         gameManager.instance.updateEnemyGoal(-1);
-        ScoreManager.instance.AddKill();
-
     }
 
     bool canSeePlayer()
