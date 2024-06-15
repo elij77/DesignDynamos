@@ -919,6 +919,30 @@ PrefabInstance:
       propertyPath: attackPosRight
       value: 
       objectReference: {fileID: 446597456}
+    - target: {fileID: 2832199769252134064, guid: 76995eab3a548df468ddb3decfcf94d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.03475613
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832199769252134064, guid: 76995eab3a548df468ddb3decfcf94d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00021528912
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832199769252134064, guid: 76995eab3a548df468ddb3decfcf94d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0061881687
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832199769252134064, guid: 76995eab3a548df468ddb3decfcf94d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9993766
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832199769252134064, guid: 76995eab3a548df468ddb3decfcf94d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832199769252134064, guid: 76995eab3a548df468ddb3decfcf94d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -176.016
+      objectReference: {fileID: 0}
     - target: {fileID: 4435606457132407297, guid: 76995eab3a548df468ddb3decfcf94d3, type: 3}
       propertyPath: m_Name
       value: TZ_M_Civ_01
