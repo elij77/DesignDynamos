@@ -23,6 +23,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text ammoText;
     [SerializeField] TMP_Text ammoCurrText;
     [SerializeField] TMP_Text points;
+    [SerializeField] TMP_Text waveCountText;
     [SerializeField] GameObject audioSourceObject;
     [SerializeField] public List<GameObject> spawntiles = new List<GameObject>();
     [SerializeField] List<GameObject> waveObjects = new List<GameObject>();
@@ -104,10 +105,7 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
-        if (enemyCount == 0)
-        {
-            StartCoroutine(win());
-        }
+        
     }
 
     public void statePause()
@@ -153,6 +151,11 @@ public class gameManager : MonoBehaviour
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
     }
+
+    public void updateWaveCountText()
+    {
+        waveCountText.text = currentWave.ToString("F0");
+    }    
 
     public long GetPoints()
     {
@@ -291,6 +294,7 @@ public class gameManager : MonoBehaviour
             for (int i = 0; i < waveObjects.Count; i++)
             {
                 currentWave = i + 1;
+                updateWaveCountText();
                 IWave wave = waveObjects[i].GetComponent<IWave>();
 
                 if (wave != null)
