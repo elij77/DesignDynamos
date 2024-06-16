@@ -985,7 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2046404460536657698, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
       propertyPath: ObjectsPerWave
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6365288399333410094, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1424,7 +1424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2046404460536657698, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
       propertyPath: ObjectsPerWave
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6365288399333410094, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1653,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 2801739814316236741, guid: b529630b8439e2d4aac2a75ee4cbba1c, type: 3}
       propertyPath: objectToSpawn
       value: 
-      objectReference: {fileID: 2630155091160209476, guid: 7bca78331c7cc334a8043cb0c8ce0b4b, type: 3}
+      objectReference: {fileID: 6706687565176744321, guid: 064826bfec46b184bbf7d964fb6dbd9b, type: 3}
     - target: {fileID: 6979620119633219658, guid: b529630b8439e2d4aac2a75ee4cbba1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 214.49716
@@ -1910,7 +1910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2046404460536657698, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
       propertyPath: ObjectsPerWave
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6365288399333410094, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2315,7 +2315,7 @@ PrefabInstance:
     - target: {fileID: 2801739814316236741, guid: b529630b8439e2d4aac2a75ee4cbba1c, type: 3}
       propertyPath: objectToSpawn
       value: 
-      objectReference: {fileID: 2630155091160209476, guid: 7bca78331c7cc334a8043cb0c8ce0b4b, type: 3}
+      objectReference: {fileID: 3191917445102422798, guid: 9403025bdb5f0f7408ec04f24abcbc05, type: 3}
     - target: {fileID: 6979620119633219658, guid: b529630b8439e2d4aac2a75ee4cbba1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 219.5
@@ -3287,7 +3287,7 @@ PrefabInstance:
     - target: {fileID: 2801739814316236741, guid: b529630b8439e2d4aac2a75ee4cbba1c, type: 3}
       propertyPath: objectToSpawn
       value: 
-      objectReference: {fileID: 2630155091160209476, guid: 7bca78331c7cc334a8043cb0c8ce0b4b, type: 3}
+      objectReference: {fileID: 166277209080311011, guid: 7f19a7c44041d8746943d6d32cb583c0, type: 3}
     - target: {fileID: 6979620119633219658, guid: b529630b8439e2d4aac2a75ee4cbba1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 204.43
@@ -3705,7 +3705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2046404460536657698, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
       propertyPath: ObjectsPerWave
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6365288399333410094, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
       propertyPath: m_LocalPosition.x

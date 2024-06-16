@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: GunStats - rifle
   m_EditorClassIdentifier: 
   gModel: {fileID: 8739372317766880757, guid: 08e6127eed9b18f459ab7ab4db07c3a5, type: 3}
-  shootDamage: 2
-  shootRate: 0.25
+  shootDamage: 5
+  shootRate: 0.15
   shootDist: 150
-  ammoCurr: 15
-  ammoMax: 90
-  clip: 15
-  startup: 90
+  ammoCurr: 60
+  ammoMax: 116
+  clip: 60
+  startup: 240
   hitEffect: {fileID: 8586068533520402164, guid: c7d442b5b44ad1a4a84178f1f7813586, type: 3}
   shootSound: {fileID: 8300000, guid: c6cb01ea9bf49204ca6c2a9704e0d4f9, type: 3}
   shootVolume: 1

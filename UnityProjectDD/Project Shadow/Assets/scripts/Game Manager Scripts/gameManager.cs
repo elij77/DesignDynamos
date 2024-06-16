@@ -109,11 +109,11 @@ public class gameManager : MonoBehaviour
                 stateUnPause();
             }
         }
-//Updated upstream
-        //if (currentWave == 5 && enemyCount == 0)
-        //{
-        //    StartCoroutine(win());
-        //}
+        //Updated upstream
+        if (currentWave == 5 && enemyCount == 0)
+        {
+            StartCoroutine(win());
+        }
 
         //if (Input.GetKey(KeyCode.Tab))
         //{
