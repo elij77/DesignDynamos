@@ -128,12 +128,12 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     public void death()
     {
-        enemyTemp = gameManager.instance.GetEnemyCount() - 1;
+        //enemyTemp = gameManager.instance.GetEnemyCount() - 1;
         Destroy(gameObject);
 
-        gameManager.instance.updateEnemyGoal(enemyTemp);
-
         gameManager.instance.updateEnemyGoal(-1);
+
+        //gameManager.instance.updateEnemyGoal(-1);
     }
 
     //bool canSeePlayer()
