@@ -41,12 +41,14 @@ public class zombieEnemy : MonoBehaviour, IDamage
     Vector3 playerDir;
     Vector3 startingPos;
 
+    SphereCollider attackCol;
+
     // Start is called before the first frame update
     void Start()
     {
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
-        
+        attackCol = GetComponent<SphereCollider>();
 
         
     }
@@ -89,6 +91,9 @@ public class zombieEnemy : MonoBehaviour, IDamage
         if (other.isTrigger)
             return;
 
+        if (other.CompareTag("Zombie"))
+            return;
+
         IDamage dmg = other.gameObject.GetComponent<IDamage>();
 
         if (dmg != null)
@@ -105,6 +110,16 @@ public class zombieEnemy : MonoBehaviour, IDamage
             //playerInRange = false;
             agent.stoppingDistance = 0;            
         }
+    }
+
+    void enableAttack()
+    {
+        attackCol.enabled = true;
+    }
+
+    void disableAttack()
+    {
+        attackCol.enabled = false;
     }
 
     public void takeDamage(int amount)

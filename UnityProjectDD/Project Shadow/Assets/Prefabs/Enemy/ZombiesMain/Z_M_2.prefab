@@ -2334,8 +2334,8 @@ GameObject:
   - component: {fileID: 1281197915198250643}
   m_Layer: 0
   m_Name: Z_M_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Zombie
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2459,8 +2459,6 @@ MonoBehaviour:
   agent: {fileID: 4962471169910813278}
   model: {fileID: 8845632624825846735}
   headPos: {fileID: 5797963150590507083}
-  attackPosRight: {fileID: 439038618352113869}
-  attackPosLeft: {fileID: 4461776851637027984}
   viewAngle: 120
   facePlayerSpeed: 6
   animSpeedTrans: 6
@@ -2510,7 +2508,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 1.01
   m_Center: {x: 0, y: 1, z: 0}
