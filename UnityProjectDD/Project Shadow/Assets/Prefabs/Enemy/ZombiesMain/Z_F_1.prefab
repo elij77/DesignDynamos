@@ -3653,8 +3653,8 @@ MonoBehaviour:
   animSpeedTrans: 5
   roamDist: 15
   roamTimer: 4
-  HP: 14
-  maxHP: 14
+  HP: 25
+  maxHP: 25
   attackDmg: 10
   attackRate: 0.75
   attackDist: 4

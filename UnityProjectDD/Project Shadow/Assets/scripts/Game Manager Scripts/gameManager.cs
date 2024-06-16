@@ -62,7 +62,7 @@ public class gameManager : MonoBehaviour
     public cameraController cameraScript;
 
     public int currentWave =0;
-    bool infiniteSpawnOn = true;
+    //bool infiniteSpawnOn = true;
 
     public bool isPaused;
 
@@ -113,6 +113,11 @@ public class gameManager : MonoBehaviour
         if (currentWave == 5 && enemyCount == 0)
         {
             StartCoroutine(win());
+        }
+
+        if (currentWave == 5)
+        {
+            StopCoroutine(StartWave());
         }
 
         //if (Input.GetKey(KeyCode.Tab))
@@ -363,13 +368,14 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Nothing to spawn");
         }
+        
        // isStartWave = false;
     }
 
     // getter to determine if infinite spawncontrollers are needed.
-    public bool InfiniteSpawnerOn()
-    {
-        return infiniteSpawnOn;
-    }
+    //public bool InfiniteSpawnerOn()
+    //{
+    //    return infiniteSpawnOn;
+    //}
 
 }

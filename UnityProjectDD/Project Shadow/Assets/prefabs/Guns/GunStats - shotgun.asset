@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gModel: {fileID: 574519106601046599, guid: 0a7b92b00cfad054f8156f15f4ef6016, type: 3}
   shootDamage: 5
-  shootRate: 1
+  shootRate: 0.75
   shootDist: 25
   ammoCurr: 3
   ammoMax: 20

@@ -16,10 +16,11 @@ public class InfiniteSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startSpawning && !isSpawning  && gameManager.instance.InfiniteSpawnerOn() )
-        {
-            StartCoroutine(spawn());
-        }
+        //if (startSpawning && !isSpawning  && gameManager.instance.InfiniteSpawnerOn() )
+        //{
+        //    StartCoroutine(spawn());
+        //}
+        StartCoroutine(spawn());
     }
 
     private void OnTriggerEnter(Collider other)
