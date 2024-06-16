@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Z_F_1
       objectReference: {fileID: 0}
+    - target: {fileID: 9126536461921020250, guid: 064826bfec46b184bbf7d964fb6dbd9b, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -82,7 +82,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     public void OnTriggerEnter(Collider other)
     {
-        if (!isAttacking && HP > 0 && agent.remainingDistance <= agent.stoppingDistance)
+        if (!isAttacking && HP > 0 )
         {
                             faceTarget();
                             StartCoroutine(attack());
