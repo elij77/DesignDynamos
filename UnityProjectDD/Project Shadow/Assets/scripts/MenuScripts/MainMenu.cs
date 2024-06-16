@@ -44,15 +44,18 @@ public class MainMenu : MonoBehaviour
         resDropDown.value = currentResIndex;
         resDropDown.RefreshShownValue();
 
-        animator.enabled = true;
+        
+
+        
 
         AudioManager.Instance.playMusic("Main Menu");
+        AudioManager.Instance.animator.SetTrigger("FadeOut");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void playGame()

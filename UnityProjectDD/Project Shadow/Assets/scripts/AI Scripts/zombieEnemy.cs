@@ -43,6 +43,8 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     SphereCollider attackCol;
 
+    long place;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -114,7 +116,9 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     void enableAttack()
     {
-        attackCol.enabled = true;
+  
+      attackCol.enabled = true;
+  
     }
 
     void disableAttack()
@@ -147,6 +151,9 @@ public class zombieEnemy : MonoBehaviour, IDamage
         Destroy(gameObject);
 
         gameManager.instance.updateEnemyGoal(-1);
+
+        place = 100;
+        gameManager.instance.updatePoints(place);
 
         //gameManager.instance.updateEnemyGoal(-1);
     }

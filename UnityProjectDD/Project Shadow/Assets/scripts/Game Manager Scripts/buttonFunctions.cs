@@ -39,12 +39,19 @@ public class buttonFunctions : MonoBehaviour
     {
         AudioManager.Instance.animator.SetTrigger("FadeIn");
         StartCoroutine(quitToMain());
-        gameManager.instance.stateUnPause();
+        //gameManager.instance.stateUnPause();
 
+    }
+
+    public void winBackMain()
+    {
+        SceneManager.LoadScene(0);
+        
     }
 
     IEnumerator quitToMain()
     {
+        gameManager.instance.stateUnPause();
         yield return new WaitForSeconds(1.0f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
