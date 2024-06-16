@@ -8612,7 +8612,7 @@ MonoBehaviour:
   audioSourceObject: {fileID: 0}
   spawntiles: []
   waveObjects:
-  - {fileID: 771027157879786207, guid: d864fe544ff24f947bec8f40e6c0ac28, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -8628,7 +8628,6 @@ MonoBehaviour:
   enemyCanvasGroupNumsUI: {fileID: 3290059853436940424}
   miniMapUI: {fileID: 0}
   playerSpawnPos: {fileID: 0}
-  scoreScreen: {fileID: 0}
   playerFlashDamage: {fileID: 597347077121951157}
   playerFlashDamage1: {fileID: 6268763093860327514}
   playerFlashDamage2: {fileID: 3014212155344928641}
