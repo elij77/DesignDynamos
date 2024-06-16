@@ -12,8 +12,8 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] Transform headPos;
-    [SerializeField] Transform attackPosRight;
-    [SerializeField] Transform attackPosLeft;
+    //[SerializeField] Transform attackPosRight;
+    //[SerializeField] Transform attackPosLeft;
 
     [SerializeField] int viewAngle;
     [SerializeField] int facePlayerSpeed;
@@ -30,7 +30,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] float attackDist;
 
     bool isAttacking;
-    bool playerInRange;
+    //bool playerInRange;
     bool destChosen;
 
     float angleToPlayer;
@@ -78,7 +78,14 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
     public void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(attack());
+        if (!isAttacking && HP > 0 && agent.remainingDistance <= agent.stoppingDistance)
+        {
+                            faceTarget();
+                            StartCoroutine(attack());
+                            lastAttackTime = Time.time;
+
+        }
+        //StartCoroutine(attack());
         if (other.isTrigger)
             return;
 
@@ -95,7 +102,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false;
+            //playerInRange = false;
             agent.stoppingDistance = 0;            
         }
     }
@@ -129,95 +136,95 @@ public class zombieEnemy : MonoBehaviour, IDamage
         gameManager.instance.updateEnemyGoal(-1);
     }
 
-    bool canSeePlayer()
-    {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
-        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
-        Debug.DrawRay(headPos.position, playerDir, Color.red);
-        RaycastHit hit;
-        if (Physics.Raycast(headPos.position, playerDir, out hit))
-        {
-            if (hit.collider.CompareTag("Player") && angleToPlayer < viewAngle)
-            {
-                agent.stoppingDistance = stoppingDistOrig;
-                agent.SetDestination(gameManager.instance.player.transform.position);
+    //bool canSeePlayer()
+    //{
+    //    playerDir = gameManager.instance.player.transform.position - headPos.position;
+    //    angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
+    //    Debug.DrawRay(headPos.position, playerDir, Color.red);
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(headPos.position, playerDir, out hit))
+    //    {
+    //        if (hit.collider.CompareTag("Player") && angleToPlayer < viewAngle)
+    //        {
+    //            agent.stoppingDistance = stoppingDistOrig;
+    //            agent.SetDestination(gameManager.instance.player.transform.position);
 
-                if (!isAttacking && HP > 0 && agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    faceTarget();
-                    StartCoroutine(attack());
-                    lastAttackTime = Time.time;
+    //            if (!isAttacking && HP > 0 && agent.remainingDistance <= agent.stoppingDistance)
+    //            {
+    //                faceTarget();
+    //                StartCoroutine(attack());
+    //                lastAttackTime = Time.time;
                     
-                }
+    //            }
 
-                return true;
-            }
-        }
+    //            return true;
+    //        }
+    //    }
 
-        agent.stoppingDistance = 0;
-        return false;
-    }
+    //    agent.stoppingDistance = 0;
+    //    return false;
+    //}
 
-    IEnumerator roam()
-    {
-        if(!destChosen && agent.remainingDistance < 0.05f)
-        {
-            destChosen = true;
-            agent.stoppingDistance = 0;
-            yield return new WaitForSeconds(roamTimer);
+    //IEnumerator roam()
+    //{
+    //    if(!destChosen && agent.remainingDistance < 0.05f)
+    //    {
+    //        destChosen = true;
+    //        agent.stoppingDistance = 0;
+    //        yield return new WaitForSeconds(roamTimer);
 
-            Vector3 randomPos = Random.insideUnitSphere * roamDist;
-            randomPos += startingPos;
+    //        Vector3 randomPos = Random.insideUnitSphere * roamDist;
+    //        randomPos += startingPos;
 
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-            agent.SetDestination(hit.position);
+    //        NavMeshHit hit;
+    //        NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+    //        agent.SetDestination(hit.position);
 
-            destChosen = false;
-        }
-    }
+    //        destChosen = false;
+    //    }
+    //}
 
     IEnumerator attack()
     {
         isAttacking = true;
 
         Vector3 playerLocation = (gameManager.instance.player.transform.position - headPos.position).normalized;
-        attackPosRight.rotation = Quaternion.LookRotation(playerLocation);
-        attackPosLeft.rotation = Quaternion.LookRotation(playerLocation);
+        //attackPosRight.rotation = Quaternion.LookRotation(playerLocation);
+        //attackPosLeft.rotation = Quaternion.LookRotation(playerLocation);
         anim.SetTrigger("Attack");
 
         yield return new WaitForSeconds(attackRate);
         isAttacking = false;
     }
 
-    public void createSwingRay()
-    {
-        RaycastHit hitRight;
-        RaycastHit hitLeft;
+    //public void createSwingRay()
+    //{
+    //    RaycastHit hitRight;
+    //    RaycastHit hitLeft;
 
-        if (Physics.Raycast(attackPosRight.position, attackPosRight.forward, out hitRight, attackDist))
-        {
-            if (hitRight.collider.CompareTag("Player"))
-            {
-                IDamage target = hitRight.collider.GetComponent<IDamage>();
-                if (target != null)
-                {
-                    target.takeDamage(attackDmg);
-                }
-            }
-        }
-        else if (Physics.Raycast(attackPosLeft.position, attackPosLeft.forward, out hitLeft, attackDist))
-        {
-            if (hitLeft.collider.CompareTag("Player"))
-            {
-                IDamage target = hitLeft.collider.GetComponent<IDamage>();
-                if (target != null)
-                {
-                    target.takeDamage(attackDmg);
-                }
-            }
-        }
-    }
+    //    if (Physics.Raycast(attackPosRight.position, attackPosRight.forward, out hitRight, attackDist))
+    //    {
+    //        if (hitRight.collider.CompareTag("Player"))
+    //        {
+    //            IDamage target = hitRight.collider.GetComponent<IDamage>();
+    //            if (target != null)
+    //            {
+    //                target.takeDamage(attackDmg);
+    //            }
+    //        }
+    //    }
+    //    else if (Physics.Raycast(attackPosLeft.position, attackPosLeft.forward, out hitLeft, attackDist))
+    //    {
+    //        if (hitLeft.collider.CompareTag("Player"))
+    //        {
+    //            IDamage target = hitLeft.collider.GetComponent<IDamage>();
+    //            if (target != null)
+    //            {
+    //                target.takeDamage(attackDmg);
+    //            }
+    //        }
+    //    }
+    //}
 
     IEnumerator flashRed()
     {

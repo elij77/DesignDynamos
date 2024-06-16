@@ -40,7 +40,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] CanvasGroup miniMapUI;
 
     public GameObject playerSpawnPos;
-    public GameObject scoreScreen;
+    //public GameObject scoreScreen;
 
 
     public GameObject playerFlashDamage;
@@ -68,7 +68,7 @@ public class gameManager : MonoBehaviour
 
     int enemyCount;
     int waveNumber = 0;
-    int killCount = 0;
+    //int killCount = 0;
 
 
     // Start is called before the first frame update
@@ -115,36 +115,36 @@ public class gameManager : MonoBehaviour
         //    StartCoroutine(win());
         //}
 
-        if (Input.GetKey(KeyCode.Tab))
-        {
-            scoreScreen.SetActive(true);
-            UpdateScoreScreen();
-        }
-        else
-        {
-            scoreScreen.SetActive(false);
-        }
+        //if (Input.GetKey(KeyCode.Tab))
+        //{
+        //    scoreScreen.SetActive(true);
+        //    UpdateScoreScreen();
+        //}
+        //else
+        //{
+        //    scoreScreen.SetActive(false);
+        //}
     }
 
-    public void EnemyKilled()
-    {
-        killCount++;
-    }
+    //public void EnemyKilled()
+    //{
+    //    killCount++;
+    //}
 
     public void NewWave()
     {
         waveNumber++;
     }
 
-    void UpdateScoreScreen()
-    {
-        Text waveText = scoreScreen.transform.Find("Wave").GetComponent<Text>();
-        Text killText = scoreScreen.transform.Find("Kill").GetComponent<Text>();
+    //void UpdateScoreScreen()
+    //{
+    //    Text waveText = scoreScreen.transform.Find("Wave").GetComponent<Text>();
+    //    Text killText = scoreScreen.transform.Find("Kill").GetComponent<Text>();
 
-        waveText.text = "Wave: " + waveNumber;
-        killText.text = "Kills: " + killCount;
+    //    waveText.text = "Wave: " + waveNumber;
+    //    killText.text = "Kills: " + killCount;
 
-    }
+    //}
 
     public void statePause()
     {
