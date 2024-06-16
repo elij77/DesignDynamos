@@ -45,6 +45,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void winBackMain()
     {
+        AudioManager.Instance.animator.SetTrigger("FadeIn");
         SceneManager.LoadScene(0);
         
     }

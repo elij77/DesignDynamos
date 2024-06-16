@@ -56,6 +56,7 @@ public class AudioManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             playMusic("Main Menu");
+            animator.SetTrigger("FadeOut");
         }
         else if (SceneManager.GetActiveScene().buildIndex == 1)
         {
