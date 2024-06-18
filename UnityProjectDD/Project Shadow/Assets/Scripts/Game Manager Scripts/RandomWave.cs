@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomWave : MonoBehaviour, IWave
 {
-    [SerializeField] int ObjectsPerWave;
+    [SerializeField] public int ObjectsPerWave;
     SpawnTile st;
     int arrayPos;
 

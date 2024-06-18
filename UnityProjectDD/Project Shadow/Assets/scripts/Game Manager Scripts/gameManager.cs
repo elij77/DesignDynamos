@@ -57,7 +57,7 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
 
-    public new GameObject camera;
+    public GameObject camera;
 
     public cameraController cameraScript;
 
@@ -91,7 +91,10 @@ public class gameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
         playerSpawnPos = GameObject.FindWithTag("playerSpawnPos");
 
-        StartCoroutine(StartWave());
+        if (enemyCount == 0)
+        {
+            StartCoroutine(StartWave());
+        }
 
     }
 
@@ -129,6 +132,8 @@ public class gameManager : MonoBehaviour
         //{
         //    scoreScreen.SetActive(false);
         //}
+
+        
     }
 
     //public void EnemyKilled()
@@ -331,51 +336,48 @@ public class gameManager : MonoBehaviour
         
         yield return new WaitForSeconds(4);
 
-        if (waveObjects.Count > 0 && spawntiles.Count > 0)
+        if (enemyCount == 0)
         {
-            Debug.Log(waveObjects.Count.ToString());
-            for (int i = 0; i < waveObjects.Count; i++)
+            if (waveObjects.Count > 0 && spawntiles.Count > 0)
             {
-                updateEnemyGoal(waveObjects.Count);
-                currentWave = i + 1;
-                updateWaveCountText();
-                IWave wave = waveObjects[i].GetComponent<IWave>();
-
-                if (wave != null)
+                //Debug.Log(waveObjects.Count.ToString());
+                for (int i = 0; i < waveObjects.Count; i++)
                 {
-                    Debug.Log("got the wave");
-                    wave.CreateWave();
+                    updateEnemyGoal(waveObjects.Count);
+                    currentWave = i + 1;
+                    updateWaveCountText();
+                    IWave wave = waveObjects[i].GetComponent<IWave>();
+
+                    if (wave != null)
+                    {
+                        //Debug.Log("got the wave");
+                        wave.CreateWave();
+                    }
+                    else
+                    {
+                        //Debug.Log("couldn't get wave");
+                    }
+
+
+                    //for (int j = 0; j < ObjectsPerWave; j++)
+                    //{
+                    //    arrayPos = Random.Range(0, spawntiles.Count);
+                    //    st = spawntiles[arrayPos].GetComponent<SpawnTile>();
+                    //    st.spawn();
+                    //}
+
+
+                    //Debug.Log("start Wave " + i.ToString());
+                    yield return new WaitForSeconds(timeBetweenWaves);
                 }
-                else
-                {
-                    Debug.Log("couldn't get wave");
-                }
-                
-
-                //for (int j = 0; j < ObjectsPerWave; j++)
-                //{
-                //    arrayPos = Random.Range(0, spawntiles.Count);
-                //    st = spawntiles[arrayPos].GetComponent<SpawnTile>();
-                //    st.spawn();
-                //}
-
-
-                Debug.Log("start Wave " + i.ToString());
-                yield return new WaitForSeconds(timeBetweenWaves);
             }
+            
         }
-        else
-        {
-            Debug.Log("Nothing to spawn");
-        }
+       
         
        // isStartWave = false;
     }
 
-    // getter to determine if infinite spawncontrollers are needed.
-    //public bool InfiniteSpawnerOn()
-    //{
-    //    return infiniteSpawnOn;
-    //}
+    
 
 }

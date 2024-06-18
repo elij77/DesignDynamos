@@ -16,8 +16,8 @@ MonoBehaviour:
   shootDamage: 5
   shootRate: 0.15
   shootDist: 150
-  ammoCurr: 55
-  ammoMax: 133
+  ammoCurr: 25
+  ammoMax: 120
   clip: 30
   startup: 120
   hitEffect: {fileID: 8586068533520402164, guid: c7d442b5b44ad1a4a84178f1f7813586, type: 3}
