@@ -5,25 +5,39 @@ using UnityEngine.UI;
 
 public class AIHealth : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
-    
-    [SerializeField] private Transform position;
+//    [SerializeField] private Slider slider;
 
-    private Camera cam;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private Image damageBar;
+
+    //[SerializeField] private Transform position;
+
+    //private Camera cam;
 
     public void updateHealthBar(float HP, float maxHP)
     {
-        slider.value = HP / maxHP;
+        float healthPercentage = HP / maxHP;
+        healthBar.fillAmount = healthPercentage;
+        StartCoroutine(UpdateDamageIndicator(healthPercentage));
     }
 
     private void Start()
     {
-        cam = Camera.main;
+        //cam = Camera.main;
     }
     void Update()
     {
-        transform.rotation = cam.transform.rotation;
+        //transform.rotation = cam.transform.rotation;
+    }
 
+    public IEnumerator UpdateDamageIndicator(float targetValue)
+    {
+        yield return new WaitForSeconds(0.5f);
 
+        while (damageBar.fillAmount > targetValue)
+        {
+            damageBar.fillAmount -= Time.deltaTime / 2f;
+            yield return null;
+        }
     }
 }

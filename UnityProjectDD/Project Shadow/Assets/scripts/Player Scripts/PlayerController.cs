@@ -68,6 +68,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
     bool isShooting;
 
+    public AIHealth healthBarUIController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -195,6 +197,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
             Armor -= amount;
             StartCoroutine(flashScreenDamageBlue());
         }
+        healthBarUIController.updateHealthBar(HP, HPOrig);
         updatePlayerUI();
         
         AudioManager.Instance.playHit("Hit1");
@@ -242,6 +245,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
         gameManager.instance.playerArmorBar.fillAmount = (float)Armor / ArmorOrig;
         gameManager.instance.playerStamBar.fillAmount = stam / stamMax;
+        healthBarUIController.updateHealthBar(HP, HPOrig);
+
         if (gunList.Capacity > 0)
         {
             gameManager.instance.updateAmmo(gunList[selectedGun].ammoCurr, gunList[selectedGun].ammoMax);
