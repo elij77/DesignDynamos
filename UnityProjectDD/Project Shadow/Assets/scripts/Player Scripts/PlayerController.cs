@@ -253,8 +253,15 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
         }
     }
 
-    
-   
+
+    public void UpgradeStam()
+    {
+        if (stamMax != 300 && gameManager.instance.GetSkills() > 0)
+        {
+            stamMax += 25;
+            gameManager.instance.updateSkillPoints(-1);
+        }
+    }
 
     public void spawnPlayer()
     {

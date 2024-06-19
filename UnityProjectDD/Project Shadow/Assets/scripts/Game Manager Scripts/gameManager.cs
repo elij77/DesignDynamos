@@ -18,7 +18,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuSound;
     [SerializeField] GameObject menuOptions;
-    [SerializeField] GameObject menuHUD;
+    [SerializeField] GameObject menuSkills;
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text ammoText;
     [SerializeField] TMP_Text ammoCurrText;
@@ -218,6 +218,10 @@ public class gameManager : MonoBehaviour
         return money;
     }
 
+    public int GetSkills()
+    {
+        return skillpoint;
+    }
     IEnumerator win()
     {
         yield return new WaitForSeconds(2);
@@ -260,10 +264,10 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(isPaused);
     }
 
-    public void HUDMenu()
+    public void SkillsMenu()
     {
         statePause();
-        menuActive = menuHUD;
+        menuActive = menuSkills;
         menuActive.SetActive(isPaused);
     }
 

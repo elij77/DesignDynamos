@@ -13,7 +13,7 @@ public class buttonFunctions : MonoBehaviour
 {
     public Animator animator;
 
-    public GameObject optionsFirstSelected, HUDFirstSelected, soundFirstSelected, optionsClosedSelected, HUDClosedSelected, soundClosedSelected;
+    public GameObject optionsFirstSelected, SkillsFirstSelected, soundFirstSelected, optionsClosedSelected, SkillsClosedSelected, soundClosedSelected;
 
     public void resume()
     {
@@ -73,12 +73,12 @@ public class buttonFunctions : MonoBehaviour
 
     }
 
-    public void HUD()
+    public void Skill()
     {
         gameManager.instance.stateUnPause();
-        gameManager.instance.HUDMenu();
+        gameManager.instance.SkillsMenu();
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(HUDFirstSelected);
+        EventSystem.current.SetSelectedGameObject(SkillsFirstSelected);
     }
     public void noises()
     {
@@ -100,7 +100,7 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnPause();
         gameManager.instance.optionsMenu();
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(HUDClosedSelected);
+        EventSystem.current.SetSelectedGameObject(SkillsClosedSelected);
     }
     public void optionsReturnFromSound()
     {
@@ -110,9 +110,9 @@ public class buttonFunctions : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(soundClosedSelected);
     }
 
-    public void ScreenFlash()
+    public void StamUp()
     {
-        gameManager.instance.ScreenFlashToggle();
+        gameManager.instance.playerScript.UpgradeStam();
     }
 
     public void CounterFlash()
