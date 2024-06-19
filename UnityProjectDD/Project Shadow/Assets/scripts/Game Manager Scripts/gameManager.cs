@@ -27,7 +27,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject audioSourceObject;
     [SerializeField] public List<GameObject> spawntiles = new List<GameObject>();
     [SerializeField] List<GameObject> waveObjects = new List<GameObject>();
-    [SerializeField] int timeBetweenWaves;
+    //[SerializeField] int timeBetweenWaves;
     [SerializeField] long money;
 
     [SerializeField] CanvasGroup flashCanvasGroupUI;
@@ -331,7 +331,7 @@ public class gameManager : MonoBehaviour
 
     IEnumerator StartWave()
     {
-     
+
         
         
         yield return new WaitForSeconds(4);
@@ -359,16 +359,13 @@ public class gameManager : MonoBehaviour
                     }
 
 
-                    //for (int j = 0; j < ObjectsPerWave; j++)
-                    //{
-                    //    arrayPos = Random.Range(0, spawntiles.Count);
-                    //    st = spawntiles[arrayPos].GetComponent<SpawnTile>();
-                    //    st.spawn();
-                    //}
 
-
-                    //Debug.Log("start Wave " + i.ToString());
-                    yield return new WaitForSeconds(timeBetweenWaves);
+                    yield return new WaitForSeconds(10);  // wait 10 seconds for spawn
+                    
+                    while (enemyCount > 0)
+                    { // check every 2 seconds if wave is complete and all enimies are dead.
+                        yield return new WaitForSeconds(2);
+                    }
                 }
             }
             
