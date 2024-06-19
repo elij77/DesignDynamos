@@ -24,6 +24,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text ammoCurrText;
     [SerializeField] TMP_Text points;
     [SerializeField] TMP_Text waveCountText;
+    [SerializeField] TMP_Text skillPointText;
     [SerializeField] GameObject audioSourceObject;
     [SerializeField] public List<GameObject> spawntiles = new List<GameObject>();
     [SerializeField] List<GameObject> waveObjects = new List<GameObject>();
@@ -68,6 +69,7 @@ public class gameManager : MonoBehaviour
 
     int enemyCount;
     int waveNumber = 0;
+    int skillpoint;
     //int killCount = 0;
 
 
@@ -94,6 +96,7 @@ public class gameManager : MonoBehaviour
         if (enemyCount == 0)
         {
             StartCoroutine(StartWave());
+            skillpoint++;
         }
 
     }
@@ -181,6 +184,11 @@ public class gameManager : MonoBehaviour
         ammoText.text = clip.ToString();
     }
 
+    public void updateSkillPoints(int amount)
+    {
+        skillpoint += amount;
+        skillPointText.text = skillpoint.ToString();
+    }
     public void updatePoints(long bankValue)
     {
 
@@ -346,6 +354,8 @@ public class gameManager : MonoBehaviour
                     updateEnemyGoal(waveObjects.Count);
                     currentWave = i + 1;
                     updateWaveCountText();
+
+                    updateSkillPoints(1);
                     IWave wave = waveObjects[i].GetComponent<IWave>();
 
                     if (wave != null)
