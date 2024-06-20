@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,11 +14,16 @@ public class zombieAI : MonoBehaviour
 
     public LayerMask whatIsPlayer;
 
+    [SerializeField] bool roamingEnemy;
+    [SerializeField] int roamTimer = 0;
 
-    // patrolling (if desired; can also just set 'destinationRange' to 0 if you'd prefer them to be stationary when not chasing/attacking)
+
+    // patrolling (if desired; wave enemies by default but can be given roaming functionality by checking "Roaming Enemy" serialized field - if roaming enemy, can also set 'destinationRange' to 0 if you'd prefer them to be stationary when not chasing/attacking)
     public Vector3 destination;
     bool destinationSet;
     public float destinationRange;
+    bool isRoamingEnemy;
+    bool isWaveEnemy;
 
     // attacking
     public float timeBetweenAttacks;
@@ -30,6 +36,7 @@ public class zombieAI : MonoBehaviour
     public bool playerInAttackRange;
     public bool isEmerging;
 
+    private Coroutine roamingCoroutine;
 
 
     // Start is called before the first frame update
@@ -37,6 +44,13 @@ public class zombieAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        isRoamingEnemy = roamingEnemy;
+        isWaveEnemy = !isRoamingEnemy;
+        if (isWaveEnemy) 
+        { 
+            destination = player.position;
+            agent.SetDestination(destination); 
+        }
     }
 
     // Update is called once per frame
@@ -50,32 +64,81 @@ public class zombieAI : MonoBehaviour
 
         if (!isEmerging)
         {
-            if (!playerInSightRange && !playerInAttackRange) Roam();
+            if (isRoamingEnemy)
+            {
+                if (!playerInSightRange && !playerInAttackRange) 
+                {
+                    if (roamingCoroutine == null)
+                    {
+                        roamingCoroutine = StartCoroutine(Roam());
+                    }
+                }
+                else
+                {
+                    if (roamingCoroutine != null)
+                    {
+                        StopCoroutine(roamingCoroutine);
+                        roamingCoroutine = null;
+                    }
+                }
+            }
+            
             if (playerInSightRange && !playerInAttackRange) ChasePlayer();
             if (playerInSightRange && playerInAttackRange) AttackPlayer();
         }
     }
 
-    private void Roam()
+    private IEnumerator Roam()
     {
-        if (!destinationSet) SearchDestination();
+        float origMovementSpeed = agent.speed;
 
-        if (destinationSet) agent.SetDestination(destination);
+        while (true)
+        {
+            if (!destinationSet) SearchDestination();
 
-        Vector3 distanceToDestination = transform.position - destination;
+            if (destinationSet) agent.SetDestination(destination);
 
-        if (distanceToDestination.magnitude < 1f) destinationSet = false;
+            while (destinationSet)
+            {
+                Vector3 distanceToDestination = transform.position - destination;                
+
+                if (distanceToDestination.magnitude < 1f)
+                {
+                    float speed = Mathf.Lerp(agent.speed, 0, Time.deltaTime * 5);
+                    agent.speed = speed;
+
+                    if (speed < 0.01f)
+                    {
+                        agent.speed = 0;
+                        destinationSet = false;
+                        anim.SetFloat("Speed", 0);
+                        agent.isStopped = true;
+
+                        yield return new WaitForSeconds(roamTimer);
+
+                        agent.isStopped = false;
+                        agent.speed = origMovementSpeed;
+                    }
+                }
+
+                yield return null;
+            }
+        }
     }
 
     private void SearchDestination()
     {
-            float randomX = Random.Range(-destinationRange, destinationRange);
-            float randomZ = Random.Range(-destinationRange, destinationRange);
+        float randomX = Random.Range(-destinationRange, destinationRange);            
+        float randomZ = Random.Range(-destinationRange, destinationRange);
+            
+        destination = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-            destination = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-            NavMeshHit hit;
-            NavMesh.SamplePosition(destination, out hit, destinationRange, 1);          
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(destination, out hit, destinationRange, 1))
+        {
+            destination = hit.position;
+            destinationSet = true;
+        }
     }
 
     private void ChasePlayer()

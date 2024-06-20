@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 0ae323b0a02bc304cb3fb27ed7b96bbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.299354
+      value: -35.22
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 0ae323b0a02bc304cb3fb27ed7b96bbb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -897,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 0ae323b0a02bc304cb3fb27ed7b96bbb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.018429
+      value: 16.83
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 0ae323b0a02bc304cb3fb27ed7b96bbb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -996,6 +996,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 4096
+  roamingEnemy: 0
+  roamTimer: 3
   destination: {x: 0, y: 0, z: 0}
   destinationRange: 20
   timeBetweenAttacks: 0
@@ -1003,6 +1005,7 @@ MonoBehaviour:
   attackRange: 0
   playerInSightRange: 0
   playerInAttackRange: 0
+  isEmerging: 0
 --- !u!1 &1748949258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 196530, guid: ff2deb5409ec94d44a5359d4ccce5aa2, type: 3}
