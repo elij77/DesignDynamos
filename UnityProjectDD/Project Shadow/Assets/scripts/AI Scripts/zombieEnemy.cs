@@ -12,8 +12,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] Transform headPos;
-    //[SerializeField] Transform attackPosRight;
-    //[SerializeField] Transform attackPosLeft;
+    
 
     [SerializeField] int viewAngle;
     [SerializeField] int facePlayerSpeed;
@@ -30,7 +29,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     [SerializeField] float attackDist;
 
     bool isAttacking;
-    //bool playerInRange;
+    
     bool destChosen;
 
     float angleToPlayer;
@@ -63,20 +62,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
 
         agent.SetDestination(gameManager.instance.player.transform.position);
 
-        //if (playerInRange && !canSeePlayer())
-        //{           
-        //    if (!destChosen)
-        //    {
-        //        StartCoroutine(roam());
-        //    }
-        //}
-        //else if (!playerInRange)
-        //{    
-        //    if (!destChosen)
-        //    {
-        //        StartCoroutine(roam());
-        //    }
-        //}
+        
 
     }
 
@@ -90,7 +76,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
             
 
         }
-        //StartCoroutine(attack());
+       
         if (other.isTrigger)
             return;
 
@@ -110,7 +96,7 @@ public class zombieEnemy : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player"))
         {
-            //playerInRange = false;
+            
             agent.stoppingDistance = 0;            
         }
     }
