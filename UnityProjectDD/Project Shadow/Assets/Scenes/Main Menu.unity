@@ -10302,6 +10302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558960357}
+  - component: {fileID: 1558960359}
   - component: {fileID: 1558960358}
   m_Layer: 5
   m_Name: FullScreenToggle
@@ -10403,6 +10404,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
+--- !u!114 &1558960359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558960356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead85359edc411847b2f17f46f29ec1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1559570289
 GameObject:
   m_ObjectHideFlags: 0
