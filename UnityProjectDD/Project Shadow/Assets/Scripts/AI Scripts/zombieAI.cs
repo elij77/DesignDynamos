@@ -202,6 +202,7 @@ public class zombieAI : MonoBehaviour, IDamage
         Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(playerPos);
         anim.SetTrigger("Attack");
+        AudioManager.Instance.playSFX("Zombie Attack");
         Collider[] hitPlayer = Physics.OverlapSphere(attackPos.position, attackRange, whatIsPlayer);
         foreach (Collider hit in hitPlayer)
         {
@@ -237,6 +238,7 @@ public class zombieAI : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
+        AudioManager.Instance.playSFX("Zombie Hit");
         anim.SetTrigger("TakeDamage");
         HP -= amount;
 
@@ -251,6 +253,8 @@ public class zombieAI : MonoBehaviour, IDamage
 
     public void death()
     {
+        AudioManager.Instance.playSFX("Zombie Death");
+
         Destroy(gameObject);
 
         gameManager.instance.updateEnemyGoal(-1);
