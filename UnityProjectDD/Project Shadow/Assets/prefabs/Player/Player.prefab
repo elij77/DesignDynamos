@@ -260,7 +260,7 @@ MonoBehaviour:
   jumpAmount: 20
   sprintMod: 2
   jumpMax: 2
-  jumpSpeed: 10
+  jumpSpeed: 5
   grav: 30
   shootDamage: 1
   shootRate: 0.25
@@ -275,6 +275,7 @@ MonoBehaviour:
   playerCamera: {fileID: 2625157099160186500}
   gunList: []
   gunModel: {fileID: 1822884490269042223}
+  healthBarUIController: {fileID: 0}
 --- !u!143 &545635596772998981
 CharacterController:
   m_ObjectHideFlags: 0
@@ -296,7 +297,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 35
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001

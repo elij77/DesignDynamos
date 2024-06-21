@@ -25,6 +25,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text points;
     [SerializeField] TMP_Text waveCountText;
     [SerializeField] TMP_Text skillPointText;
+    [SerializeField] TMP_Text menuSkillPointText;
     [SerializeField] GameObject audioSourceObject;
     [SerializeField] public List<GameObject> spawntiles = new List<GameObject>();
     [SerializeField] List<GameObject> waveObjects = new List<GameObject>();
@@ -188,6 +189,7 @@ public class gameManager : MonoBehaviour
     {
         skillpoint += amount;
         skillPointText.text = skillpoint.ToString();
+        menuSkillPointText.text = skillpoint.ToString();
     }
     public void updatePoints(long bankValue)
     {
@@ -293,7 +295,7 @@ public class gameManager : MonoBehaviour
 
     public void ScreenFlashResetter()
     {
-        if(flashCanvasGroupUI.alpha > 0 || flashCanvasGroupUI1.alpha > 0 || flashCanvasGroupUI2.alpha > 0 || flashCanvasGroupUI3.alpha > 0 || flashCanvasGroupUI4.alpha > 0)
+        if(flashCanvasGroupUI.alpha == 0 || flashCanvasGroupUI1.alpha == 0 || flashCanvasGroupUI2.alpha == 0 || flashCanvasGroupUI3.alpha == 0 || flashCanvasGroupUI4.alpha == 0)
         {
             flashCanvasGroupUI.alpha = 1;
             flashCanvasGroupUI1.alpha = 1;

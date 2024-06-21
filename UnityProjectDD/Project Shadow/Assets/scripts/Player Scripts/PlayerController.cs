@@ -187,10 +187,11 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
     public void takeDamage(int amount)
     {
+        gameManager.instance.ScreenFlashResetter();
         if (HP > 0 && Armor <= 0)
         {
             HP -= amount;
-             StartCoroutine(flashScreenDamage());
+            StartCoroutine(flashScreenDamage());
         }
         else if (Armor > 0)
         {
@@ -263,6 +264,25 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
         }
     }
 
+    public void UpgradeHealth()
+    {
+        if (HPOrig <= 250 && gameManager.instance.GetSkills() > 0)
+        {
+            HPOrig += 25;
+            Heal(HPOrig);
+            gameManager.instance.updateSkillPoints(-1);
+        }
+    }
+
+    public void UpgradeArmor()
+    {
+        if (ArmorOrig <= 100 && gameManager.instance.GetSkills() > 0)
+        {
+            ArmorOrig += 10;
+            RepairArmor(ArmorOrig);
+            gameManager.instance.updateSkillPoints(-1);
+        }
+    }
     public void spawnPlayer()
     {
         HP = HPOrig;
@@ -334,35 +354,35 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
     IEnumerator flashScreenDamage()
     {
-        if (HP % 5 == 4 && Armor == 0)
+        if (gameManager.instance.playerHPBar.fillAmount >= .75 && gameManager.instance.playerArmorBar.fillAmount == 0)
         {
             gameManager.instance.playerFlashDamage1.SetActive(true);
             yield return new WaitForSeconds(5f);
             gameManager.instance.playerFlashDamage1.SetActive(false);
         }
-        else if (HP % 5 == 3 && Armor == 0)
+        else if (gameManager.instance.playerHPBar.fillAmount >= .5 && gameManager.instance.playerArmorBar.fillAmount == 0)
         {
             gameManager.instance.playerFlashDamage2.SetActive(true);
             yield return new WaitForSeconds(5f);
             gameManager.instance.playerFlashDamage2.SetActive(false);
         }
-        else if (HP % 5 == 2 && Armor == 0 )
+        else if (gameManager.instance.playerHPBar.fillAmount >= .25 && gameManager.instance.playerArmorBar.fillAmount == 0)
         {
             gameManager.instance.playerFlashDamage3.SetActive(true);
             yield return new WaitForSeconds(5f);
             gameManager.instance.playerFlashDamage3.SetActive(false);
         }
-        else if (HP % 5 == 1 && Armor == 0)
+        else if (gameManager.instance.playerHPBar.fillAmount < .25 && gameManager.instance.playerArmorBar.fillAmount == 0)
         {
             gameManager.instance.playerFlashDamage4.SetActive(true);
-            if (HP % 5 > 1)
+            if (gameManager.instance.playerHPBar.fillAmount > .25)
             {
                 yield return new WaitForSeconds(3f);
                 gameManager.instance.playerFlashDamage4.SetActive(false);
             }
             else
             {
-                yield return new WaitForSeconds(50f);
+                yield return new WaitForSeconds(15f);
                 gameManager.instance.playerFlashDamage4.SetActive(false);
             }
         }

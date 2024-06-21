@@ -115,6 +115,15 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.playerScript.UpgradeStam();
     }
 
+    public void healthUp()
+    {
+        gameManager.instance.playerScript.UpgradeHealth();
+    }
+    
+    public void armorUp()
+    {
+        gameManager.instance.playerScript.UpgradeArmor();
+    }
     public void CounterFlash()
     {
         gameManager.instance.EnemyCountToggle();

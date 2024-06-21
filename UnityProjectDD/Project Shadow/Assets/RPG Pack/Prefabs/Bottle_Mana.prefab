@@ -4992,7 +4992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3471f91adeea342ac786dcd908f2cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armor: 20
+  armor: 100
   price: 250
   interactText: {fileID: 0}
   interactTextFull: {fileID: 0}
