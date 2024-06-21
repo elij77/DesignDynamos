@@ -10,7 +10,7 @@ public class SpawnTile : MonoBehaviour
     {
         gameManager.instance.RegisterSpawnTile(gameObject);
 
-        Debug.Log("registertile");
+     //   Debug.Log("registertile");
     }
 
    
