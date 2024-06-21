@@ -146,15 +146,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
     }
 
-    //IEnumerator death()
-    //{
-    //    isShooting = false;
-    //    gameManager.instance.updateGameGoal(-1);
-    //    anim.SetTrigger("Death");
-
-    //    yield return new WaitForSeconds(5);
-    //    Destroy(gameObject);
-    //}
+    
 
     public void death()
     {
@@ -169,8 +161,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
-        //Debug.Log(angleToPlayer);
-        //Debug.DrawRay(headPos.position, playerDir);
+        
 
         RaycastHit hit;
         if (Physics.Raycast(headPos.position, playerDir, out hit))
@@ -210,22 +201,6 @@ public class EnemyAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0.1f);
         model.material.color = Color.white;
 
-        //float duration = 0.5f;
-        //float elapsed = 0f;
-
-        //model.material.color = Color.red;
-
-        //while (elapsed < duration)
-        //{
-        //    elapsed += Time.deltaTime;
-
-        //    float fraction = elapsed / duration;
-
-        //    model.material.color = Color.Lerp(Color.red, Color.white, fraction);
-
-        //    yield return null;
-        //}
-
-        //model.material.color = Color.white;
+        
     }
 }

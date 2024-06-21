@@ -125,7 +125,7 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume()
     {
         float volume = musicSlider.value;
-        //Debug.Log(volume);
+        
         masterMixer.SetFloat("musicVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
@@ -133,7 +133,7 @@ public class AudioManager : MonoBehaviour
     public void SetSFXVolume()
     {
         float volume = sfxSlider.value;
-        //Debug.Log(volume);
+        
         masterMixer.SetFloat("sfxVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
     }
@@ -141,7 +141,7 @@ public class AudioManager : MonoBehaviour
     public void SetMasterVolume()
     {
         float volume = masterSlider.value;
-        //Debug.Log(volume);
+        
         masterMixer.SetFloat("maxVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("maxVolume", volume);
     }
