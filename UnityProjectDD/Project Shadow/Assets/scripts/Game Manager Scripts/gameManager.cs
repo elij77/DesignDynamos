@@ -70,7 +70,7 @@ public class gameManager : MonoBehaviour
 
     int enemyCount;
     int waveNumber = 0;
-    int skillpoint;
+    [SerializeField] int skillpoint;
     //int killCount = 0;
 
 
@@ -97,7 +97,6 @@ public class gameManager : MonoBehaviour
         if (enemyCount == 0)
         {
             StartCoroutine(StartWave());
-            skillpoint++;
         }
 
     }

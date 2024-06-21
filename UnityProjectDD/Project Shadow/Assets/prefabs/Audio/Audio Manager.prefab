@@ -70,6 +70,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 385260caa419b394c95e3541bd85013d, type: 3}
   - soundName: ButtonPress
     clip: {fileID: 8300000, guid: 385260caa419b394c95e3541bd85013d, type: 3}
+  - soundName: Success
+    clip: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
+  - soundName: Fail
+    clip: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
   audJump:
   - soundName: Jump1
     clip: {fileID: 8300000, guid: b420192a180488f4c9ed2cf6059e5f97, type: 3}
@@ -90,6 +94,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b4d5f37a72d460a4c94a7ea990d04aec, type: 3}
   - soundName: Hit6
     clip: {fileID: 8300000, guid: fbfd655effa80f9458d26616bc90b91a, type: 3}
+  footSteps: {fileID: 0}
   masterMixer: {fileID: 24100000, guid: 3b4bf6d59be52284e9be6c974aeb531d, type: 2}
 --- !u!1 &4077247039358614621
 GameObject:
@@ -266,7 +271,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -356,7 +361,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6718280616938318322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 272b2a05d4451204089d5b2abb148fbe, type: 2}
   m_CullingMode: 0

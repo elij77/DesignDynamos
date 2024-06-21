@@ -68,6 +68,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
     bool isShooting;
 
+    bool upgrade;
+
     public AIHealth healthBarUIController;
 
     // Start is called before the first frame update
@@ -254,13 +256,21 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
         }
     }
 
-
+    public bool GetUpgrade()
+    {
+        return upgrade;
+    }
     public void UpgradeStam()
     {
         if (stamMax != 300 && gameManager.instance.GetSkills() > 0)
         {
+            upgrade = true;
             stamMax += 25;
             gameManager.instance.updateSkillPoints(-1);
+        }
+        else
+        {
+            upgrade = false;
         }
     }
 
@@ -268,9 +278,14 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
     {
         if (HPOrig <= 250 && gameManager.instance.GetSkills() > 0)
         {
+            upgrade = true;
             HPOrig += 25;
             Heal(HPOrig);
             gameManager.instance.updateSkillPoints(-1);
+        }
+        else
+        {
+            upgrade = false;
         }
     }
 
@@ -278,9 +293,14 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
     {
         if (ArmorOrig <= 100 && gameManager.instance.GetSkills() > 0)
         {
+            upgrade = true;
             ArmorOrig += 10;
             RepairArmor(ArmorOrig);
             gameManager.instance.updateSkillPoints(-1);
+        }
+        else
+        {
+            upgrade = false;
         }
     }
     public void spawnPlayer()
