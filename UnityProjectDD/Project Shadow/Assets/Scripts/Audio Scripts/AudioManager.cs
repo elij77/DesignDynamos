@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
     public sound[] musicSounds, sfxSounds;
     public sound[] audJump;
     public sound[] audhit;
+    public sound[] menuFeedbackGood, menuFeedbackBad;
     public AudioClip footSteps; 
     public AudioMixer masterMixer;
 
@@ -110,6 +111,17 @@ public class AudioManager : MonoBehaviour
         SFXSource.Play();
     }
 
+    public void playFeedback(string name) 
+    {
+        if (gameManager.instance.playerScript.GetUpgrade() == true)
+        {
+            sound Sound = Array.Find(menuFeedbackGood, x => x.soundName == name);
+
+            SFXSource.clip = Sound.clip;
+
+            SFXSource.Play();
+        }
+    }
     public void SetMusicVolume()
     {
         float volume = musicSlider.value;
