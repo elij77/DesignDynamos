@@ -59,7 +59,7 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
 
-    public GameObject camera;
+    public new GameObject camera;
 
     public cameraController cameraScript;
 
@@ -356,38 +356,42 @@ public class gameManager : MonoBehaviour
                 //Debug.Log(waveObjects.Count.ToString());
                 for (int i = 0; i < waveObjects.Count; i++)
                 {
-                    updateEnemyGoal(waveObjects.Count);
-                    currentWave = i + 1;
-                    updateWaveCountText();
+                    RandomWave random = waveObjects[i].GetComponent<RandomWave>();
 
-                    updateSkillPoints(1);
-                    IWave wave = waveObjects[i].GetComponent<IWave>();
-
-                    if (wave != null)
+                    if (random != null)
                     {
-                        //Debug.Log("got the wave");
-                        wave.CreateWave();
-                    }
-                    else
-                    {
-                        //Debug.Log("couldn't get wave");
-                    }
+                        int enemiesPerWave = random.ObjectsPerWave;
+                        updateEnemyGoal(enemiesPerWave);
+                        currentWave = i + 1;
+                        updateWaveCountText();
+
+                        updateSkillPoints(1);
+                        IWave wave = waveObjects[i].GetComponent<IWave>();
+
+                        if (wave != null)
+                        {
+
+                            wave.CreateWave();
+                        }
 
 
 
-                    yield return new WaitForSeconds(10);  // wait 10 seconds for spawn
-                    
-                    while (enemyCount > 0)
-                    { // check every 2 seconds if wave is complete and all enimies are dead.
-                        yield return new WaitForSeconds(2);
+
+                        yield return new WaitForSeconds(10);  // wait 10 seconds for spawn
+
+                        while (enemyCount > 0)
+                        { // check every 2 seconds if wave is complete and all enimies are dead.
+                            yield return new WaitForSeconds(2);
+                        }
                     }
+                   
                 }
             }
             
         }
        
         
-       // isStartWave = false;
+       
     }
 
     

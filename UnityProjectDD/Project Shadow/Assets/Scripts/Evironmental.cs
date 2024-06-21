@@ -14,7 +14,7 @@ public class Evironmental : MonoBehaviour
         IChangeStat ics = other.transform.GetComponent<IChangeStat>();
         if (ics != null)
         {
-            Debug.Log("Enter");
+            
             ics.changeStat ("runSpeed", runSpeed);
             ics.changeStat("walkSpeed", walkSpeed);
             ics.changeStat("jumpSpeed", jumpSpeed);
@@ -25,7 +25,7 @@ public class Evironmental : MonoBehaviour
         IChangeStat ics = other.transform.GetComponent<IChangeStat>();
         if (ics != null)
         {
-            Debug.Log("Exit");
+            
             ics.changeStat("runSpeed", -1 * runSpeed);
             ics.changeStat("walkSpeed", -1 * walkSpeed);
             ics.changeStat("jumpSpeed", -1 * jumpSpeed);
