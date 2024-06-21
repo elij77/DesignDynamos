@@ -4,18 +4,24 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class zombieAI : MonoBehaviour
+public class zombieAI : MonoBehaviour, IDamage
 {
+    public LayerMask whatIsPlayer;
+
     public NavMeshAgent agent;
 
     public Animator anim;
 
     public Transform player;
+    public Transform attackPos;
 
-    public LayerMask whatIsPlayer;
-
+    [SerializeField] Renderer model;
     [SerializeField] bool roamingEnemy;
     [SerializeField] int roamTimer = 0;
+    //[SerializeField] int facePlayerSpeed = 5;
+
+    [SerializeField] int HP;
+    [SerializeField] int maxHP;
 
 
     // patrolling (if desired; wave enemies by default but can be given roaming functionality by checking "Roaming Enemy" serialized field - if roaming enemy, can also set 'destinationRange' to 0 if you'd prefer them to be stationary when not chasing/attacking)
@@ -28,12 +34,14 @@ public class zombieAI : MonoBehaviour
     // attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    [SerializeField] float attackRange = 0.5f;
+    [SerializeField] int attackDmg = 2;
 
     // states
-    public float sightRange;
-    public float attackRange;
-    public bool playerInSightRange;
-    public bool playerInAttackRange;
+    public float sightDistance;
+    public float attackDistance;
+    public bool playerInSightDistance;
+    public bool playerInAttackDistance;
     public bool isEmerging;
 
     private Coroutine roamingCoroutine;
@@ -59,14 +67,14 @@ public class zombieAI : MonoBehaviour
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), Mathf.Abs(animSpeed), Time.deltaTime));
 
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInSightDistance = Physics.CheckSphere(transform.position, sightDistance, whatIsPlayer);
+        playerInAttackDistance = Physics.CheckSphere(transform.position, attackDistance, whatIsPlayer);
 
         if (!isEmerging)
         {
             if (isRoamingEnemy)
             {
-                if (!playerInSightRange && !playerInAttackRange) 
+                if (!playerInSightDistance && !playerInAttackDistance) 
                 {
                     if (roamingCoroutine == null)
                     {
@@ -83,8 +91,8 @@ public class zombieAI : MonoBehaviour
                 }
             }
             
-            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-            if (playerInSightRange && playerInAttackRange) AttackPlayer();
+            if (playerInSightDistance && !playerInAttackDistance) ChasePlayer();
+            if (playerInSightDistance && playerInAttackDistance) StartCoroutine(PerformAttack());
         }
     }
 
@@ -146,34 +154,65 @@ public class zombieAI : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    //private void AttackPlayer()
+    //{
+    //    agent.SetDestination(transform.position);
+
+    //    Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+    //    transform.LookAt(playerPos);
+
+    //    if (!alreadyAttacked)
+    //    {
+    //        // attack code goes here
+    //        // 1: play attack animation
+    //        anim.SetTrigger("Attack");
+    //        alreadyAttacked = true;
+    //        StartCoroutine(PerformAttack());
+    //    }
+    //}
+
+    //IEnumerator PerformAttack()
+    //{
+    //    //AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
+    //    //yield return new WaitForSeconds(animStateInfo.length);
+
+    //    Collider[] hitPlayer = Physics.OverlapSphere(attackPos.position, attackRange, whatIsPlayer);
+
+    //    foreach (Collider player in hitPlayer)
+    //    {
+    //        IDamage dmg = player.GetComponent<IDamage>();
+    //        if (dmg != null)
+    //        {
+    //            dmg.takeDamage(attackDmg);
+    //        }
+    //    }
+
+    //    yield return new WaitForSeconds(timeBetweenAttacks);
+    //    ResetAttack();
+    //}
+
+    //void ResetAttack()
+    //{
+    //    alreadyAttacked = false;
+    //}
+
+    IEnumerator PerformAttack()
     {
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        if (!alreadyAttacked)
+        //alreadyAttacked = true;
+        Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.LookAt(playerPos);
+        anim.SetTrigger("Attack");
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPos.position, attackRange, whatIsPlayer);
+        foreach (Collider hit in hitPlayer)
         {
-            // attack code goes here
-            // 1: play attack animation
-            //anim.SetTrigger("Attack");
-
-            // 2: detect if player is in range of attack
-
-
-            // 3: damage player
-
-
-
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            IDamage dmg = hit.GetComponent<IDamage>();
+            if (dmg != null)
+            {
+                dmg.takeDamage(attackDmg);
+            }
         }
-    }
 
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
+        yield return new WaitForSeconds(timeBetweenAttacks);
     }
 
     public void StopMovement()
@@ -186,5 +225,41 @@ public class zombieAI : MonoBehaviour
     {
         agent.isStopped = false;
         isEmerging = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPos == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    public void takeDamage(int amount)
+    {
+        anim.SetTrigger("TakeDamage");
+        HP -= amount;
+
+        StartCoroutine(FlashRed());
+
+        if (HP <= 0)
+        {
+            agent.isStopped = true;
+            anim.SetTrigger("Death");
+        }
+    }
+
+    public void death()
+    {
+        Destroy(gameObject);
+
+        gameManager.instance.updateEnemyGoal(-1);
+    }
+
+    IEnumerator FlashRed()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = Color.white;
     }
 }
