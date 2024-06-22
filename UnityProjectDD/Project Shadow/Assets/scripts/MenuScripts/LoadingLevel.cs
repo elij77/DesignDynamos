@@ -10,6 +10,7 @@ public class LoadingLevel : MonoBehaviour
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject LoadingScreen;
     [SerializeField] private GameObject WinMenu;
+    [SerializeField] private GameObject LoseMenu;
 
     [Header("Slider")]
     [SerializeField] private Slider LoadingSlider;
@@ -40,6 +41,15 @@ public class LoadingLevel : MonoBehaviour
     public void loadWinLevel(string level)
     {
         WinMenu.SetActive(false);
+
+        LoadingScreen.SetActive(true);
+
+        StartCoroutine(loadLevelASync(level));
+    }
+
+    public void loadLoseLevel(string level)
+    {
+        LoseMenu.SetActive(false);
 
         LoadingScreen.SetActive(true);
 
