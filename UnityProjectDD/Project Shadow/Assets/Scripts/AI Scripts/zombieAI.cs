@@ -37,11 +37,18 @@ public class zombieAI : MonoBehaviour, IDamage
     [SerializeField] float attackRange = 0.5f;
     [SerializeField] int attackDmg = 2;
 
+    // circling (strafing)
+    int strafeMovementRange; // how far enemy will move when strafing
+    int strafeDistance; // distance from player that enemy will strafe
+    bool willStrafe;
+    bool strafeDirection; // true: right, false: left
+
     // states
     public float sightDistance;
     public float attackDistance;
     public bool playerInSightDistance;
     public bool playerInAttackDistance;
+    public bool playerInStrafeDistance;
     public bool isEmerging;
 
     private Coroutine roamingCoroutine;
@@ -56,10 +63,17 @@ public class zombieAI : MonoBehaviour, IDamage
         agent = GetComponent<NavMeshAgent>();
         isRoamingEnemy = roamingEnemy;
         isWaveEnemy = !isRoamingEnemy;
+        willStrafe = Random.value < 0.5f;
         if (isWaveEnemy) 
         { 
             destination = player.position;
             agent.SetDestination(destination); 
+        }
+        if (willStrafe)
+        {
+            strafeMovementRange = Random.Range(5, 25);
+            strafeDistance = Random.Range(5, 15);
+            strafeDirection = Random.value < 0.5f;
         }
     }
 
@@ -71,6 +85,7 @@ public class zombieAI : MonoBehaviour, IDamage
 
         playerInSightDistance = Physics.CheckSphere(transform.position, sightDistance, whatIsPlayer);
         playerInAttackDistance = Physics.CheckSphere(transform.position, attackDistance, whatIsPlayer);
+        playerInStrafeDistance = Vector3.Distance(transform.position, player.position) <= strafeDistance;
 
         if (!isEmerging)
         {
@@ -95,6 +110,7 @@ public class zombieAI : MonoBehaviour, IDamage
             
             if (playerInSightDistance && !playerInAttackDistance) ChasePlayer();
             if (playerInSightDistance && playerInAttackDistance) StartCoroutine(PerformAttack());
+            if (willStrafe && playerInStrafeDistance) CirclePlayer();
         }
     }
 
@@ -153,6 +169,20 @@ public class zombieAI : MonoBehaviour, IDamage
 
     private void ChasePlayer()
     {
+        agent.SetDestination(player.position);
+    }
+
+    private void CirclePlayer()
+    {
+        Vector3 strafeDirectionVector = strafeDirection ? transform.right : -transform.right;
+        Vector3 strafePosition = transform.position + strafeDirectionVector * strafeMovementRange;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(strafePosition, out hit, strafeMovementRange, 1))
+        {
+            agent.SetDestination(hit.position);
+        }
+
         agent.SetDestination(player.position);
     }
 

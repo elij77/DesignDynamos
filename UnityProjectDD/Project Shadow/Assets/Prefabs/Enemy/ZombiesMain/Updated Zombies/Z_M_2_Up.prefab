@@ -7336,6 +7336,7 @@ MonoBehaviour:
   attackDistance: 1.75
   playerInSightDistance: 0
   playerInAttackDistance: 0
+  playerInStrafeDistance: 0
   isEmerging: 0
 --- !u!95 &870098270397086079
 Animator:
@@ -7347,7 +7348,7 @@ Animator:
   m_GameObject: {fileID: 8878780445446453759}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3df7c8c329d3e3c448eba18761ace696, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6d03965b0aa4e9a4dbb1f285298efc09, type: 2}
+  m_Controller: {fileID: 9100000, guid: a0fd911f4cd6db645ab298878353be81, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
