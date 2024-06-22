@@ -46,6 +46,8 @@ public class zombieAI : MonoBehaviour, IDamage
 
     private Coroutine roamingCoroutine;
 
+    long place;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -241,6 +243,11 @@ public class zombieAI : MonoBehaviour, IDamage
         AudioManager.Instance.playSFX("Zombie Hit");
         anim.SetTrigger("TakeDamage");
         HP -= amount;
+        if (HP >= 0)
+        {
+            place = amount * 5;
+            gameManager.instance.updatePoints(place);
+        }
 
         StartCoroutine(FlashRed());
 
@@ -258,6 +265,8 @@ public class zombieAI : MonoBehaviour, IDamage
         Destroy(gameObject);
 
         gameManager.instance.updateEnemyGoal(-1);
+        place = 100;
+        gameManager.instance.updatePoints(place);
     }
 
     IEnumerator FlashRed()
