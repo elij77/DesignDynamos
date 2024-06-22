@@ -107,6 +107,11 @@ public class zombieAI : MonoBehaviour, IDamage
                     }
                 }
             }
+            else if (!isRoamingEnemy)
+            {
+                destination = player.position;
+                agent.SetDestination(destination);
+            }
             
             if (playerInSightDistance && !playerInAttackDistance) ChasePlayer();
             if (playerInSightDistance && playerInAttackDistance) StartCoroutine(PerformAttack());
@@ -280,10 +285,13 @@ public class zombieAI : MonoBehaviour, IDamage
         }
 
         StartCoroutine(FlashRed());
+        agent.SetDestination(player.position);
 
         if (HP <= 0)
         {
-            agent.isStopped = true;
+            Vector3 stop = Vector3.zero;
+            agent.velocity = stop;
+            agent.acceleration = 0;
             anim.SetTrigger("Death");
         }
     }

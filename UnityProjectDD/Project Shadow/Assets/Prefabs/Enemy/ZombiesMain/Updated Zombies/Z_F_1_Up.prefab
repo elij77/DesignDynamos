@@ -3590,7 +3590,7 @@ MonoBehaviour:
   anim: {fileID: 4300649580969285949}
   player: {fileID: 0}
   attackPos: {fileID: 8023986239741147824}
-  model: {fileID: 13700096, guid: 2c238576ad7881d40a5027194c3ade21, type: 3}
+  model: {fileID: 6403049262391947151}
   roamingEnemy: 0
   roamTimer: 3
   HP: 25
@@ -3604,6 +3604,7 @@ MonoBehaviour:
   attackDistance: 1.75
   playerInSightDistance: 0
   playerInAttackDistance: 0
+  playerInStrafeDistance: 0
   isEmerging: 0
 --- !u!95 &4300649580969285949
 Animator:

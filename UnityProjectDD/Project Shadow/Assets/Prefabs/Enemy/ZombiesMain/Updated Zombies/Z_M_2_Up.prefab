@@ -7322,7 +7322,7 @@ MonoBehaviour:
   anim: {fileID: 870098270397086079}
   player: {fileID: 0}
   attackPos: {fileID: 7549234977967663923}
-  model: {fileID: 13700096, guid: c3e686180d2dc2c4f8686ebe36ee2790, type: 3}
+  model: {fileID: 5337542719026287557}
   roamingEnemy: 0
   roamTimer: 3
   HP: 20

@@ -116,7 +116,7 @@ public class gameManager : MonoBehaviour
             }
         }
         //Updated upstream
-        if (currentWave == 5 && enemyCount == 0)
+        if (currentWave == 1 && enemyCount == 0)
         {
             StartCoroutine(win());
         }

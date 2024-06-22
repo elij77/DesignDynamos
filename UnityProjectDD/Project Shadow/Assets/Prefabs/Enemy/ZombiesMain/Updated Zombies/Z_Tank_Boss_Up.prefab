@@ -952,7 +952,7 @@ MonoBehaviour:
   anim: {fileID: 4944775459729075710}
   player: {fileID: 0}
   attackPos: {fileID: 640570854724349707}
-  model: {fileID: 13700100, guid: a169f8883614ee847810e7f929893bf2, type: 3}
+  model: {fileID: 1808504797963184899}
   roamingEnemy: 0
   roamTimer: 3
   HP: 250
@@ -960,7 +960,7 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   destinationRange: 20
   timeBetweenAttacks: 3.5
-  attackRange: 3
+  attackRange: 1.85
   attackDmg: 75
   sightDistance: 20
   attackDistance: 2
