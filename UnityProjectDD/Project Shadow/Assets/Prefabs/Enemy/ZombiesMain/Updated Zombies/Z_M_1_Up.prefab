@@ -2664,7 +2664,7 @@ MonoBehaviour:
   agent: {fileID: 1426498599883221716}
   anim: {fileID: 6437993214190073008}
   player: {fileID: 0}
-  attackPos: {fileID: 0}
+  attackPos: {fileID: 2757891958053701987}
   model: {fileID: 13700094, guid: 60e663e407bcf354994536be3cd8a1ac, type: 3}
   roamingEnemy: 0
   roamTimer: 3
