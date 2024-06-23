@@ -11,7 +11,6 @@ public class Mine : MonoBehaviour, IDamage
     [SerializeField] Transform damageRadius;
     private void OnTriggerEnter(Collider other)
     {
-      //  Debug.Log("boom");
         {
             IDamage dmg = other.transform.GetComponent<IDamage>();
 
@@ -27,15 +26,12 @@ public class Mine : MonoBehaviour, IDamage
     }
     public void aoeDamange()
     {
-       // Debug.Log("AOE");
         DamageRadius dr;
         dr = damageRadius.GetComponent<DamageRadius>();
         if (dr != null)
         {
-          //  Debug.Log("not found1");
             dr.Damage(aoeDamageAmount);
         }
-       // else { Debug.Log("not found"); }
     }
     public void takeDamage(int damage)
     {
@@ -46,7 +42,6 @@ public class Mine : MonoBehaviour, IDamage
         {
             gameObject.GetComponent<Renderer>().enabled = false;
         }
-      //  Debug.Log("destroyed");
         aoeDamange();
         StartCoroutine(PlaySoundWithDelay());
 

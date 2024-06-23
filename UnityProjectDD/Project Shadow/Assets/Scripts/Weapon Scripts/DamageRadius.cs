@@ -16,7 +16,6 @@ public class DamageRadius : MonoBehaviour
     }
     public void Damage( int damage)
     {
-        Debug.Log("AOE66");
         if (colliders.Count > 0)
         {
             for (int i = 0; i < colliders.Count; i++)
@@ -32,7 +31,6 @@ public class DamageRadius : MonoBehaviour
 
             }
         }
-        else { Debug.Log("no objects"); }
     }
     public List<Collider> GetColliders() 
     { 

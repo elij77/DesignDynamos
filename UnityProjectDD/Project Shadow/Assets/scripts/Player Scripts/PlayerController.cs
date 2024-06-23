@@ -514,8 +514,6 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
     public void changeStat(string stat, int amount)
     {
-        Debug.Log(stat);
-
         if (stat == "runSpeed")
         {
             runSpeed = runSpeed + amount;
@@ -531,6 +529,4 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
         speed = walkSpeed;
 
     }
-
-    //done
 }

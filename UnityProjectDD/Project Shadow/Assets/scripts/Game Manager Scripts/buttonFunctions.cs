@@ -13,7 +13,7 @@ public class buttonFunctions : MonoBehaviour
 {
     public Animator animator;
 
-    public GameObject optionsFirstSelected, SkillsFirstSelected, soundFirstSelected, optionsClosedSelected, SkillsClosedSelected, soundClosedSelected;
+    public GameObject SkillsFirstSelected, soundFirstSelected, SkillsClosedSelected, soundClosedSelected;
 
     public void resume()
     {
@@ -69,7 +69,6 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnPause();
         gameManager.instance.optionsMenu();
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(optionsFirstSelected);
 
     }
 
@@ -92,20 +91,19 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnPause();
         gameManager.instance.pauseMenu();
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(optionsClosedSelected);
     }
 
     public void optionsReturnFromHUD()
     {
         gameManager.instance.stateUnPause();
-        gameManager.instance.optionsMenu();
+        gameManager.instance.pauseMenu();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(SkillsClosedSelected);
     }
     public void optionsReturnFromSound()
     {
         gameManager.instance.stateUnPause();
-        gameManager.instance.optionsMenu();
+        gameManager.instance.pauseMenu();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(soundClosedSelected);
     }
