@@ -1925,8 +1925,8 @@ Transform:
   m_GameObject: {fileID: 2019255757561005915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalPosition: {x: 0, y: -0.09375, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3374660803278810633}
@@ -5915,11 +5915,11 @@ MonoBehaviour:
   maxHP: 30
   destination: {x: 0, y: 0, z: 0}
   destinationRange: 20
-  timeBetweenAttacks: 2.5
+  timeBetweenAttacks: 1
   attackRange: 1
   attackDmg: 15
   sightDistance: 20
-  attackDistance: 1.75
+  attackDistance: 2
   playerInSightDistance: 0
   playerInAttackDistance: 0
   playerInStrafeDistance: 0
