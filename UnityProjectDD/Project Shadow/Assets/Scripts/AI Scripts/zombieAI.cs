@@ -54,6 +54,7 @@ public class zombieAI : MonoBehaviour, IDamage
     private Coroutine roamingCoroutine;
 
     long place;
+    bool isDead = false;
 
 
     // Start is called before the first frame update
@@ -207,48 +208,6 @@ public class zombieAI : MonoBehaviour, IDamage
         agent.SetDestination(player.position);
     }
 
-    //private void AttackPlayer()
-    //{
-    //    agent.SetDestination(transform.position);
-
-    //    Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
-    //    transform.LookAt(playerPos);
-
-    //    if (!alreadyAttacked)
-    //    {
-    //        // attack code goes here
-    //        // 1: play attack animation
-    //        anim.SetTrigger("Attack");
-    //        alreadyAttacked = true;
-    //        StartCoroutine(PerformAttack());
-    //    }
-    //}
-
-    //IEnumerator PerformAttack()
-    //{
-    //    //AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
-    //    //yield return new WaitForSeconds(animStateInfo.length);
-
-    //    Collider[] hitPlayer = Physics.OverlapSphere(attackPos.position, attackRange, whatIsPlayer);
-
-    //    foreach (Collider player in hitPlayer)
-    //    {
-    //        IDamage dmg = player.GetComponent<IDamage>();
-    //        if (dmg != null)
-    //        {
-    //            dmg.takeDamage(attackDmg);
-    //        }
-    //    }
-
-    //    yield return new WaitForSeconds(timeBetweenAttacks);
-    //    ResetAttack();
-    //}
-
-    //void ResetAttack()
-    //{
-    //    alreadyAttacked = false;
-    //}
-
     IEnumerator PerformAttack()
     {
         if (alreadyAttacked)
@@ -301,27 +260,37 @@ public class zombieAI : MonoBehaviour, IDamage
     {
         if (HP > 0)
         {
-            AudioManager.Instance.playSFX("Zombie Hit");
-            anim.SetTrigger("TakeDamage");
-            HP -= amount;
-            StartCoroutine(FlashRed());
-            agent.SetDestination(player.position);
+            if (!isDead)
+            {
+                AudioManager.Instance.playSFX("Zombie Hit");
+                anim.SetTrigger("TakeDamage");
+                HP -= amount;
+                //StartCoroutine(FlashRed());
+                agent.SetDestination(player.position);
+            }
+            
         }
         
         if (HP >= 0)
         {
-            place = amount * 5;
-            gameManager.instance.updatePoints(place);
+            if (!isDead)
+            {
+                place = amount * 5;
+                gameManager.instance.updatePoints(place);
+            }
+            
         }
 
         
 
         if (HP <= 0)
         {
+            isDead = true;
             Vector3 stop = Vector3.zero;
             agent.velocity = stop;
             agent.acceleration = 0;
             anim.SetTrigger("Death");
+            anim.SetBool("isDead", true);
         }
     }
 
