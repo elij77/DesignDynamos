@@ -175,7 +175,13 @@ public class gameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(isPaused);
-        menuActive = null;
+        if (menuActive != null)
+        {
+            menuActive.SetActive(isPaused);
+            menuActive = null;
+        }
+        
+
     }
 
     public void updateAmmo(int curAmount, int clip)

@@ -3261,6 +3261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMenu: {fileID: 685866515}
   LoadingScreen: {fileID: 1401537466}
+  WinMenu: {fileID: 0}
+  LoseMenu: {fileID: 0}
   LoadingSlider: {fileID: 777506197}
 --- !u!4 &448319622
 Transform:

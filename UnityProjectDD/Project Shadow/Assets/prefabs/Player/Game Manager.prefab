@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1315725113388792893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2482445167601113128}
+  - component: {fileID: 5144818774318054855}
+  - component: {fileID: 9102232198794772071}
+  m_Layer: 5
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2482445167601113128
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315725113388792893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5144818774318054855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315725113388792893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f999ca104c741c448882aa26305f842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  optionsFirstSelected: {fileID: 0}
+  SkillsFirstSelected: {fileID: 0}
+  soundFirstSelected: {fileID: 0}
+  optionsClosedSelected: {fileID: 0}
+  SkillsClosedSelected: {fileID: 0}
+  soundClosedSelected: {fileID: 0}
+--- !u!114 &9102232198794772071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315725113388792893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b220275c33ada6489396f0c1f1f7d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuActive: {fileID: 0}
+  menuPause: {fileID: 0}
+  menuWin: {fileID: 0}
+  menuLose: {fileID: 0}
+  menuSound: {fileID: 0}
+  menuOptions: {fileID: 0}
+  menuSkills: {fileID: 0}
+  enemyCountText: {fileID: 0}
+  ammoText: {fileID: 0}
+  ammoCurrText: {fileID: 0}
+  points: {fileID: 0}
+  waveCountText: {fileID: 0}
+  skillPointText: {fileID: 0}
+  menuSkillPointText: {fileID: 0}
+  audioSourceObject: {fileID: 0}
+  spawntiles: []
+  waveObjects:
+  - {fileID: 0}
+  money: 500
+  flashCanvasGroupUI: {fileID: 0}
+  flashCanvasGroupUI1: {fileID: 0}
+  flashCanvasGroupUI2: {fileID: 0}
+  flashCanvasGroupUI3: {fileID: 0}
+  flashCanvasGroupUI4: {fileID: 0}
+  enemyCanvasGroupUI: {fileID: 0}
+  enemyCanvasGroupNumsUI: {fileID: 0}
+  miniMapUI: {fileID: 0}
+  playerSpawnPos: {fileID: 0}
+  playerFlashDamage: {fileID: 0}
+  playerFlashDamage1: {fileID: 0}
+  playerFlashDamage2: {fileID: 0}
+  playerFlashDamage3: {fileID: 0}
+  playerFlashDamage4: {fileID: 0}
+  playerHPBar: {fileID: 0}
+  playerArmorBar: {fileID: 0}
+  playerStamBar: {fileID: 0}
+  checkpointPopup: {fileID: 0}
+  winFirstSelected: {fileID: 0}
+  loseFirstSelected: {fileID: 0}
+  pauseFirstSelected: {fileID: 0}
+  player: {fileID: 0}
+  playerScript: {fileID: 0}
+  camera: {fileID: 0}
+  cameraScript: {fileID: 0}
+  currentWave: 0
+  isPaused: 0
+  skillpoint: 0
