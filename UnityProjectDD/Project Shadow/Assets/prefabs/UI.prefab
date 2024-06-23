@@ -10764,7 +10764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4835648324309231358, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_text
-      value: 'Press F to buy max health ($500)
+      value: 'Press F to buy max health ($5000)
 
 '
       objectReference: {fileID: 0}
@@ -11744,7 +11744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4835648324309231358, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4835648324309231358, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_fontSize
@@ -11980,7 +11980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4835648324309231358, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_text
-      value: 'Press F to buy max armor ($500)
+      value: 'Press F to buy max armor ($1500)
 
 '
       objectReference: {fileID: 0}
@@ -12116,7 +12116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4835648324309231358, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_text
-      value: Press F to buy max ammo ($250)
+      value: Press F to buy max ammo ($1000)
       objectReference: {fileID: 0}
     - target: {fileID: 4835648324309231358, guid: cd66b0d16bf55e541bc63209d10a2969, type: 3}
       propertyPath: m_fontSize

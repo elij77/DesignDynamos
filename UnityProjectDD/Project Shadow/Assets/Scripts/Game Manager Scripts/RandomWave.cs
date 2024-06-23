@@ -10,7 +10,6 @@ public class RandomWave : MonoBehaviour, IWave
 
     public void CreateWave()
     {
-       // Debug.Log("waveobject");
         for (int j = 0; j < ObjectsPerWave; j++)
         {
             arrayPos = Random.Range(0, gameManager.instance.spawntiles.Count);

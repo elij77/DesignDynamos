@@ -333,7 +333,6 @@ public class gameManager : MonoBehaviour
         {
             if (waveObjects.Count > 0 && spawntiles.Count > 0)
             {
-                //Debug.Log(waveObjects.Count.ToString());
                 for (int i = 0; i < waveObjects.Count; i++)
                 {
                     RandomWave random = waveObjects[i].GetComponent<RandomWave>();

@@ -9,8 +9,6 @@ public class SpawnTile : MonoBehaviour
     void Start()
     {
         gameManager.instance.RegisterSpawnTile(gameObject);
-
-     //   Debug.Log("registertile");
     }
 
    

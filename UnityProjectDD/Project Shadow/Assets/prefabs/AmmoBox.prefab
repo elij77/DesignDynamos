@@ -314,8 +314,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8285014933608196967}
-  - component: {fileID: 6967592607263035979}
   - component: {fileID: -6133689030417250973}
+  - component: {fileID: 6794491045444676243}
   m_Layer: 0
   m_Name: AmmoBox
   m_TagString: Ammo
@@ -340,8 +340,25 @@ Transform:
   - {fileID: 1690043551606136593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6967592607263035979
-BoxCollider:
+--- !u!114 &-6133689030417250973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091861528684125162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad014b370c37d8e40a98b1ec025f68f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 1000
+  interactText: {fileID: 0}
+  interactTextFull: {fileID: 0}
+  interactTextBroke: {fileID: 0}
+  controller: {fileID: 0}
+--- !u!135 &6794491045444676243
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -359,22 +376,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6133689030417250973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9091861528684125162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad014b370c37d8e40a98b1ec025f68f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  price: 250
-  interactText: {fileID: 0}
-  interactTextFull: {fileID: 0}
-  interactTextBroke: {fileID: 0}
-  controller: {fileID: 0}

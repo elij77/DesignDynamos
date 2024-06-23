@@ -1949,14 +1949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoBox (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6967592607263035979, guid: 657f72c4d52a42e48b2eb32d1be1d7ae, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9091861528684125162, guid: 657f72c4d52a42e48b2eb32d1be1d7ae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 587798843}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 657f72c4d52a42e48b2eb32d1be1d7ae, type: 3}
 --- !u!1 &354479009 stripped
 GameObject:
@@ -2912,32 +2908,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ac24a8a73a102847b7e42ac6bb97220, type: 3}
---- !u!1 &587798839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9091861528684125162, guid: 657f72c4d52a42e48b2eb32d1be1d7ae, type: 3}
-  m_PrefabInstance: {fileID: 330985406}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &587798843
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587798839}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &590189435
 PrefabInstance:
   m_ObjectHideFlags: 0
