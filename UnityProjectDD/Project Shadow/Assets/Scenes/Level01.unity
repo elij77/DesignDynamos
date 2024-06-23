@@ -7018,6 +7018,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1693480157}
+    - target: {fileID: 2351596669257494231, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_text
+      value: Skill Points (Pause)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351596669257494231, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_margin.x
+      value: -106.82885
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351596669257494231, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_margin.y
+      value: -25.597383
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351596669257494231, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_margin.z
+      value: -43.041264
+      objectReference: {fileID: 0}
     - target: {fileID: 2738459250194381634, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7050,6 +7066,14 @@ PrefabInstance:
       propertyPath: waveObjects.Array.data[5]
       value: 
       objectReference: {fileID: 864959193}
+    - target: {fileID: 6534308423800155978, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 19.952074
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534308423800155978, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20.277737
+      objectReference: {fileID: 0}
     - target: {fileID: 8327188544172139619, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
       propertyPath: m_Pivot.x
       value: 0
