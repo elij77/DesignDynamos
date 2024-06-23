@@ -9799,7 +9799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  price: 1000
+  price: 500
   interactText: {fileID: 0}
   interactTextFull: {fileID: 0}
   interactTextBroke: {fileID: 0}

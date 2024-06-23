@@ -4993,7 +4993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armor: 100
-  price: 250
+  price: 500
   interactText: {fileID: 0}
   interactTextFull: {fileID: 0}
   interactTextBroke: {fileID: 0}
