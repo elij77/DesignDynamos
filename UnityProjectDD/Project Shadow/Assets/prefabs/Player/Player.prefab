@@ -249,8 +249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControls: {fileID: 545635596772998981}
-  HP: 50
-  Armor: 25
+  HP: 100
+  Armor: 30
   speed: 10
   walkSpeed: 10
   runSpeed: 20
@@ -261,7 +261,7 @@ MonoBehaviour:
   sprintMod: 2
   jumpMax: 2
   jumpSpeed: 5
-  grav: 30
+  grav: 15
   shootDamage: 1
   shootRate: 0.25
   shootDist: 35

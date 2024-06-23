@@ -974,7 +974,7 @@ MonoBehaviour:
   destinationRange: 20
   timeBetweenAttacks: 1
   attackRange: 1.75
-  attackDmg: 20
+  attackDmg: 10
   sightDistance: 20
   attackDistance: 1
   playerInSightDistance: 0

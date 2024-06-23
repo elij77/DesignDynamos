@@ -251,7 +251,11 @@ public class zombieAI : MonoBehaviour, IDamage
 
     IEnumerator PerformAttack()
     {
-        //alreadyAttacked = true;
+        if (alreadyAttacked)
+        {
+            yield break;
+        }
+        alreadyAttacked = true;
         Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(playerPos);
         anim.SetTrigger("Attack");
@@ -262,11 +266,15 @@ public class zombieAI : MonoBehaviour, IDamage
             IDamage dmg = hit.GetComponent<IDamage>();
             if (dmg != null)
             {
+                yield return new WaitForSeconds(0.5f);
                 dmg.takeDamage(attackDmg);
             }
+           
         }
 
         yield return new WaitForSeconds(timeBetweenAttacks);
+
+        alreadyAttacked = false;
     }
 
     public void StopMovement()
