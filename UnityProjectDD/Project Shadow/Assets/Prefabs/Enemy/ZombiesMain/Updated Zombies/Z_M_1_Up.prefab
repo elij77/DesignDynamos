@@ -2668,8 +2668,8 @@ MonoBehaviour:
   model: {fileID: 6448970512219568793}
   roamingEnemy: 0
   roamTimer: 3
-  HP: 24
-  maxHP: 25
+  HP: 30
+  maxHP: 30
   destination: {x: 0, y: 0, z: 0}
   destinationRange: 20
   timeBetweenAttacks: 1.5
