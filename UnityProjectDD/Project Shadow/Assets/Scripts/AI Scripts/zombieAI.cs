@@ -80,42 +80,58 @@ public class zombieAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        float animSpeed = agent.velocity.normalized.magnitude;
-        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), Mathf.Abs(animSpeed), Time.deltaTime));
-
-        playerInSightDistance = Physics.CheckSphere(transform.position, sightDistance, whatIsPlayer);
-        playerInAttackDistance = Physics.CheckSphere(transform.position, attackDistance, whatIsPlayer);
-        playerInStrafeDistance = Vector3.Distance(transform.position, player.position) <= strafeDistance;
-
-        if (!isEmerging)
-        {
-            if (isRoamingEnemy)
-            {
-                if (!playerInSightDistance && !playerInAttackDistance) 
-                {
-                    if (roamingCoroutine == null)
-                    {
-                        roamingCoroutine = StartCoroutine(Roam());
-                    }
-                }
-                else
-                {
-                    if (roamingCoroutine != null)
-                    {
-                        StopCoroutine(roamingCoroutine);
-                        roamingCoroutine = null;
-                    }
-                }
-            }
-            else if (!isRoamingEnemy)
-            {
-                destination = player.position;
-                agent.SetDestination(destination);
-            }
+        if (gameManager.instance.playerHPBar.fillAmount == 0)
             
-            if (playerInSightDistance && !playerInAttackDistance) ChasePlayer();
-            if (playerInSightDistance && playerInAttackDistance) StartCoroutine(PerformAttack());
-            if (willStrafe && playerInStrafeDistance) CirclePlayer();
+        {
+            return;
+        }
+        else
+        {
+            float animSpeed = agent.velocity.normalized.magnitude;
+            anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), Mathf.Abs(animSpeed), Time.deltaTime));
+            if (HP > 0)
+            {
+                anim.SetInteger("HP", 1);
+            }else if (HP <= 0) 
+            {
+                anim.SetInteger("HP", 0);
+            }
+
+            playerInSightDistance = Physics.CheckSphere(transform.position, sightDistance, whatIsPlayer);
+            playerInAttackDistance = Physics.CheckSphere(transform.position, attackDistance, whatIsPlayer);
+            playerInStrafeDistance = Vector3.Distance(transform.position, player.position) <= strafeDistance;
+
+            if (!isEmerging)
+            {
+                if (isRoamingEnemy)
+                {
+                    if (!playerInSightDistance && !playerInAttackDistance)
+                    {
+                        if (roamingCoroutine == null)
+                        {
+                            roamingCoroutine = StartCoroutine(Roam());
+                        }
+                    }
+                    else
+                    {
+                        if (roamingCoroutine != null)
+                        {
+                            StopCoroutine(roamingCoroutine);
+                            roamingCoroutine = null;
+                        }
+                    }
+                }
+                else if (!isRoamingEnemy)
+                {
+                    destination = player.position;
+                    agent.SetDestination(destination);
+                }
+
+                if (playerInSightDistance && !playerInAttackDistance) ChasePlayer();
+                if (playerInSightDistance && playerInAttackDistance) StartCoroutine(PerformAttack());
+                if (willStrafe && playerInStrafeDistance) CirclePlayer();
+            }
+        
         }
     }
 
@@ -275,17 +291,22 @@ public class zombieAI : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
-        AudioManager.Instance.playSFX("Zombie Hit");
-        anim.SetTrigger("TakeDamage");
-        HP -= amount;
+        if (HP > 0)
+        {
+            AudioManager.Instance.playSFX("Zombie Hit");
+            anim.SetTrigger("TakeDamage");
+            HP -= amount;
+            StartCoroutine(FlashRed());
+            agent.SetDestination(player.position);
+        }
+        
         if (HP >= 0)
         {
             place = amount * 5;
             gameManager.instance.updatePoints(place);
         }
 
-        StartCoroutine(FlashRed());
-        agent.SetDestination(player.position);
+        
 
         if (HP <= 0)
         {
