@@ -116,49 +116,23 @@ public class gameManager : MonoBehaviour
             }
         }
         //Updated upstream
-        if (currentWave == 10 && enemyCount == 0)
+        if (currentWave == 6 && enemyCount == 0)
         {
             StartCoroutine(win());
         }
 
-        if (currentWave == 5)
-        {
-            StopCoroutine(StartWave());
-        }
-
-        //if (Input.GetKey(KeyCode.Tab))
-        //{
-        //    scoreScreen.SetActive(true);
-        //    UpdateScoreScreen();
-        //}
-        //else
-        //{
-        //    scoreScreen.SetActive(false);
-        //}
-
+        
         
     }
 
-    //public void EnemyKilled()
-    //{
-    //    killCount++;
-    //}
+    
 
     public void NewWave()
     {
         waveNumber++;
     }
 
-    //void UpdateScoreScreen()
-    //{
-    //    Text waveText = scoreScreen.transform.Find("Wave").GetComponent<Text>();
-    //    Text killText = scoreScreen.transform.Find("Kill").GetComponent<Text>();
-
-    //    waveText.text = "Wave: " + waveNumber;
-    //    killText.text = "Kills: " + killCount;
-
-    //}
-
+    
     public void statePause()
     {
         isPaused = !isPaused;

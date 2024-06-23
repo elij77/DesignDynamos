@@ -52,7 +52,7 @@ public class LoadingLevel : MonoBehaviour
 
             LoadingSlider.value = progress;
 
-            yield return new WaitForSeconds(2);
+            yield return null;
         }
     }
 

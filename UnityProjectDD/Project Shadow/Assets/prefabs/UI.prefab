@@ -12252,7 +12252,7 @@ PrefabInstance:
       objectReference: {fileID: 3290059853436940424}
     - target: {fileID: 9102232198794772071, guid: 2f9231dcc1fb6484d8e28be0af1bbf51, type: 3}
       propertyPath: waveObjects.Array.size
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
