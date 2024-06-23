@@ -48,7 +48,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
     [SerializeField] Camera playerCamera;
 
-    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] public List<gunStats> gunList = new List<gunStats>();
 
     [SerializeField] GameObject gunModel;
 
@@ -243,7 +243,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
         updatePlayerUI();
     }
-    void updatePlayerUI()
+    public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
         gameManager.instance.playerArmorBar.fillAmount = (float)Armor / ArmorOrig;
@@ -495,22 +495,22 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
         updatePlayerUI();
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        for (int j = 0; j < gunList.Count; j++)
-        {
-            if (other.gameObject.tag == "Ammo" && gunList.Capacity > 0 && gunList[j].ammoMax < gunList[j].startup)
-            {
-                for (int i = 0; i < gunList.Count; i++)
-                {
-                    gunList[i].ammoMax = gunList[i].startup;
-                }
-                Destroy(other.gameObject);
-            }
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    for (int j = 0; j < gunList.Count; j++)
+    //    {
+    //        if (other.gameObject.tag == "Ammo" && gunList.Capacity > 0 && gunList[j].ammoMax < gunList[j].startup)
+    //        {
+    //            for (int i = 0; i < gunList.Count; i++)
+    //            {
+    //                gunList[i].ammoMax = gunList[i].startup;
+    //            }
+    //            //Destroy(other.gameObject);
+    //        }
 
-            updatePlayerUI();
-        }
-    }
+    //        updatePlayerUI();
+    //    }
+    //}
 
     public void changeStat(string stat, int amount)
     {

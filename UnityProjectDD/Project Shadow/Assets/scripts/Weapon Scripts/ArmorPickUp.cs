@@ -38,7 +38,7 @@ public class ArmorPickUp : MonoBehaviour
 
                     shield.RepairArmor(armor);
 
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
 
                     gameManager.instance.updatePointsSub(price);
 

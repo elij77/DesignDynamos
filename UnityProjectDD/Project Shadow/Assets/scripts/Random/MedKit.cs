@@ -40,7 +40,7 @@ public class MedKit : MonoBehaviour
 
                     heal.Heal(health);
 
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
 
                     gameManager.instance.updatePointsSub(price);
 
