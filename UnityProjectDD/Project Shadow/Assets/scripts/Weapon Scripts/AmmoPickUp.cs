@@ -30,41 +30,45 @@ public class AmmoPickUp : MonoBehaviour
     {
         long moneylong = gameManager.instance.GetPoints();
 
-        interactText.SetActive(true);
-        for (int j = 0; j < controller.gunList.Count; j++)
+        bool ammoFull = true;
+
+        foreach (var gun in controller.gunList)
         {
-            if (Input.GetButtonDown("Interact") && moneylong < price)
+            if (gun.ammoMax < gun.startup)
+            {
+                ammoFull = false;
+                break;
+            }
+        }
+
+        if (ammoFull)
+        {
+            interactText.SetActive(false);
+
+            interactTextFull.SetActive(true);
+
+            return;
+        }
+
+        interactText.SetActive(true);
+
+        if (Input.GetButtonDown("Interact"))
+        {
+            if (moneylong < price)
             {
                 StartCoroutine(broke());
-            }
-            else if (Input.GetButtonDown("Interact") && moneylong >= price)
+            }else
             {
-
-                for (int i = 0; i < controller.gunList.Count; i++)
+                foreach (var gun in controller.gunList)
                 {
-                    controller.gunList[i].ammoMax = controller.gunList[i].startup;
+                    gun.ammoMax = gun.startup;
                 }
 
-                //if (other.gameObject.tag == "Ammo" && controller.gunList.Capacity > 0 && controller.gunList[j].ammoMax < controller.gunList[j].startup)
-                //{
-                //  for (int i = 0; i < controller.gunList.Count; i++)
-                //  {
-                //   controller.gunList[i].ammoMax = controller.gunList[i].startup;
-                //  }
-
-                //}
-
                 controller.updatePlayerUI();
-                
-             gameManager.instance.updatePointsSub(price);
 
+                gameManager.instance.updatePointsSub(price);
 
-             interactText.SetActive(false);
-            }
-            else if (controller.gunList[j].ammoMax == controller.gunList[j].startup)
-            {
                 interactText.SetActive(false);
-                interactTextFull.SetActive(true);
             }
         }
            
