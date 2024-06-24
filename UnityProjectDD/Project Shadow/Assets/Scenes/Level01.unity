@@ -1789,7 +1789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4705907730903100960, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
       propertyPath: price
-      value: 500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 4705907730903100960, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
       propertyPath: interactText
