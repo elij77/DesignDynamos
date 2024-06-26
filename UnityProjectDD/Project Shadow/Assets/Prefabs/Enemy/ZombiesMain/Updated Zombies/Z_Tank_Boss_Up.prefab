@@ -962,6 +962,7 @@ MonoBehaviour:
   timeBetweenAttacks: 3.5
   attackRange: 1.85
   attackDmg: 30
+  hitCollider: {fileID: 2178879265669064321}
   sightDistance: 20
   attackDistance: 3
   playerInSightDistance: 0

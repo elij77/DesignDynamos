@@ -36,6 +36,7 @@ public class zombieAI : MonoBehaviour, IDamage
     bool alreadyAttacked;
     [SerializeField] float attackRange = 0.5f;
     [SerializeField] int attackDmg = 2;
+    public Collider hitCollider;
 
     // circling (strafing)
     int strafeMovementRange; // how far enemy will move when strafing
@@ -131,6 +132,7 @@ public class zombieAI : MonoBehaviour, IDamage
                 if (playerInSightDistance && !playerInAttackDistance) ChasePlayer();
                 if (playerInSightDistance && playerInAttackDistance) StartCoroutine(PerformAttack());
                 if (willStrafe && playerInStrafeDistance) CirclePlayer();
+                
             }
         
         }
@@ -214,26 +216,33 @@ public class zombieAI : MonoBehaviour, IDamage
         {
             yield break;
         }
+
+        
         alreadyAttacked = true;
         Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(playerPos);
-        anim.SetTrigger("Attack");
-        AudioManager.Instance.playSFX("Zombie Attack");
-        Collider[] hitPlayer = Physics.OverlapSphere(attackPos.position, attackRange, whatIsPlayer);
-        foreach (Collider hit in hitPlayer)
+        if (HP > 0)
         {
-            IDamage dmg = hit.GetComponent<IDamage>();
-            if (dmg != null)
+            anim.SetTrigger("Attack");
+            AudioManager.Instance.playSFX("Zombie Attack");
+            Collider[] hitPlayer = Physics.OverlapSphere(attackPos.position, attackRange, whatIsPlayer);
+            foreach (Collider hit in hitPlayer)
             {
-                yield return new WaitForSeconds(0.5f);
-                dmg.takeDamage(attackDmg);
+                IDamage dmg = hit.GetComponent<IDamage>();
+                if (dmg != null)
+                {
+                    yield return new WaitForSeconds(0.5f);
+                    dmg.takeDamage(attackDmg);
+                }
+
             }
-           
+            yield return new WaitForSeconds(timeBetweenAttacks);
         }
 
-        yield return new WaitForSeconds(timeBetweenAttacks);
 
         alreadyAttacked = false;
+
+        
     }
 
     public void StopMovement()
@@ -290,6 +299,7 @@ public class zombieAI : MonoBehaviour, IDamage
             agent.velocity = stop;
             agent.acceleration = 0;
             anim.SetTrigger("Death");
+            Destroy(hitCollider);
             anim.SetBool("isDead", true);
         }
     }
