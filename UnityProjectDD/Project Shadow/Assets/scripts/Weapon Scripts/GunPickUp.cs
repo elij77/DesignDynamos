@@ -26,7 +26,7 @@ public class GunPickUp : MonoBehaviour
         {
             interactText.SetActive(true);
             long moneylong = gameManager.instance.GetPoints();
-            if (Input.GetButtonDown("Interact") && moneylong >= price)
+            if (Input.GetButton("Interact") && moneylong >= price)
             {
                 gameManager.instance.playerScript.getGunStats(gun);
                 Destroy(gameObject);
@@ -35,7 +35,7 @@ public class GunPickUp : MonoBehaviour
 
                 interactText.SetActive(false);
             }
-            else if (Input.GetButtonDown("Interact") && moneylong < price)
+            else if (Input.GetButton("Interact") && moneylong < price)
             {
                 StartCoroutine(broke());
             }
