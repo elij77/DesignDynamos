@@ -252,8 +252,8 @@ MonoBehaviour:
   HP: 100
   Armor: 30
   speed: 10
-  walkSpeed: 10
-  runSpeed: 20
+  walkSpeed: 5
+  runSpeed: 10
   stam: 100
   stamMax: 100
   sprintAmount: 55
