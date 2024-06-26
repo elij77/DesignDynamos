@@ -479,6 +479,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
    public void reload(int amount)
     {
+        bool reload = gunList[selectedGun].ammoCurr < gunList[selectedGun].clip;
         amount = gunList[selectedGun].clip - gunList[selectedGun].ammoCurr;
         if (gunList[selectedGun].ammoMax >= amount)
         {
@@ -491,7 +492,11 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
             gunList[selectedGun].ammoCurr += gunList[selectedGun].ammoMax;
             gunList[selectedGun].ammoMax = 0;
         }
-        AudioManager.Instance.playSFX("Reload");
+        if (reload)
+        {
+            AudioManager.Instance.playSFX("Reload");
+        }
+        
         updatePlayerUI();
     }
 
