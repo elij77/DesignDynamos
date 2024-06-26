@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioSource musicSource;
     [SerializeField] public AudioSource SFXSource;
+    [SerializeField] public AudioSource ZombieSource;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterSlider;
@@ -109,6 +110,15 @@ public class AudioManager : MonoBehaviour
         SFXSource.clip = Sound.clip;
 
         SFXSource.Play();
+    }
+
+    public void playZombie(string name)
+    {
+        sound Sound = Array.Find(sfxSounds, x => x.soundName == name);
+
+        ZombieSource.clip = Sound.clip;
+
+        ZombieSource.Play();
     }
 
     public void playFeedback(string name) 

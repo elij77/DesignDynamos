@@ -224,7 +224,7 @@ public class zombieAI : MonoBehaviour, IDamage
         if (HP > 0)
         {
             anim.SetTrigger("Attack");
-            AudioManager.Instance.playSFX("Zombie Attack");
+            AudioManager.Instance.playZombie("Zombie Attack");
             Collider[] hitPlayer = Physics.OverlapSphere(attackPos.position, attackRange, whatIsPlayer);
             foreach (Collider hit in hitPlayer)
             {
@@ -271,7 +271,7 @@ public class zombieAI : MonoBehaviour, IDamage
         {
             if (!isDead)
             {
-                AudioManager.Instance.playSFX("Zombie Hit");
+                AudioManager.Instance.playZombie("Zombie Hit");
                 anim.SetTrigger("TakeDamage");
                 HP -= amount;
                 //StartCoroutine(FlashRed());
@@ -306,7 +306,7 @@ public class zombieAI : MonoBehaviour, IDamage
 
     public void death()
     {
-        AudioManager.Instance.playSFX("Zombie Death");
+        AudioManager.Instance.playZombie("Zombie Death");
 
         Destroy(gameObject);
 
