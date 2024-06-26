@@ -479,7 +479,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
    public void reload(int amount)
     {
-        bool reload = gunList[selectedGun].ammoCurr < gunList[selectedGun].clip;
+        bool reload = gunList[selectedGun].ammoCurr < gunList[selectedGun].clip && gunList[selectedGun].ammoMax > 0;
         amount = gunList[selectedGun].clip - gunList[selectedGun].ammoCurr;
         if (gunList[selectedGun].ammoMax >= amount)
         {
