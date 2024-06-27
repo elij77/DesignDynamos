@@ -217,7 +217,10 @@ public class zombieAI : MonoBehaviour, IDamage
             yield break;
         }
 
-        
+        //if (!playerInAttackDistance)
+        //{
+        //    yield break;
+        //}
         alreadyAttacked = true;
         Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(playerPos);
@@ -232,9 +235,13 @@ public class zombieAI : MonoBehaviour, IDamage
                 if (dmg != null)
                 {
                     yield return new WaitForSeconds(0.5f);
-                    dmg.takeDamage(attackDmg);
+                    if (playerInAttackDistance)
+                    {
+                        dmg.takeDamage(attackDmg);
+                    }
+                    
                 }
-
+                
             }
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
@@ -263,6 +270,7 @@ public class zombieAI : MonoBehaviour, IDamage
             return;
 
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+        
     }
 
     public void takeDamage(int amount)

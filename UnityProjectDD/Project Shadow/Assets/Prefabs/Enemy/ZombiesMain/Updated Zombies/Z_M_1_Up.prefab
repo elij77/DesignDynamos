@@ -2673,7 +2673,7 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   destinationRange: 20
   timeBetweenAttacks: 1.5
-  attackRange: 2
+  attackRange: 1.2
   attackDmg: 10
   hitCollider: {fileID: 3866290077142186343}
   sightDistance: 20
