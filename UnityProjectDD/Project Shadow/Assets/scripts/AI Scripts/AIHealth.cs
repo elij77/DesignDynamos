@@ -10,6 +10,7 @@ public class AIHealth : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private Image damageBar;
 
+
     //[SerializeField] private Transform position;
 
     //private Camera cam;
@@ -40,4 +41,5 @@ public class AIHealth : MonoBehaviour
             yield return null;
         }
     }
+
 }

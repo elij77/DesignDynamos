@@ -41,6 +41,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] CanvasGroup enemyCanvasGroupNumsUI;
     [SerializeField] CanvasGroup miniMapUI;
 
+ 
+
     public GameObject playerSpawnPos;
     //public GameObject scoreScreen;
 
@@ -126,13 +128,11 @@ public class gameManager : MonoBehaviour
     }
 
     
-
     public void NewWave()
     {
         waveNumber++;
     }
 
-    
     public void statePause()
     {
         isPaused = !isPaused;

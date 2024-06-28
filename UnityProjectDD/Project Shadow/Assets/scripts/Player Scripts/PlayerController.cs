@@ -52,6 +52,9 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
 
     [SerializeField] GameObject gunModel;
 
+    [SerializeField] TMP_Text staminaText;
+    [SerializeField] TMP_Text hpText;
+
     Vector3 moveDir;
 
     Vector3 playerVel;
@@ -71,6 +74,7 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
     bool upgrade;
 
     public AIHealth healthBarUIController;
+
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +97,8 @@ public class playerController : MonoBehaviour, IDamage, IHeal, IDefense, IChange
             movement();
             swapGun();
 
+            staminaText.text = ((int)stam).ToString();
+            hpText.text = ((int)HP).ToString();
         }
     }
 
