@@ -309,6 +309,7 @@ public class zombieAI : MonoBehaviour, IDamage
             anim.SetTrigger("Death");
             Destroy(hitCollider);
             anim.SetBool("isDead", true);
+            place = 100;
         }
     }
 
@@ -319,7 +320,7 @@ public class zombieAI : MonoBehaviour, IDamage
         Destroy(gameObject);
 
         gameManager.instance.updateEnemyGoal(-1);
-        place = 100;
+        
         gameManager.instance.updatePoints(place);
     }
 
