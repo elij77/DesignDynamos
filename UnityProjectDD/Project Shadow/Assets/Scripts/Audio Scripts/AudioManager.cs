@@ -44,14 +44,43 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        
+        // uncomment below to test 1st time player experience
+        //PlayerPrefs.DeleteKey("musicVolume");
+        //PlayerPrefs.DeleteKey("sfxVolume");
+        //PlayerPrefs.DeleteKey("masterVolume");
 
-        if (PlayerPrefs.HasKey("musicVolume"))
+        if (!PlayerPrefs.HasKey("sfxVolume"))
         {
-            load();
+            sfxSlider.SetValueWithoutNotify(0.75f);
+            SetSFXVolume();
         }
         else
         {
+            
+            sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+            SetSFXVolume();
+            
+        }
+        if (!PlayerPrefs.HasKey("masterVolume"))
+        {
+            masterSlider.SetValueWithoutNotify(0.75f);
+            SetMasterVolume();
+        }
+        else {
+            masterSlider.value = PlayerPrefs.GetFloat("maxVolume");
+            SetMasterVolume();
+        }
+
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+            SetMusicVolume();
+            //load();
+        }
+        else
+        {
+            // if there is nothing set value to mid  otherwise there is no sound.
+            musicSlider.SetValueWithoutNotify(0.75f);
             SetMusicVolume();
         }
 
@@ -156,15 +185,15 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat("maxVolume", volume);
     }
 
-    private void load()
-    {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
-        masterSlider.value = PlayerPrefs.GetFloat("maxVolume");
+    //private void load()
+    //{
+    //    musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+    //    sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+    //    masterSlider.value = PlayerPrefs.GetFloat("maxVolume");
 
-        SetMusicVolume();
-        SetSFXVolume();
-        SetMasterVolume();
-    }
+    //    SetMusicVolume();
+    //    SetSFXVolume();
+    //    SetMasterVolume();
+    //}
     
 }
