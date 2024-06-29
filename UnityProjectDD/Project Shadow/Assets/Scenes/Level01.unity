@@ -7153,6 +7153,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3089799473346484031, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089799473346484031, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089799473346484031, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.23883605
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089799473346484031, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255421
+      objectReference: {fileID: 0}
     - target: {fileID: 3530506339718959466, guid: e2607297ec434fd49a35659dbe6f5f97, type: 3}
       propertyPath: waveObjects.Array.data[0]
       value: 
