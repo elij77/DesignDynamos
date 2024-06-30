@@ -34,9 +34,11 @@ public class AmmoPickUp : MonoBehaviour
 
         foreach (var gun in controller.gunList)
         {
-            if (gun.ammoMax < gun.startup)
+            if (gun.ammoMax < gun.startup && gun.ammoCurr <= gun.clip)
             {
                 ammoFull = false;
+                interactText.SetActive(true);
+                interactTextFull.SetActive(false);
                 break;
             }
         }
